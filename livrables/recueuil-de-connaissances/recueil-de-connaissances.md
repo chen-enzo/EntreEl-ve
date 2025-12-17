@@ -8,6 +8,7 @@
 
 # Réunions (CR succinct)
 ### 1ère réunion – Idées initiales
+`2025-09-23`
 
 - **Thème** : Immensité de l’univers par rapport à l’homme et à la Terre
 
@@ -28,7 +29,8 @@
     - Un Git est conseillé pour la mise en commun et le suivi du travail
 		
 
-### 2ème réunion – Ajustements
+### 2ème réunion
+`2025-11-06`
 
 - **Idées rejetées** :
     - Mouvement Terre/Lune (fait par un autre groupe)
@@ -49,20 +51,38 @@
 	- Travail bibliographique 
 		
 
-### 3ème réunion – Ajustements et ajouts
+### 3ème réunion
+`2025-11-27`
 
 #### Système mécanique 
 ![[sys_meca_v1.JPG]] 
 
-- **Autres discussions** :
+
+
+- **Ajouts Possibles**:
     - Ajouter : « Tous les modèles sont faux, certains sont utiles »
     - Fusion sur Terre
     - Scientifiques (notamment femmes)
     - Présentation écoles d’ingénieurs / parcours si temps restant
+    - Faire une sorte de jeu de rôle (celui qui pose des questions et celui qui sait)
+    - Remplir le texte à  trou avec un quizz à l'oral pour faire participer les écoliers
         
 - **À faire** : 
 	- estimation du prix, contacter Mario Fernandes au sujet de la Fabrique
 	- **Système mécanique** : explication de l’analogie
+
+### Observation dans une école
+`2025-12-04`
+[[Observation d'une séance]]
+
+
+#### Suite à notre observation
+Nous avons décider de :
+- Raccourcir notre cours et notamment de ne proposer qu'une seul activité en groupe mais mieux préparée 
+
+#### Nouvelles idées :
+- Fresque : suivit chronologique de la vie d'une étoile 
+- Activité de groupe : donner des cartes à chaque groupe pour les placer dans l'ordre chronologique
 
 
 # Déroulé du projet

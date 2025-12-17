@@ -1,0 +1,57 @@
+
+
+
+## Support
+#### Système mécanique 
+[[sys_meca_v1.JPG]]
+- Bobines pour l'impression 3D
+- carré de tissu 
+- ressort 
+- fil
+- 2 poulie 
+
+#### Fresque 
+- Une grande feuille canson en tant que support
+- 10 Cartes minimum pour compléter la fresque 
+
+
+## Plan du cours
+
+Bonjour + présentation + avertissement(inexact) + avertissement(le but n'est pas de tout retenir). (2 min)
+
+
+Dézoom en partant de l'école jusqu'à arriver au système solaire puis zoom sur le soleil. (2 min)
+Qu'est ce que le soleil ? Une étoile 
+
+Qu'est ce qu'une étoile ? (Notion d'atome ?) Nuage de gaz à très haute pression et très haute températues émettant de la lumière grace à des réaction de fusion. (Fusion nucléaire sur terre pour produir de l'énergie) ( 2 min)
+
+Comparaison de la taille et de la durée de vie des étoiles avec les grandeurs avec lesquelles les élèves sont familier. (2 min)
+
+
+Première activité (Quizz sur ardoise/buzzer) (5 min)
+
+
+Quelle est la vie d'une étoile ?
+(Prérequis ou pts nécessaire pour la suite) : notion de force puis de gravité (5min)
+
+Formation à partir de nuages de gaz  s'effondrant sur lui-même.
+Une fois P et T suffisament grands, réactions nucléaires qui produisent une force de pression empechant l'étoile de continuer à s'effondrer. (5 min)
+
+
+Deuxième Activité : système méca (15 min) (estimer ole cout du système pour savoir combien en faire)
+
+
+Quand l'étoile n'a plus assez d'hydrogène à consommer : reprise de l'éffondrement puis différentes possibilités selon la masse de l'étoile : naine blanche, géante,supernovae, étoile à neutron, trou noir.
+(15 min)
+
+En même temps : Dézoom et observation des différents objets célestes résultants de la mort d'une étoile. (10 min)
+
+(travail d'une scientifique pour faire l'image d'un trou noir)
+
+(Dézoom jusqu'à l'échelle de l'univers observable? Voir Expo permanente cité de l'espace Toulouse)
+
+
+(Activité comparaison des échelles (10 min))
+(Activité" quizz et texte à trou ( 7 min)
+Activité fresque (25 min)
+
