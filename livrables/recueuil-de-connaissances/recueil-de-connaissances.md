@@ -55,7 +55,7 @@
 `2025-11-27`
 
 #### Système mécanique 
-![[sys_meca_v1.JPG]] 
+cf. `systeme_meca_v1.JPG`
 
 
 
@@ -73,7 +73,7 @@
 
 ### Observation dans une école
 `2025-12-04`
-[[Observation d'une séance]]
+cf. `Observation d'une séance`
 
 
 #### Suite à notre observation
@@ -118,8 +118,7 @@ total 300€ max
 - Maquette
 
 ### Planning Provisoire
-
-![[Diagramme-Gantt.png]]
+cf. `Diagramme-Gantt.png`
 
 ## Conception et Réalisation (Janvier à Février)
 

@@ -3,7 +3,7 @@
 
 ## Support
 #### Système mécanique 
-[[sys_meca_v1.JPG]]
+cf. `systeme_meca_v1.jpg`
 - Bobines pour l'impression 3D
 - carré de tissu 
 - ressort 
