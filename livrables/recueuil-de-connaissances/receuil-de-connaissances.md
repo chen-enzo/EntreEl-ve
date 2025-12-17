@@ -7,128 +7,101 @@
 - Nombre d'élèves : 20 ( 6 élèves de CM1 et 14 de CM2)
 
 # Réunions (CR succinct)
+### 1ère réunion – Idées initiales
 
-## Première Réunion 
-### Idées
+- **Thème** : Immensité de l’univers par rapport à l’homme et à la Terre
 
-Montrer l'immensité de l'univers par rapport à l'homme et la terre. 
+- **Supports** :
+    - Maquette 
+	    - mouvements des planètes du système solaire, 
+	    - comparaison taille des étoiles, 
+	    - mouvements Terre/Lune (phase de la Lune)
+    - Projection et animation pour les échelles et phénomènes (saisons, phases de la Lune, éclipses)
+	    
+- **Contenu scientifique** :
+    - Différence étoiles/planètes, températures des astres
+    - Comparaison Terre/autres astres
+    - Fin de vie des étoiles (supernova, étoiles à neutrons, trous noirs)
+	    
+- **À retenir** : 
+	- Observation prévue en décembre
+    - Un Git est conseillé pour la mise en commun et le suivi du travail
+		
 
-1. Maquette 
-- Échelle des planètes / étoiles dans l’univers + projection.
-- Mouvement de la Terre autour du Soleil.
-- Mouvement de la Lune (autour de la Terre et pas du Soleil, à clarifier dans la formulation).
+### 2ème réunion – Ajustements
 
-2. Projection / Animation / Support visuel 
-- Projection montrant les échelles des planètes.
-- Schémas explicatifs (saisons, phases, mouvements…)
+- **Idées rejetées** :
+    - Mouvement Terre/Lune (fait par un autre groupe)
+    - Maquette des échelles
+    - Histoire complète de l’univers (trop long)
+        
+- **Nouvelles idées** :
+    - Dézoom : élève → ville → Terre → système solaire → galaxie → univers
+    - Focus sur la vie des étoiles (naissance → mort, supernova, trous noirs)
+    - Supports : système mécanique, projection animation de dézoom, vidéo
+    - Trace écrite : texte à trous, fresque
+        
+- **Objectif** : faire rêver et susciter la curiosité
+- **À faire** :
+	- Définir un titre global 
+	- Schéma du système mécanique
+	- Planification du projet 
+	- Travail bibliographique 
+		
 
-### Contenu Provisoire 
-- Qu’est-ce que l’espace ?
-- Différence étoiles / planètes.
-- Possibilité d’ajouter : petite histoire de l’univers (Big Bang → aujourd’hui).
-- Températures des astres : cœur plus chaud / surface plus froide (à préciser selon le niveau).
+### 3ème réunion – Ajustements et ajouts
 
-#### Contenu scientifique
-- Comparaison Terre / autres astres → échelle cosmique.
-- Saisons : explication via l’inclinaison de la Terre.
-- Phases de la Lune.
-- Éclipses solaires et lunaires.
-- Fin de vie des étoiles : 
-	- Supernova
-	- Étoiles à neutrons
-	- (éventuellement trous noirs selon niveau)
-### A retenir
-- Période : décembre → phase d’observation.
+#### Système mécanique 
+![[sys_meca_v1.JPG]] 
 
-## Deuxième Réunion 
+- **Autres discussions** :
+    - Ajouter : « Tous les modèles sont faux, certains sont utiles »
+    - Fusion sur Terre
+    - Scientifiques (notamment femmes)
+    - Présentation écoles d’ingénieurs / parcours si temps restant
+        
+- **À faire** : 
+	- estimation du prix, contacter Mario Fernandes au sujet de la Fabrique
+	- **Système mécanique** : explication de l’analogie
 
-## Idées rejetées
-- Tout ce qui concerne le système solaire (mouvement de la Terre et la Lune)
-		Fait par l'autre groupe 
-- Maquette des échelles des planètes 
-		Semble compliquée à réaliser et peu d'intérêt 
-- Histoire de l'univers
-		Peut-être trop long
-
-## Idées 
-Toujours sur l'immensité de l'univers mais en se focalisant sur la vie des étoiles. 
-Approche par dézoom : partir de l’élève → la ville → la Terre → le système solaire → la galaxie → l’univers
-
-### Support 
-#### Visuel :
-- Système mécanique représentant l'équilibre des forces internes et externes d'une étoile. 
-- Projection de l'animation de dézoom. 
-- Vidéo effondrement d'une étoile
-#### Trace écrite :
-- texte à trous
-- schéma type fresque qu'ils pourront conserver dans la classe
-### Contenu Provisoire 
-Vie d'une étoile de sa naissance à sa mort incluant supernova et trou noir.
-Equations pour faire rêver. 
-
-Peut-être faire un quiz
-### Objectif 
-Faire rêver et attiser leur curiosité. 
-
-### A revoir 
-Définir un titre global (pour faire rêver)
-Schéma du système mécanique. 
-Planification du projet
-Git 
-Bibliographie
-
-## Troisième Réunion 
-
-### Ajouts possibles 
-#### Système mécanique
-![[sys_meca_v1.JPG]]
-Expliquer pourquoi l'analogie fonction
-
-#### Autres sujets de discution possibles
-« Tous les models sont faux certains sont utiles »
-Parler de fusion sur Terre 
-Parler de scientifique (notamment de femme)
-
-S'il reste du temps, présenter les écoles d'ingénieurs et/ou notre parcours
-
-### Références utiles 
-Cité de l'espace et de Toulouse 
-
-### A faire 
-Estimation du prix 
-Contacter Mario FERNANDES au sujet de la Fabrique
 
 # Déroulé du projet
 
-## Initialisation (septembre à janvier)
+## Initialisation (Septembre à Janvier)
 
-### Définition des Besoins
-- Faire un cours de 2h à des élèves de CM1/CM2
-- Augmenter l'intérêt des plus jeunes pour les filiaires scientifiques (notamment des filles)
+### Besoins
+- Augmenter l'intérêt des plus jeunes pour les filières scientifiques, en particulier chez les filles, afin de lutter contre les stéréotypes. 
 
-### Définition des Objectifs 
+### Objectifs 
 - Faire rêver les élèves
-- Attiser leur curiosité sur l'espace / l'univers 
+- Attiser leur curiosité sur l’espace et la vie des étoiles
+- Permettre aux élèves de comprendre les grandes étapes de la vie d’une étoile
+
+### Objects des élèves 
+Les élèves doivent :
+- avoir compris les grandes étapes de la vie d'une étoile
+- Identifier des notions de base sur les phénomènes astronomiques associés
 
 ### Définition des Contraintes
-- Faire un cours intéressant et dynamique pour des élèves de CM1/CM2
+- Le cours doit être dynamique et adapté aux élèves de CM1/CM2
+- - Tenir compte du niveau socio-économique de l’école
+- La séance doit durer 2h, incluant une pause
+- Les supports et activités doivent être reproductibles à partir des ressources du projet
+- Une trace écrite synthétique doit être produite pour permettre aux élèves de revoir le contenu de la séance 
+
 
 ### Budget 
 total 300€ max
 #### Estimation / Matériel :
-10 cartes plastifiées + image en couleur 
-Grande feuille cartonnée / canson pour la "fresque"
-Maquette :
-	Bobines pour l'impression 3D
-	carré de tissu 
-	ressort 
-	fil
-	poulie 
-	
+- 10 cartes plastifiées
+- Grande feuille pour la fresque 
+- Maquette
 
 ### Planning Provisoire
 
+![[Diagramme-Gantt.png]]
 
-## Conception et Réalisation
+## Conception et Réalisation (Janvier à Février)
 
-Conception et 
+
+Nous allons réaliser un cours sur la vie des étoiles de leur naissance à leur mort. En commençant par 

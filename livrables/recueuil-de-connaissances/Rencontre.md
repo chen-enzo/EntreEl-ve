@@ -19,41 +19,44 @@ Structure : Comment la séance est-elle organisée ? Vous pouvez noter
 	- mise en commun + synthèse oral 
 	- trace écrite (prévu mais plus assez de temps)
 
-- leur minutage
-	Gouter ~5 min
-	Rappel du cours précédent ~ 10min 
-	Hypothèse ~ 15min 
-	formation de groupes et distribution du matériel ~ 15 min
-	Manipulations et représentation des résultats ~20 min
-	Mise en commun des résultats ~ 10min 
-	Rangement et retour des élèves à leur place ~ 10min 
-	Coller une feuille présentant les résultats dans eur cahier de science ~5 min
+- Minutage de la séance 
+> 	Gouter ~5 min
+> 	Rappel du cours précédent ~ 10min 
+> 	Hypothèse ~ 15min 
+> 	formation de groupes et distribution du matériel ~ 15 min
+> 	Manipulations et représentation des résultats ~20 min
+> 	Mise en commun des résultats ~ 10min 
+> 	Rangement et retour des élèves à leur place ~ 10min 
+> 	Coller une feuille présentant les résultats dans leur cahier de science ~5 min
 
 - la modalité d'organisation : « groupe classe », groupes de travail, binômes, individuel
-	Groupe classe avant et après l' expérience et groupe de 3-4 pendant l'expérience
+
+> Groupe classe avant et après l' expérience et groupe de 3-4 pendant l'expérience
 
 - l'alternance des postures des écoliers : écouter, lire, chercher, interroger, expérimenter, rapporter, expliquer, justifier...
-	Le professeur commence son cours en faisant un rappel du cours précédent tout en leur posant des questions, puis il présente ce qu'ils vont faire aujourd'hui. Ensuite, il leur demande de formuler des hypothèses pour ensuite les vérifier avec une expérience / manipulation en leur demandant de schématiser/dessiner leurs observations. Enfin, il synthétise tout ce qui a été dit au tableau en montrant ce que chaque groupe a fait. 
+
+> Le professeur commence son cours en faisant un rappel du cours précédent tout en leur posant des questions, puis il présente ce qu'ils vont faire aujourd'hui. Ensuite, il leur demande de formuler des hypothèses pour ensuite les vérifier avec une expérience / manipulation en leur demandant de schématiser/dessiner leurs observations. Enfin, il synthétise tout ce qui a été dit au tableau en montrant ce que chaque groupe a fait. 
 
 - Comment l'enseignant gère-t-il les transitions entre les activités ?
-	Il demande aux élèves de participer au rangement afin d'éviter qu'ils ne restent inactif trop longtemps.Il énonce clairement et plusieurs fois le contenu de la nouvelle activité ainsi que ce qui est attendu des élèves.Si nécessaire, il hausse la voix pour regagner leur attention.
-	#L'enseignant le fait très naturellement, soit en faisant la transition à voix haute, soit en regagnant l'attention des élèves en commençant à parler peut-être avec un volume plus fort. 
 
+> Il demande aux élèves de participer au rangement afin d'éviter qu'ils ne restent inactif trop longtemps. Il énonce clairement et plusieurs fois le contenu de la nouvelle activité ainsi que ce qui est attendu des élèves.Si nécessaire, il hausse la voix pour regagner leur attention.
+
+--- 
 
 Introduction : Comment l'enseignant amorce-t-il la séance (devinette, objet mystère...) ? Qu'est-ce qui, dans l'introduction, a suscité la curiosité des écoliers ? L'enseignant pose-t-il au départ une question claire ? Comment fait-il émerger un problème à résoudre ?
 
 > L'enseignant annonce la séance sous forme de devinette en lien avec le cours précédent sur les mélanges solides-liquides.
-> #Nous pensons que ce qui a suscité la curiosité des élèves est le moment où l'enseignant annonce qu'ils vont faire des mélanges liquide-liquide sans dire quel genre de liquides ils vont mélanger. 
-> Oui, il pose des question  claires,demandant par exemple si l'eau et l'huile se mélangent bien, pas très bien ou pas du tout. 
-> #Il passe très naturellement des mélanges liquide-liquide aux résultats possibles des mélanges. 
+> 
+> Nous pensons que ce qui a suscité la curiosité des élèves est le moment où l'enseignant annonce qu'ils vont faire des mélanges liquide-liquide sans dire quel genre de liquides ils vont mélanger. 
+> 
+> Oui, il pose des question  claires, demandant par exemple si l'eau et l'huile se mélangent bien, pas très bien ou pas du tout. 
 
 
 Guidage : Quelles postures l'enseignant adopte-t-il au cours des différentes phases : guide, expert, accompagnateur... ? Quelles questions ont réellement fait avancer la réflexion des écoliers ? Comment l'enseignant pousse-t-il les écoliers à formuler et discuter des hypothèses ? À quels moments explicite-t-il des notions, reformule-t-il des observations ? Les écoliers osent-ils se tromper ? Comment leurs erreurs sont-elles accueillies (par l'enseignant, par les pairs) ?
 
 > Pendant la séance, l'enseignant joue principalement un  rôle de guide, dans la mesure où il leur donne et rappelle les consignes, leur demande de tirer par eux-même des conclusions et les corrige en cas d'erreur. 
-> L'enseignant demande directement aux écoliers de formuler des hypothèses mais fait ensuite un vote à main levé qui permet aux écoliers de voir les réponses des autres vidsant à connaître l'opinion majoritaire. #Cela permet donc des créer des discutions/débats entre les élèves. 
-> #Les notions n'ont pas pu être explicitées dans ce cours, faute de temps, mais pendant la synthèse, l'enseignant a repris toutes les observations qui ont été faites. 
-  Aucune notion n'a été introduite ou explicitée,probablement faute de temps, mais pendant la synthèse, l'enseignant a repris toutes les observations qui ont été faites et les a comparées à l'opinon majoritaire en début de cours. 
+> L'enseignant demande directement aux écoliers de formuler des hypothèses mais fait ensuite un vote à main levé qui permet aux écoliers de voir les réponses des autres visant à connaître l'opinion majoritaire. Cela permet aussi des créer des discutions/débats entre les élèves. 
+  Aucune notion n'a été introduite ou explicitée, probablement faute de temps, mais pendant la synthèse, l'enseignant a repris toutes les observations qui ont été faites et les a comparées à l'opinion majoritaire en début de cours. 
 > les écoliers ne semblent pas avoir honte de se tromper voire d'être le seul à lever la main. 
 > L'enseignant répond toujours et corrige l'erreur le plus simplement possible sans entrer dans les détails. Lorsque la grande majorité est sûre d'eux et qu'un avis diverge, on peut entendre certaines remarques du style : "comment il peut penser ça". 
 
@@ -156,7 +159,7 @@ Qu'avez-vous compris de la manière dont les écoliers du primaire pensent, pose
 
 Qu'est-ce qui vous a surpris, amusé ou déstabilisé dans cette séance ?
 
-> #Les écoliers semblent très actifs dans le sens où lorsque l'enseignant pose une question, ils sont beaucoup à vouloir participer.
+> Les écoliers semblent très actifs dans le sens où lorsque l'enseignant pose une question, ils sont beaucoup à vouloir participer.
 > De plus, nous avons l'impression que la séance a été très lente et qu'ils n'ont pas fait grand chose pendant ce cours. 
 
 
