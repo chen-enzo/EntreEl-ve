@@ -104,4 +104,10 @@ total 300€ max
 ## Conception et Réalisation (Janvier à Février)
 
 
-Nous allons réaliser un cours sur la vie des étoiles de leur naissance à leur mort. En commençant par 
+Nous allons réaliser un cours sur la vie des étoiles de leur naissance à leur mort. 
+
+En commençant par le contenu et la structure du cours. L'observation d'une cours d'une heure dans une école nous permettra d'ajuster le contenu. 
+Une maquette et une animation sont prévu pour illustrer le cours. 
+
+Notre travaille devra être valider par l'enseignant encadrant pour pouvoir le proposer aux écoliers. 
+
