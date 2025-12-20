@@ -1,6 +1,4 @@
 
-
-
 ## Support
 #### Système mécanique 
 cf. `systeme_meca_v1.jpg`
