@@ -57,8 +57,6 @@
 #### Système mécanique 
 cf. `systeme_meca_v1.JPG`
 
-
-
 - **Ajouts Possibles**:
     - Ajouter : « Tous les modèles sont faux, certains sont utiles »
     - Fusion sur Terre
@@ -74,8 +72,6 @@ cf. `systeme_meca_v1.JPG`
 ### Observation dans une école
 `2025-12-04`
 cf. `Observation d'une séance`
-
-
 #### Suite à notre observation
 Nous avons décider de :
 - Raccourcir notre cours et notamment de ne proposer qu'une seul activité en groupe mais mieux préparée 
@@ -84,6 +80,17 @@ Nous avons décider de :
 - Fresque : suivit chronologique de la vie d'une étoile 
 - Activité de groupe : donner des cartes à chaque groupe pour les placer dans l'ordre chronologique
 
+### 4ème réunion
+`2026-01-08`
+
+- **Changements :**
+	- Abandon du système mécanique
+	- Nouvelle «expérience» : 
+		Réaliser un modèle informatique d'étoile pour que les élèves puissent observer l'impact de différents paramètres sur la vie d'une étoile
+	
+- **À faire :**
+	- Finaliser le budget 
+	- Réaliser le fichier `Latex`
 
 # Déroulé du projet
 
