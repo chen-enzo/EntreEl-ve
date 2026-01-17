@@ -100,26 +100,27 @@ Nous avons décider de :
 - Augmenter l'intérêt des plus jeunes pour les filières scientifiques, en particulier chez les filles, afin de lutter contre les stéréotypes. 
 
 ### Objectifs 
-- Faire rêver les élèves
-- Attiser leur curiosité sur l’espace et la vie des étoiles
-- Permettre aux élèves de comprendre les grandes étapes de la vie d’une étoile
+- Éveiller l’intérêt et la curiosité des élèves pour les sciences.
+- Faire Rêver les élèves. 
+- Faire prendre conscience aux élèves de l’immensité de l’univers.
 
-### Objects des élèves 
-Les élèves doivent :
-- avoir compris les grandes étapes de la vie d'une étoile
-- Identifier des notions de base sur les phénomènes astronomiques associés
+#### Objects Spécifiques
+À l’issue de la séance, les élèves doivent être capables de : 
+- Comprendre ce qu’est une étoile et que le Soleil en est une. 
+- Connaître les grandes étapes de la vie d’une étoile. 
+- Reconnaître certains objets célestes liés à la la vie des étoiles.
 
-### Définition des Contraintes
-- Le cours doit être dynamique et adapté aux élèves de CM1/CM2
-- - Tenir compte du niveau socio-économique de l’école
-- La séance doit durer 2h, incluant une pause
-- Les supports et activités doivent être reproductibles à partir des ressources du projet
-- Une trace écrite synthétique doit être produite pour permettre aux élèves de revoir le contenu de la séance 
+### Contraintes de l'interventions
+- Public : Faire un cours adapté à des élèves de CM1/CM2. 
+- Tenir compte du niveau socio-économique de l’école. 
+- Durée totale : 2 heures. 
+- Ne pas faire un cours magistrale pendant 2 heures mais proposer des activités ou expériences aux élèves. 
+- L’ensemble de la séance, dont les supports utilisés lors des expériences, doit être reproductible à partir des ressources du projet. 
+- Fournir aux élèves une trace écrite synthétique. 
+- Respecter le budget alloué.
 
 
-### Budget 
-total 300€ max
-#### Estimation / Matériel :
+### Budget et Matériel :
 
 ##### Fresque 
 - Une grande feuille canson en tant que support ~ 2-5€ [lien achat](https://www.bureau-vallee.fr/feuille-maya-270g-50x70cm-ivoire-75803.html?utm_source=google&utm_medium=cpc&utm_campaign=PPSI-Perfmax-MerchantCSS-6488556&utm_content=&gad_source=1&gad_campaignid=23225734715&gbraid=0AAAAADnPkIIwfzNBSelHPHhoO2L1UJbe6&gclid=CjwKCAiAmp3LBhAkEiwAJM2JULHL3uzdqroUJLTWbYC497--OgshdrLMy6Xmzs6MSDyKwd7ugQbeiBoC-hYQAvD_BwE)
@@ -128,7 +129,7 @@ total 300€ max
 	- Pochette de plastification ~ 15€
 	- Carte (papier) 
 
-Total : 50€ 
+**Total** : 50€ 
 
 ### Planning Provisoire
 cf. `Diagramme-Gantt.png`
