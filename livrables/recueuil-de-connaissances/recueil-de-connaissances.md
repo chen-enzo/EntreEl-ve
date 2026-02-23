@@ -127,8 +127,8 @@ filles.
 ##### Fresque 
 - Une grande feuille canson en tant que support ~ 2-5€ [lien achat](https://www.bureau-vallee.fr/feuille-maya-270g-50x70cm-ivoire-75803.html?utm_source=google&utm_medium=cpc&utm_campaign=PPSI-Perfmax-MerchantCSS-6488556&utm_content=&gad_source=1&gad_campaignid=23225734715&gbraid=0AAAAADnPkIIwfzNBSelHPHhoO2L1UJbe6&gclid=CjwKCAiAmp3LBhAkEiwAJM2JULHL3uzdqroUJLTWbYC497--OgshdrLMy6Xmzs6MSDyKwd7ugQbeiBoC-hYQAvD_BwE)
 - Une dizaine de cartes pour compléter la fresque 
-	- Plastifieuse ~ 20-30€ [lien](https://www.amazon.fr/8038718-Plastifieuse-feuilles-plastification-incluses-Certifié/dp/B01KOR6QXI/ref=asc_df_B01KOR6QXI?mcid=4e26fbe1230c318cbdf086e0bdf905de&tag=googshopfr-21&linkCode=df0&hvadid=701511052694&hvpos=&hvnetw=g&hvrand=10961372699279847194&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9208298&hvtargid=pla-306593103575&hvocijid=10961372699279847194-B01KOR6QXI-&hvexpln=0&th=1)
-	- Pochette de plastification ~ 15€
+	- Plastifieuse ~ 20-30€ [lien](https://www.amazon.fr/8038718-Plastifieuse-feuilles-plastification-incluses-Certifié/dp/B01KOR6QXI/ref=asc_df_B01KOR6QXI?mcid=4e26fbe1230c318cbdf086e0bdf905de&tag=googshopfr-21&linkCode=df0&hvadid=701511052694&hvpos=&hvnetw=g&hvrand=10961372699279847194&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9208298&hvtargid=pla-306593103575&hvocijid=10961372699279847194-B01KOR6QXI-&hvexpln=0&th=1) 
+	- Pochette de plastification ~ 15€ 
 	- Carte (papier) 
 
 **Total** : 50€ 
