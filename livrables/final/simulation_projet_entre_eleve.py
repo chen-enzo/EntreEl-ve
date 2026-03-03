@@ -1,4 +1,6 @@
 import numpy as np
+
+
 class Star:
 
     def __init__(self, position, mass, radius, yellow_threshold):
@@ -32,6 +34,10 @@ class Star:
 
         self.alive = True
 
+    def update():
+        evolve_mass_distribution(sigma,)
+
+
 def redistribute_envelope(sigma, center, radius, mass):
 
     nx, ny = sigma.shape
@@ -55,6 +61,7 @@ def redistribute_envelope(sigma, center, radius, mass):
 
     for i, j in cells:
         sigma[i, j] += mass_per_cell
+
 
 def evolve_star(star, sigma):
 
@@ -120,7 +127,6 @@ def evolve_star(star, sigma):
             star.alive = False
 
 
-
 def laplacian(Z):
     return (
         np.roll(Z, 1, 0) +
@@ -171,8 +177,9 @@ def star_occupancy_mask(sigma_shape, stars):
 
     return occ
 
+
 def remove_star_region(sigma, star):
-    #Rend nulle la densité de masse dans une zone précedement au sein d'une étoile mais qui n'y est plus à cause de son rétrécissement'
+    # Rend nulle la densité de masse dans une zone précedement au sein d'une étoile mais qui n'y est plus à cause de son rétrécissement'
     nx, ny = sigma.shape
     x0, y0 = star.position
     r = star.radius
@@ -201,7 +208,7 @@ def find_connected_regions(mask):
                     x, y = stack.pop()
                     region.append((x, y))
 
-                    for dx, dy in [(-1,0),(1,0),(0,-1),(0,1)]:
+                    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
                         xn, yn = x+dx, y+dy
                         if 0 <= xn < nx and 0 <= yn < ny:
                             if mask[xn, yn] and not visited[xn, yn]:
@@ -211,7 +218,6 @@ def find_connected_regions(mask):
                 regions.append(region)
 
     return regions
-
 
 
 def evolve_mass_distribution(
@@ -230,13 +236,10 @@ def evolve_mass_distribution(
 
     for step in range(steps):
 
-
         for star in stars:
             remove_star_region(sigma, star)
 
-
         # Dynamique de la densité de masse (diffusion + gravité simplifiée)
-
 
         diffusion = D * laplacian(sigma)
 
@@ -249,15 +252,11 @@ def evolve_mass_distribution(
         sigma = sigma + dt * (diffusion + gravity)
         sigma = np.maximum(sigma, 0.0)
 
-
         # Formation des étoiles
-
 
     occupied = star_occupancy_mask(sigma.shape, stars)
 
-
     mask = (sigma > density_threshold) & (~occupied)
-
 
     regions = find_connected_regions(mask)
 
@@ -265,7 +264,6 @@ def evolve_mass_distribution(
 
         if len(region) < 10:
             continue
-
 
         mass = sum(sigma[i, j] for i, j in region)
 
@@ -280,12 +278,10 @@ def evolve_mass_distribution(
 
         stars.append(new_star)
 
-    # Réorganiser la densité interne
-    deposit_star_density(sigma, new_star)
+        # Réorganiser la densité interne
+        deposit_star_density(sigma, new_star)
 
-
-
-        #Evolution des étoiles
+        # Evolution des étoiles
 
     for star in stars:
         star.update(dt)
@@ -293,4 +289,3 @@ def evolve_mass_distribution(
         deposit_star_density(sigma, star)
 
     return sigma, stars
-    

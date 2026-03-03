@@ -2,9 +2,9 @@
 # Introduction 
 
 Bonjour à tous, je suis Enzo Chen et voici mon camarade Raphaël Cadier--Giard. 
-Nous sommes des étudiants en première année à Centrale Supélec, une des meilleurs écoles d'ingénieur en France.
+Nous sommes des étudiants en première année à Centrale Supélec, une école d'ingénieur.
 
-Aujourd'hui, nous somme venus pour vous faire un petit cours de science. 
+Aujourd'hui, nous somme venus pour vous parler de science. 
 Vous êtes prêts ? 
 Bon aller c'est parti. 
 
@@ -37,17 +37,22 @@ Forces
 
 #### Nuages de Gaz / Nébuleuses 
 
+
 #### Naine Brune 
 #### Proto-étoile
 
+
+Mais Raphael, ce ne sont toujours pas des étoiles, comment est-ce qu'elle deviennent de vraies étoiles ? 
+
 --- 
 ## Séquence Principale 
-
 Fusion Nucléaire
 Atomes 
 
 #### Etoiles de faible masse 
 #### Etoiles de masse élevée
+Temps de vie différent, proportionnel à 1/m^3 
+
 
 
 --- 
@@ -60,11 +65,11 @@ Atomes
 ###### Naine blanche 
 
 #### Etoile de forte masse 
+Création des différents éléments 
 #### Supernova 
-
+###### Etoiles à Neutron 
 ###### Trou noir 
 
-###### Etoiles à Neutron 
 
 --- 
 # Activités
@@ -80,13 +85,17 @@ Chaque groupe aura un ordinateur qui pourra faire tourner un programme informati
 
 ### Consignes 
 
-## Texte à trou 
+
+## Distribution d'un texte à collé
 
 --- 
 # Bonus 
 
 ## Présentation du cursus Ingénieur 
 #### Parcours Scolaire
-#### Centrale Supélec 
+#### CentraleSupélec 
 
 
+## Trou Noir 
+
+## Duo d'Etoiles
