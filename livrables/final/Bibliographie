@@ -20,10 +20,11 @@ source : THE ASTROPHYSICAL JOURNAL, 482:420–432, 1997 June 10 The End of the M
 
 -Densité des étoiles à neutron : https://astronomes.com/etoile-massive/etoile-a-neutrons/
 
--Durée de vie des géantes rouges : base_lifetime = 400
+-Durée moyenne de vie des géantes rouges : 1000 000 000 d'années base_lifetime = 400
+source : THE ASTROPHYSICAL JOURNAL, 482:420–432, 1997 June 10 The End of the Main Sequence
 
-Durée de vie des super_géantes rouges : star.giant_lifetime = np.random.uniform(50, 150)
-
+Durée de vie des super_géantes rouges : quelques millions d'années star.giant_lifetime = np.random.uniform(50, 150)
+source : Ekström, S., & Georgy, C. (2025). Stellar evolution through the red supergiant phase. Galaxies, 13(4), 81.
 
 
 
