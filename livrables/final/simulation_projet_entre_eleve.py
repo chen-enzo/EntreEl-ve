@@ -2,40 +2,43 @@ import numpy as np
 
 
 class Star:
-
-    def __init__(self, position, mass, radius, yellow_threshold):
-
+    def __init__(self, position, mass, radius, yellow_threshold, blue_threshold):
         self.position = position
         self.mass = mass
         self.initial_mass = mass
         self.initial_radius = radius
-        self.radius = radius
 
         # -------------------------
-        # Type initial
+        # Type initial basé sur la masse
         # -------------------------
-        if mass > yellow_threshold:
+        if mass > blue_threshold:
+            self.type = "blue_giant"
+            base_lifetime = 400  # Vie très courte
+        elif mass > yellow_threshold:
             self.type = "yellow_dwarf"
             base_lifetime = 2000
         else:
             self.type = "red_dwarf"
-            base_lifetime = 2000 * 40  # rouges vivent ~40x plus longtemps
+            base_lifetime = 80000 # 2000 * 40
 
-        # Durée dépendant de la masse : 1 / m^3
+        # Durée de vie inversement proportionnelle à la masse au cube
         self.lifetime = base_lifetime / (mass**3 + 1e-8)
         self.timer = self.lifetime
 
-        # Paramètres évolution
+        # Paramètres pour les phases de géantes
         self.giant_timer = None
         self.giant_lifetime = None
 
+        # Paramètres des résidus
         self.white_dwarf_radius = max(1, int(radius / 4))
-        self.core_fraction = 0.25
+        self.neutron_star_radius = 1
+        self.black_hole_radius = 1
+
+        self.core_fraction = 0.25  # Pour naines blanches
+        self.massive_core_fraction = 0.15 # Pour supernovae (plus de gaz expulsé)
 
         self.alive = True
 
-    def update():
-        evolve_mass_distribution(sigma,)
 
 
 def redistribute_envelope(sigma, center, radius, mass):
@@ -62,69 +65,73 @@ def redistribute_envelope(sigma, center, radius, mass):
     for i, j in cells:
         sigma[i, j] += mass_per_cell
 
-
-def evolve_star(star, sigma):
-
+def evolve_star(star, sigma, blue_threshold):
     if not star.alive:
         return
 
     star.timer -= 1
 
     # -------------------------
-    # Phase naine rouge / jaune
+    # Phase Naine Rouge / Jaune / Géante Bleue
     # -------------------------
-    if star.type in ["red_dwarf", "yellow_dwarf"]:
-
+    if star.type in ["red_dwarf", "yellow_dwarf", "blue_giant"]:
         if star.timer <= 0:
+            if star.type == "blue_giant":
+                # Transition vers Supergéante Rouge
+                star.type = "red_supergiant"
+                star.giant_lifetime = np.random.uniform(50, 150)
+                star.giant_timer = star.giant_lifetime
+                star.timer = star.giant_lifetime
 
-            if star.type == "yellow_dwarf":
-
-                # Devient géante rouge
+            elif star.type == "yellow_dwarf":
+                # Transition vers Géante Rouge
                 star.type = "red_giant"
-
-                # durée géante rouge aléatoire
                 star.giant_lifetime = np.random.uniform(100, 400)
                 star.giant_timer = star.giant_lifetime
                 star.timer = star.giant_lifetime
 
-            else:
-                # Naine rouge → naine blanche directe
+            else: # Naine rouge -> Naine blanche
                 star.type = "white_dwarf"
                 star.radius = star.white_dwarf_radius
                 star.mass *= star.core_fraction
                 star.alive = False
 
     # -------------------------
-    # Phase géante rouge
+    # Phase Géante Rouge (Expansion)
     # -------------------------
     elif star.type == "red_giant":
-
         if star.giant_timer > 0:
-
             star.giant_timer -= 1
-
-            growth_ratio = 1 - star.giant_timer / star.giant_lifetime
-            star.radius = int(
-                star.initial_radius * (1 + 39 * growth_ratio)
-            )
-
+            growth = 1 - star.giant_timer / star.giant_lifetime
+            star.radius = int(star.initial_radius * (1 + 39 * growth))
         else:
-            # Fin → expulsion enveloppe
-
+            # Fin : Expulsion calme -> Naine Blanche
             core_mass = star.mass * star.core_fraction
-            envelope_mass = star.mass - core_mass
+            redistribute_envelope(sigma, star.position, star.radius, star.mass - core_mass)
+            star.mass, star.radius, star.type, star.alive = core_mass, star.white_dwarf_radius, "white_dwarf", False
 
-            redistribute_envelope(
-                sigma,
-                star.position,
-                star.radius,
-                envelope_mass
-            )
+    # -------------------------
+    # Phase Supergéante Rouge (Expansion massive)
+    # -------------------------
+    elif star.type == "red_supergiant":
+        if star.giant_timer > 0:
+            star.giant_timer -= 1
+            growth = 1 - star.giant_timer / star.giant_lifetime
+            star.radius = int(star.initial_radius * (1 + 99 * growth)) # Grossit bcp plus
+        else:
+            # ÉVÉNEMENT SUPERNOVA
+            core_mass = star.mass * star.massive_core_fraction
+            redistribute_envelope(sigma, star.position, star.radius, star.mass - core_mass)
 
             star.mass = core_mass
-            star.radius = star.white_dwarf_radius
-            star.type = "white_dwarf"
             star.alive = False
+
+            # Détermination du résidu selon la masse finale
+            if star.mass > blue_threshold * 0.2: # Seuil arbitraire pour trou noir
+                star.type = "black_hole"
+                star.radius = star.black_hole_radius
+            else:
+                star.type = "neutron_star"
 
 
 def laplacian(Z):
@@ -222,12 +229,14 @@ def find_connected_regions(mask):
 
 def evolve_mass_distribution(
         sigma_init,
-        steps=500,
+        steps=1,
         dt=0.05,
         D=0.1,
         G=0.5,
         density_threshold=5.0,
-        freeze_radius=4):
+        freeze_radius=4,
+        yellow_threshold=50.0,
+        blue_threshold=150.0):
 
     sigma = sigma_init.copy()
     nx, ny = sigma.shape
@@ -239,53 +248,56 @@ def evolve_mass_distribution(
         for star in stars:
             remove_star_region(sigma, star)
 
-        # Dynamique de la densité de masse (diffusion + gravité simplifiée)
+        # Evolution de la densité de masse
 
-        diffusion = D * laplacian(sigma)
-
+        diffusion = D * laplacian(sigma) # 2ème loi de Fick
+                                         #Pour la gravité on part de l'eq de continuité et on approxime la vitesse comme proportionelle à la gravité et le flux par -G*sigma
         phi = -G * sigma
         gradx = (np.roll(phi, -1, 0) - np.roll(phi, 1, 0)) * 0.5
         grady = (np.roll(phi, -1, 1) - np.roll(phi, 1, 1)) * 0.5
-
-        gravity = -(sigma * gradx + sigma * grady)
+        flux_x = sigma * gradx
+        flux_y = sigma * grady
+        div_flux = (np.roll(flux_x, -1, 0) - np.roll(flux_x, 1, 0)) * 0.5 + \
+                   (np.roll(flux_y, -1, 1) - np.roll(flux_y, 1, 1)) * 0.5
+        gravity = -div_flux
 
         sigma = sigma + dt * (diffusion + gravity)
         sigma = np.maximum(sigma, 0.0)
 
         # Formation des étoiles
 
-    occupied = star_occupancy_mask(sigma.shape, stars)
+        occupied = star_occupancy_mask(sigma.shape, stars)
 
-    mask = (sigma > density_threshold) & (~occupied)
+        mask = (sigma > density_threshold) & (~occupied)
 
-    regions = find_connected_regions(mask)
+        regions = find_connected_regions(mask)
 
-    for region in regions:
+        for region in regions:
 
-        if len(region) < 10:
-            continue
+            if len(region) < 10:
+                continue
 
-        mass = sum(sigma[i, j] for i, j in region)
+            mass = sum(sigma[i, j] for i, j in region)
 
-        x_cm = int(sum(i * sigma[i, j] for i, j in region) / mass)
-        y_cm = int(sum(j * sigma[i, j] for i, j in region) / mass)
+            x_cm = int(sum(i * sigma[i, j] for i, j in region) / mass)
+            y_cm = int(sum(j * sigma[i, j] for i, j in region) / mass)
 
-        radius = int(np.sqrt(len(region) / np.pi))
+            radius = int(np.sqrt(len(region) / np.pi))
 
-        lifetime = 100 + 50*np.random.rand()
+            lifetime = 100 + 50*np.random.rand()
 
-        new_star = Star((x_cm, y_cm), mass, radius, lifetime)
+            new_star = Star((x_cm, y_cm), mass, radius, yellow_threshold, blue_threshold)
 
-        stars.append(new_star)
+            stars.append(new_star)
 
         # Réorganiser la densité interne
-        deposit_star_density(sigma, new_star)
+            deposit_star_density(sigma, new_star)
 
         # Evolution des étoiles
 
-    for star in stars:
-        star.update(dt)
-    for star in stars:
-        deposit_star_density(sigma, star)
+        for star in stars:
+            evolve_star(star, sigma, blue_threshold)
+        for star in stars:
+            deposit_star_density(sigma, star)
 
-    return sigma, stars
+        return sigma, stars
