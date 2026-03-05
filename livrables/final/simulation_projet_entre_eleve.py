@@ -1,4 +1,9 @@
+import tkinter as tk
+from tkinter import ttk
 import numpy as np
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
+from matplotlib.patches import Circle
 
 
 class Star:
@@ -7,6 +12,7 @@ class Star:
         self.mass = mass
         self.initial_mass = mass
         self.initial_radius = radius
+        self.radius = radius
 
         # -------------------------
         # Type initial basé sur la masse
@@ -19,7 +25,7 @@ class Star:
             base_lifetime = 2000
         else:
             self.type = "red_dwarf"
-            base_lifetime = 80000 # 2000 * 40
+            base_lifetime = 80000  # 2000 * 40
 
         # Durée de vie inversement proportionnelle à la masse au cube
         self.lifetime = base_lifetime / (mass**3 + 1e-8)
@@ -30,15 +36,15 @@ class Star:
         self.giant_lifetime = None
 
         # Paramètres des résidus
-        self.white_dwarf_radius = max(1, int(radius / 4))
-        self.neutron_star_radius = 1
-        self.black_hole_radius = 1
+        self.white_dwarf_radius = max(1, int(self.initial_radius))
+        self.neutron_star_radius = max(1, int(self.initial_radius))
+        self.black_hole_radius = max(1, int(self.initial_radius))
 
         self.core_fraction = 0.25  # Pour naines blanches
-        self.massive_core_fraction = 0.15 # Pour supernovae (plus de gaz expulsé)
+        # Pour supernovae (plus de gaz expulsé)
+        self.massive_core_fraction = 0.15
 
         self.alive = True
-
 
 
 def redistribute_envelope(sigma, center, radius, mass):
@@ -65,6 +71,7 @@ def redistribute_envelope(sigma, center, radius, mass):
     for i, j in cells:
         sigma[i, j] += mass_per_cell
 
+
 def evolve_star(star, sigma, blue_threshold):
     if not star.alive:
         return
@@ -90,7 +97,7 @@ def evolve_star(star, sigma, blue_threshold):
                 star.giant_timer = star.giant_lifetime
                 star.timer = star.giant_lifetime
 
-            else: # Naine rouge -> Naine blanche
+            else:  # Naine rouge -> Naine blanche
                 star.type = "white_dwarf"
                 star.radius = star.white_dwarf_radius
                 star.mass *= star.core_fraction
@@ -107,7 +114,8 @@ def evolve_star(star, sigma, blue_threshold):
         else:
             # Fin : Expulsion calme -> Naine Blanche
             core_mass = star.mass * star.core_fraction
-            redistribute_envelope(sigma, star.position, star.radius, star.mass - core_mass)
+            redistribute_envelope(sigma, star.position,
+                                  star.radius, star.mass - core_mass)
             star.mass, star.radius, star.type, star.alive = core_mass, star.white_dwarf_radius, "white_dwarf", False
 
     # -------------------------
@@ -117,21 +125,24 @@ def evolve_star(star, sigma, blue_threshold):
         if star.giant_timer > 0:
             star.giant_timer -= 1
             growth = 1 - star.giant_timer / star.giant_lifetime
-            star.radius = int(star.initial_radius * (1 + 99 * growth)) # Grossit bcp plus
+            star.radius = int(star.initial_radius *
+                              (1 + 99 * growth))  # Grossit bcp plus
         else:
             # ÉVÉNEMENT SUPERNOVA
             core_mass = star.mass * star.massive_core_fraction
-            redistribute_envelope(sigma, star.position, star.radius, star.mass - core_mass)
+            redistribute_envelope(sigma, star.position,
+                                  star.radius, star.mass - core_mass)
 
             star.mass = core_mass
             star.alive = False
 
             # Détermination du résidu selon la masse finale
-            if star.mass > blue_threshold * 0.2: # Seuil arbitraire pour trou noir
+            if star.mass > blue_threshold * 0.2:  # Seuil arbitraire pour trou noir
                 star.type = "black_hole"
                 star.radius = star.black_hole_radius
             else:
                 star.type = "neutron_star"
+                star.radius = star.neutron_star_radius
 
 
 def laplacian(Z):
@@ -153,34 +164,29 @@ def deposit_star_density(sigma, star):
     x0, y0 = star.position
     r = star.radius
 
-    cells = []
+    Y, X = np.ogrid[:nx, :ny]
+    mask = (X - y0)**2 + (Y - x0)**2 <= r**2
 
-    for i in range(nx):
-        for j in range(ny):
-            if (i - x0)**2 + (j - y0)**2 <= r**2:
-                cells.append((i, j))
-
-    if not cells:
+    n = np.sum(mask)
+    if n == 0:
         return
 
-    density = star.mass / len(cells)
-
-    for i, j in cells:
-        sigma[i, j] = density
+    sigma[mask] = star.mass / n
 
 
 def star_occupancy_mask(sigma_shape, stars):
+
     nx, ny = sigma_shape
     occ = np.zeros((nx, ny), dtype=bool)
 
+    Y, X = np.ogrid[:nx, :ny]
+
     for star in stars:
         x0, y0 = star.position
-        r = star.radius
+        r = star.radius*10000
 
-        for i in range(nx):
-            for j in range(ny):
-                if (i - x0)**2 + (j - y0)**2 <= r**2:
-                    occ[i, j] = True
+        mask = (X - y0)**2 + (Y - x0)**2 <= r**2
+        occ |= mask
 
     return occ
 
@@ -191,10 +197,10 @@ def remove_star_region(sigma, star):
     x0, y0 = star.position
     r = star.radius
 
-    for i in range(nx):
-        for j in range(ny):
-            if (i - x0)**2 + (j - y0)**2 <= r**2:
-                sigma[i, j] = 0.0
+    Y, X = np.ogrid[:nx, :ny]
+    mask = (X - y0)**2 + (Y - x0)**2 <= r**2
+
+    sigma[mask] = 0.0
 
 
 def find_connected_regions(mask):
@@ -229,6 +235,7 @@ def find_connected_regions(mask):
 
 def evolve_mass_distribution(
         sigma_init,
+        stars,
         steps=1,
         dt=0.05,
         D=0.1,
@@ -241,8 +248,6 @@ def evolve_mass_distribution(
     sigma = sigma_init.copy()
     nx, ny = sigma.shape
 
-    stars = []
-
     for step in range(steps):
 
         for star in stars:
@@ -250,8 +255,8 @@ def evolve_mass_distribution(
 
         # Evolution de la densité de masse
 
-        diffusion = D * laplacian(sigma) # 2ème loi de Fick
-                                         #Pour la gravité on part de l'eq de continuité et on approxime la vitesse comme proportionelle à la gravité et le flux par -G*sigma
+        diffusion = D * laplacian(sigma)  # 2ème loi de Fick
+        # Pour la gravité on part de l'eq de continuité et on approxime la vitesse comme proportionelle à la gravité et le flux par -G*sigma
         phi = -G * sigma
         gradx = (np.roll(phi, -1, 0) - np.roll(phi, 1, 0)) * 0.5
         grady = (np.roll(phi, -1, 1) - np.roll(phi, 1, 1)) * 0.5
@@ -286,7 +291,8 @@ def evolve_mass_distribution(
 
             lifetime = 100 + 50*np.random.rand()
 
-            new_star = Star((x_cm, y_cm), mass, radius, yellow_threshold, blue_threshold)
+            new_star = Star((x_cm, y_cm), mass, radius,
+                            yellow_threshold, blue_threshold)
 
             stars.append(new_star)
 
@@ -298,6 +304,124 @@ def evolve_mass_distribution(
         for star in stars:
             evolve_star(star, sigma, blue_threshold)
         for star in stars:
-            deposit_star_density(sigma, star)
+            if star.alive:
+                deposit_star_density(sigma, star)
 
-        return sigma, stars
+    return sigma, stars
+
+
+class Simulation:
+    def __init__(self, sigma_init, step):
+        self.sigma = sigma_init.copy()
+        self.nx, self.ny = self.sigma.shape
+        self.stars = []
+
+        self.step_count = 0
+        self.step = step
+
+        # Pour l'affichage dans une fenêtre séparée
+        self.fig, self.ax = plt.subplots(figsize=(8, 6))
+        self.im = self.ax.imshow(
+            self.sigma, cmap='bone', origin='lower', animated=True, vmin=0)
+        plt.colorbar(self.im, ax=self.ax, label='Densité de masse')
+        # self.ax.set_title(f'Simulation stellaire \n Age {self.step_count}')
+        self.title = self.ax.set_title(
+            "", color="black", fontname="monospace", fontsize=10, pad=10)
+        self.ax.set_xlabel('x')
+        self.ax.set_ylabel('y')
+
+        self.star_circles = {}
+        self.colors = {
+            # 'brown_dwarf': (0.5, 0.25, 0, 0.6),
+            'red_dwarf': (1, 0, 0, 0.5),  # bouge pas
+            'yellow_dwarf': (1, 1, 0, 0.5),  # bouge pas
+            'massive_star': (1, 0.5, 0, 0.5),
+            'very_massive_star': (1, 0.5, 0, 0.5),
+            'red_giant': (0.8, 0, 0, 0.6),
+            'white_dwarf': (1, 1, 1, 0.7),
+            'neutron_star': (0, 1, 0, 0.7),
+            'black_hole': (0, 0, 1, 0.8),
+            'blue_giant': (0.4, 0.6, 1, 0.6),
+            'red_supergiant': (1, 0.2, 0.2, 0.7)
+        }
+
+    def update(self, frame):
+        self.sigma, self.stars = evolve_mass_distribution(
+            self.sigma, self.stars, steps=self.step)
+        self.step_count += self.step
+        self.title.set_text(f'Simulation stellaire \n Age {self.step_count}')
+
+        # Mise à jour carte de densité
+        self.im.set_array(self.sigma)
+
+        # Supprimer les cercles d'étoiles qui n'existent plus
+        current_ids = set(id(star) for star in self.stars)
+        for sid in list(self.star_circles.keys()):
+            if sid not in current_ids:
+                self.star_circles[sid].remove()
+                del self.star_circles[sid]
+
+        # Mise à jour / création des cercles
+        for star in self.stars:
+            sid = id(star)
+
+            # on ignore seulement les étoiles mortes
+            # if not star.alive:
+            #    continue
+
+            # selection couleur
+            color = self.colors.get(star.type, (0.5, 0.5, 0.5, 0.5))
+            # création du cercle si nouvelle étoile
+            if sid not in self.star_circles:
+                circ = Circle(
+                    (star.position[1], star.position[0]),
+                    star.radius,
+                    color=color,
+                    fill=True,
+                    linewidth=0
+                )
+                self.ax.add_patch(circ)
+                self.star_circles[sid] = circ
+
+            # sinon mise à jour du disque
+            else:
+                circ = self.star_circles[sid]
+                circ.center = (star.position[1], star.position[0])
+                circ.radius = star.radius
+                circ.set_color(color)
+                circ.set_visible(True)
+
+        return [self.im] + list(self.star_circles.values())
+
+    def animate(self, frames=500, interval=50):
+        ani = FuncAnimation(
+            self.fig, self.update, frames=frames,
+            interval=interval, blit=True, repeat=False
+        )
+        plt.show()
+        return ani
+
+
+if __name__ == "__main__":
+
+    # Taille de la grille
+    nx, ny = 500, 500
+
+    # Création d'une nébuleuse initiale
+    sigma = np.random.rand(nx, ny)
+
+    # Ajout de zones plus denses pour former des étoiles
+    for _ in range(1):
+        x = np.random.randint(20, nx-20)
+        y = np.random.randint(20, ny-20)
+
+        for i in range(-24, 25):
+            for j in range(-24, 25):
+                if 0 <= x+i < nx and 0 <= y+j < ny:
+                    # parametre a modifier pour le test (la masse)
+                    sigma[x+i, y+j] += 5*np.exp(-(i*i+j*j)/20) + 1
+
+    # Lancer la simulation
+    sim = Simulation(sigma, 1)
+
+    sim.animate(frames=5000, interval=40)
