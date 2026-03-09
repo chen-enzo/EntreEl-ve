@@ -22,17 +22,17 @@ class Star:
 
         if mass > blue_threshold:
             self.type = "blue_giant"
-            base_lifetime = 1e9  
+            base_lifetime = 1e9
             self.initial_radius = radius * BGIANT_RFACTOR
             self.radius = radius * BGIANT_RFACTOR
         elif mass > yellow_threshold:
             self.type = "yellow_dwarf"
-            base_lifetime = 1e9   
+            base_lifetime = 1e9
             self.initial_radius = radius * YDWARF_RFACTOR
             self.radius = radius * YDWARF_RFACTOR
         else:
             self.type = "red_dwarf"
-            base_lifetime = 1e10   
+            base_lifetime = 1e10
             self.initial_radius = radius
             self.radius = radius
 
@@ -46,8 +46,8 @@ class Star:
         self.neutron_star_radius = max(1, int(self.initial_radius))
         self.black_hole_radius = max(1, int(self.initial_radius))
 
-        self.core_fraction = 0.25          
-        self.massive_core_fraction = 0.15  
+        self.core_fraction = 0.25
+        self.massive_core_fraction = 0.15
 
         self.alive = True
 
@@ -184,9 +184,9 @@ def find_connected_regions(mask):
     return regions
 
 
-def evolve_mass_distribution(sigma_gas, stars, steps=1, dt=0.05, D=0.1, G=0.5, density_threshold=5.0, yellow_threshold=YTHRESHOLD, blue_threshold=BTHRESHOLD):
+def evolve_mass_distribution(sigma_gas, stars, steps=1, dt=0.05, D=2, G=0.5, density_threshold=8, yellow_threshold=YTHRESHOLD, blue_threshold=BTHRESHOLD):
     nx, ny = sigma_gas.shape
-    
+
     # Bilan strict de la masse pour éviter toute création accidentelle
     target_mass = np.sum(sigma_gas)
 
@@ -208,7 +208,7 @@ def evolve_mass_distribution(sigma_gas, stars, steps=1, dt=0.05, D=0.1, G=0.5, d
         div_flux = (np.roll(flux_x, -1, 0) - np.roll(flux_x, 1, 0)) * 0.5 + \
                    (np.roll(flux_y, -1, 1) - np.roll(flux_y, 1, 1)) * 0.5
 
-        gravity = div_flux  # Attractif
+        gravity = div_flux
         diffusion = D * laplacian(sigma_gas)
 
         sigma_gas = sigma_gas + dt * (diffusion + gravity)
@@ -248,7 +248,7 @@ def evolve_mass_distribution(sigma_gas, stars, steps=1, dt=0.05, D=0.1, G=0.5, d
             # L'étoile "consomme" le gaz
             for i, j in region:
                 sigma_gas[i, j] = 0.0
-            target_mass -= mass 
+            target_mass -= mass
 
         # 4. Évolution stellaire (Supernovas, naines blanches...)
         for star in stars:
@@ -278,7 +278,7 @@ class Simulation:
         self.sigma_display = sigma_init.copy()
         self.nx, self.ny = self.sigma.shape
         self.stars = []
-        
+
         self.step_count = 0
         self.step = step
         self.nbstars = 0
@@ -374,7 +374,7 @@ class Simulation:
                     if dist <= r:
                         factor = np.exp(-dist**2 / (2 * (r/3)**2))
                         self.sigma[ni, nj] += self.click_amount * factor
-        
+
         self.im.set_array(self.sigma)
         self.fig.canvas.draw_idle()
 
@@ -430,7 +430,7 @@ class Simulation:
             sid = id(star)
             r = max(star.radius, 3) if star.type == "black_hole" else star.radius
             if sid not in self.star_circles:
-                circ = Circle((star.position[1], star.position[0]), r, 
+                circ = Circle((star.position[1], star.position[0]), r,
                               facecolor='black' if star.type == "black_hole" else self.colors.get(star.type, 'gray'),
                               fill=True, linewidth=1 if star.type == "black_hole" else 0,
                               edgecolor='white' if star.type == "black_hole" else 'none')
@@ -454,6 +454,6 @@ class Simulation:
 
 if __name__ == "__main__":
     nx, ny = 500, 500
-    sigma = 0.1 * np.random.rand(nx, ny)   
+    sigma =  np.random.rand(nx, ny)
     sim = Simulation(sigma, step=1)
     sim.animate(frames=5000, interval=40)
