@@ -14,9 +14,11 @@ SRGIANT_RFACTOR = 0.1
 
 MASS_FACTOR = 20
 TRHESHOLD_FACTOR = 20
-DENSITY_THRESHOLD = 0.1 * TRHESHOLD_FACTOR
+DENSITY_THRESHOLD = 0.06 * TRHESHOLD_FACTOR
 YTHRESHOLD = 0.8 * TRHESHOLD_FACTOR
 BTHRESHOLD = 9 * TRHESHOLD_FACTOR
+
+DISPERTION_COEF = 2
 
 
 class Star:
@@ -197,7 +199,7 @@ def find_connected_regions(mask):
     return regions
 
 
-def evolve_mass_distribution(sigma_gas, stars, steps=1, dt=0.05, D=0.1, G=0.5, density_threshold=DENSITY_THRESHOLD, yellow_threshold=YTHRESHOLD, blue_threshold=BTHRESHOLD):
+def evolve_mass_distribution(sigma_gas, stars, steps=1, dt=0.05, D=DISPERTION_COEF, G=0.5, density_threshold=DENSITY_THRESHOLD, yellow_threshold=YTHRESHOLD, blue_threshold=BTHRESHOLD):
     nx, ny = sigma_gas.shape
 
     # Bilan strict de la masse pour éviter toute création accidentelle
@@ -311,7 +313,7 @@ class Simulation:
             spine.set_linewidth(2)
 
         self.im = self.ax.imshow(
-            self.sigma_display, cmap='bone', origin='lower', animated=True, vmin=0, vmax=20)
+            self.sigma_display, cmap='bone', origin='lower', animated=True, vmin=0, vmax=5)
         self.title = self.ax.set_title(
             "", color="white", fontname="monospace", fontsize=10, pad=10)
         self.title.set_animated(True)
@@ -493,6 +495,6 @@ class Simulation:
 
 if __name__ == "__main__":
     nx, ny = 500, 500
-    sigma = 1 * np.random.rand(nx, ny)
+    sigma = 0.1 * np.random.rand(nx, ny)
     sim = Simulation(sigma, step=1)
     sim.animate(frames=5000, interval=40)
