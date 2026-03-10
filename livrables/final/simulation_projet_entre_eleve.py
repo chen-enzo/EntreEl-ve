@@ -14,7 +14,7 @@ SRGIANT_RFACTOR = 0.1
 
 MASS_FACTOR = 20
 TRHESHOLD_FACTOR = 20
-DENSITY_THRESHOLD = 0.06 * TRHESHOLD_FACTOR
+DENSITY_THRESHOLD = 0.05 * TRHESHOLD_FACTOR
 YTHRESHOLD = 0.8 * TRHESHOLD_FACTOR
 BTHRESHOLD = 9 * TRHESHOLD_FACTOR
 
@@ -161,7 +161,7 @@ def star_occupancy_mask(sigma_shape, stars):
 
     for star in stars:
         if star.type in ["yellow_dwarf", "blue_giant"]:
-            r = max(1, star.radius * 10)
+            r = max(1, star.radius * 7)
         elif star.type in ["red_giant", "red_supergiant"]:
             r = max(1, star.radius)
         else:
@@ -321,7 +321,7 @@ class Simulation:
             dict(facecolor='black', alpha=0.8, edgecolor='none'))
 
         # Sliders et Boutons
-        ax_slider_mass = plt.axes([0.3, 0.15, 0.4, 0.01])
+        ax_slider_mass = plt.axes([0.33, 0.15, 0.4, 0.01])
         self.slider_mass = Slider(ax=ax_slider_mass, label='Masse ajoutée',
                                   valmin=0.1, valmax=20.0, valinit=5.0, valstep=0.1)
         self.slider_mass.label.set_color('white')
@@ -330,7 +330,7 @@ class Simulation:
             lambda val: setattr(self, 'click_amount', val))
         self.click_amount = self.slider_mass.val
 
-        ax_slider_radius = plt.axes([0.3, 0.10, 0.4, 0.01])
+        ax_slider_radius = plt.axes([0.33, 0.10, 0.4, 0.01])
         self.slider_radius = Slider(
             ax=ax_slider_radius, label='Rayon (pixels)', valmin=1, valmax=30, valinit=10, valstep=1)
         self.slider_radius.label.set_color('white')
@@ -339,13 +339,13 @@ class Simulation:
             lambda val: setattr(self, 'click_radius', int(val)))
         self.click_radius = int(self.slider_radius.val)
 
-        ax_button_pause = plt.axes([0.33, 0.03, 0.1, 0.04])
+        ax_button_pause = plt.axes([0.35, 0.03, 0.1, 0.04])
         self.button_pause = Button(
             ax_button_pause, 'Pause', hovercolor='lightblue')
         self.button_pause.on_clicked(self.toggle_pause)
         self.paused = False
 
-        ax_button_reset = plt.axes([0.5, 0.03, 0.1, 0.04])
+        ax_button_reset = plt.axes([0.55, 0.03, 0.1, 0.04])
         self.button_reset = Button(
             ax_button_reset, 'Reset', hovercolor='lightblue')
         self.button_reset.on_clicked(self.reset_simulation)
@@ -365,8 +365,6 @@ class Simulation:
         }
 
         self.fig.canvas.mpl_connect('button_press_event', self.on_click)
-        self.fig.canvas.mpl_connect('motion_notify_event', self.info_hover)
-
         self.tooltip = self.ax.annotate("", xy=(0, 0), xytext=(10, 10), textcoords='offset points',
                                         bbox=dict(boxstyle='round,pad=0.5',
                                                   fc='lightgray', alpha=0.5),
