@@ -16,7 +16,7 @@ MASS_FACTOR = 20
 TRHESHOLD_FACTOR = 20
 DENSITY_THRESHOLD = 0.05 * TRHESHOLD_FACTOR
 YTHRESHOLD = 0.8 * TRHESHOLD_FACTOR
-BTHRESHOLD = 9 * TRHESHOLD_FACTOR
+BTHRESHOLD = 10 * TRHESHOLD_FACTOR
 
 DISPERTION_COEF = 2
 
@@ -302,8 +302,11 @@ class Simulation:
         self.nbstars = 0
         self.totalmass = np.sum(self.sigma)
 
-        self.fig, self.ax = plt.subplots(figsize=(12, 10), facecolor="black")
-        plt.subplots_adjust(bottom=0.2)
+        # Image
+
+        self.fig, self.ax = plt.subplots(figsize=(16, 10), facecolor="black")
+        plt.subplots_adjust(bottom=0.1, right=0.6, left=0.0)
+
         self.ax.tick_params(axis='both', which='both',
                             length=0, labelbottom=False, labelleft=False)
         self.ax.set_xticks([])
@@ -313,15 +316,17 @@ class Simulation:
             spine.set_linewidth(2)
 
         self.im = self.ax.imshow(
-            self.sigma_display, cmap='bone', origin='lower', animated=True, vmin=0, vmax=5)
+            self.sigma_display, cmap='bone', origin='lower', animated=True, vmin=0, vmax=1)
+
+        # Titre
         self.title = self.ax.set_title(
             "", color="white", fontname="monospace", fontsize=10, pad=10)
         self.title.set_animated(True)
         self.title.set_bbox(
             dict(facecolor='black', alpha=0.8, edgecolor='none'))
 
-        # Sliders et Boutons
-        ax_slider_mass = plt.axes([0.33, 0.15, 0.4, 0.01])
+        # Sliders
+        ax_slider_mass = plt.axes([0.12, 0.065, 0.4, 0.01])
         self.slider_mass = Slider(ax=ax_slider_mass, label='Masse ajoutée',
                                   valmin=0.1, valmax=20.0, valinit=5.0, valstep=0.1)
         self.slider_mass.label.set_color('white')
@@ -330,7 +335,7 @@ class Simulation:
             lambda val: setattr(self, 'click_amount', val))
         self.click_amount = self.slider_mass.val
 
-        ax_slider_radius = plt.axes([0.33, 0.10, 0.4, 0.01])
+        ax_slider_radius = plt.axes([0.12, 0.04, 0.4, 0.01])
         self.slider_radius = Slider(
             ax=ax_slider_radius, label='Rayon (pixels)', valmin=1, valmax=30, valinit=10, valstep=1)
         self.slider_radius.label.set_color('white')
@@ -339,17 +344,19 @@ class Simulation:
             lambda val: setattr(self, 'click_radius', int(val)))
         self.click_radius = int(self.slider_radius.val)
 
-        ax_button_pause = plt.axes([0.35, 0.03, 0.1, 0.04])
+        # Boutons
+        ax_button_pause = plt.axes([0.675, 0.03, 0.1, 0.04])
         self.button_pause = Button(
             ax_button_pause, 'Pause', hovercolor='lightblue')
         self.button_pause.on_clicked(self.toggle_pause)
         self.paused = False
 
-        ax_button_reset = plt.axes([0.55, 0.03, 0.1, 0.04])
+        ax_button_reset = plt.axes([0.825, 0.03, 0.1, 0.04])
         self.button_reset = Button(
             ax_button_reset, 'Reset', hovercolor='lightblue')
         self.button_reset.on_clicked(self.reset_simulation)
 
+        # Affichage
         self.star_circles = {}
         self.colors = {
             'red_dwarf': (1.0, 0.5, 0.5), 'yellow_dwarf': (1.0, 1.0, 0.6),
@@ -365,13 +372,23 @@ class Simulation:
         }
 
         self.fig.canvas.mpl_connect('button_press_event', self.on_click)
+        self.fig.canvas.mpl_connect('motion_notify_event', self.info_hover)
+
+        # Infobulle
         self.tooltip = self.ax.annotate("", xy=(0, 0), xytext=(10, 10), textcoords='offset points',
                                         bbox=dict(boxstyle='round,pad=0.5',
-                                                  fc='lightgray', alpha=0.5),
-                                        arrowprops=dict(arrowstyle='->', connectionstyle='arc3,rad=0'))
+                                                  fc='lightgray', alpha=0.5))
         self.tooltip.set_visible(False)
         self.tooltip.set_animated(True)
         self.current_star = None
+
+        # infotable
+        self.ax_table = self.fig.add_axes([0.6, 0.1, 0.35, 0.75])
+        # self.ax_table.axis('off')
+        self.ax_table.set_facecolor('white')
+        self.ax_table.set_visible(True)
+        self.table = None  # sera mis à jour dans update
+        self.checklist = {}
 
     def toggle_pause(self, event):
         self.paused = not self.paused
@@ -495,4 +512,4 @@ if __name__ == "__main__":
     nx, ny = 500, 500
     sigma = 0.1 * np.random.rand(nx, ny)
     sim = Simulation(sigma, step=1)
-    sim.animate(frames=5000, interval=40)
+    sim.animate(frames=None, interval=40)
