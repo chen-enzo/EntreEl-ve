@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib.animation import FuncAnimation
 from matplotlib.patches import Circle
 from matplotlib.widgets import Slider, Button
+from matplotlib.widgets import CheckButtons
 
 # Constante Globale : 1 pas = 1 million d'années
 TIME_PER_STEP = 1e6
@@ -12,6 +13,7 @@ BGIANT_RFACTOR = 4
 RGIANT_RFACTOR = 0.4
 SRGIANT_RFACTOR = 0.1
 
+RADIUS_FACTOR = 6
 MASS_FACTOR = 20
 TRHESHOLD_FACTOR = 20
 DENSITY_THRESHOLD = 0.05 * TRHESHOLD_FACTOR
@@ -302,7 +304,7 @@ class Simulation:
         self.nbstars = 0
         self.totalmass = np.sum(self.sigma)
 
-        # Image
+        # Image ---
 
         self.fig, self.ax = plt.subplots(figsize=(16, 10), facecolor="black")
         plt.subplots_adjust(bottom=0.1, right=0.6, left=0.0)
@@ -382,13 +384,99 @@ class Simulation:
         self.tooltip.set_animated(True)
         self.current_star = None
 
-        # infotable
-        self.ax_table = self.fig.add_axes([0.6, 0.1, 0.35, 0.75])
-        # self.ax_table.axis('off')
-        self.ax_table.set_facecolor('white')
-        self.ax_table.set_visible(True)
-        self.table = None  # sera mis à jour dans update
-        self.checklist = {}
+        # Infotable
+        self.types_ordre = ['red_dwarf', 'yellow_dwarf', 'blue_giant',
+                            'red_giant', 'red_supergiant', 'white_dwarf',
+                            'neutron_star', 'black_hole']
+        self.discovered_stars = {t: None for t in self.types_ordre}
+        self.ds_nb = 0
+
+        self.ax_table = self.fig.add_axes([0.57, 0.3, 0.4, 0.5])
+        self.ax_table.set_facecolor('black')
+        self.ax_table.set_title("Checklist des étoiles découvertes",
+                                color="white", fontname="monospace", fontsize=10)
+
+        self.head = ['Trouvé', 'Type', 'Apparence',
+                     'Masse (M☉)', 'Rayon (px)', 'Temps restant']
+
+        lignes_init = []
+        for t in self.types_ordre:
+            lignes_init.append(["✗", self.names[t], "●", "—", "—", "—"])
+        lignes_init[len(lignes_init)-1][2] = "◯"
+        data_init = [self.head] + lignes_init
+
+        self.table = self.ax_table.table(
+            cellText=data_init, loc='center', cellLoc='center')
+
+    def update_info_table(self):
+        """Met à jour le tableau avec la première étoile de chaque type (valeurs figées)."""
+
+        for star in self.stars:
+            t = star.type
+            if self.discovered_stars[t] is None:
+                self.discovered_stars[t] = {
+                    'mass': star.mass / MASS_FACTOR,
+                    'radius': star.radius,
+                    'timer': star.timer,
+                    'type': star.type
+                }
+                self.ds_nb += 1
+
+        lignes = []
+        for t in self.types_ordre:
+            data = self.discovered_stars[t]
+            trouve = "✓" if data is not None else "✗"
+            nom = self.names[t]
+            if t == 'black_hole':
+                apparence = "◯"
+            else:
+                apparence = "⬤"
+            if data is not None:
+                masse = f"{data['mass']:.1f}"
+                rayon = f"{data['radius']:.1f}"
+                rem_myr = data['timer'] * TIME_PER_STEP / 1e6
+                if t in ['black_hole', 'white_dwarf', 'neutron_star']:
+                    temps = "∞"
+                else:
+                    temps = f"{rem_myr:.1f}M"
+            else:
+                masse = "—"
+                rayon = "—"
+                temps = "—"
+            lignes.append([trouve, nom, apparence, masse, rayon, temps])
+        data_complete = [self.head] + lignes
+
+        self.table.remove()
+        self.table = self.ax_table.table(
+            cellText=data_complete, loc='center', cellLoc='center')
+        self.table.auto_set_font_size(False)
+        self.table.set_fontsize(10)
+        self.table.scale(1, 3)
+
+        for (i, j), cell in self.table.get_celld().items():
+            cell.set_facecolor('black')
+            cell.set_text_props(color='white')
+            cell.set_edgecolor('darkgray')
+            if i == 0:
+                cell.set_facecolor('darkgray')
+                cell.set_text_props(weight='bold', color='white')
+            else:
+                if j == 0:
+                    if data_complete[i][0] == "✓":
+                        cell.set_text_props(color='lightgreen')
+                    else:
+                        cell.set_text_props(color='salmon')
+                elif j == 2:
+                    t = self.types_ordre[i-1]
+                    if t == 'black_hole':
+                        color = (1, 1, 1)
+                    else:
+                        color = self.colors.get(t, (1, 1, 1))
+                    if len(color) == 4:
+                        color = color[:3]
+                    cell.set_text_props(color=color)
+
+        self.table.auto_set_column_width(col=list(range(len(self.head))))
 
     def toggle_pause(self, event):
         self.paused = not self.paused
@@ -419,10 +507,12 @@ class Simulation:
                 if 0 <= ni < self.nx and 0 <= nj < self.ny:
                     dist = np.sqrt(di*di + dj*dj)
                     if dist <= r:
-                        factor = np.exp(-dist**2 / (2 * (r/3)**2))
+                        factor = np.exp(-dist**2 / (2 * (r/3)))
                         self.sigma[ni, nj] += self.click_amount * factor
+                        self.sigma_display[ni,
+                                           nj] += self.click_amount * factor
 
-        self.im.set_array(self.sigma)
+        self.im.set_array(self.sigma_display)
         self.fig.canvas.draw_idle()
 
     def info_hover(self, event):
@@ -455,9 +545,12 @@ class Simulation:
             self.totalmass = np.sum(self.sigma) + \
                 sum(s.mass for s in self.stars)
 
-        age_myr = self.step_count * TIME_PER_STEP / 1e6
+        if self.ds_nb < len(self.discovered_stars):
+            self.update_info_table()
+
+        age = self.step_count * TIME_PER_STEP / 1e6
         self.title.set_text(
-            f"Simulation stellaire\nÂge : {age_myr:.2f} millions d'années | {self.nbstars} étoiles | masse totale = {self.totalmass:.1f}")
+            f"Simulation stellaire\nÂge : {age:.2f} millions d'années | {self.nbstars} étoiles | masse totale = {self.totalmass:.1f}")
         self.im.set_array(self.sigma_display)
 
         if self.current_star and self.current_star in self.stars:
@@ -499,7 +592,7 @@ class Simulation:
                     circ.set(color=self.colors.get(star.type, 'gray'),
                              edgecolor='none', linewidth=0)
 
-        return [self.im, self.title, self.tooltip] + list(self.star_circles.values())
+        return [self.im, self.title, self.tooltip, self.table] + list(self.star_circles.values())
 
     def animate(self, frames=500, interval=50):
         ani = FuncAnimation(self.fig, self.update, frames=frames,
