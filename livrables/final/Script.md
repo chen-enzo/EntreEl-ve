@@ -104,6 +104,17 @@ Passons maintenant à l'activité, Mettez vous en groupe de 5 s'il vous plait.
 Chaque groupe aura un ordinateur qui pourra faire tourner un programme informatique. 
 
 ## Consignes 
+-Observer ce qui se passe sans toucher à rien. Que représentent les taches blanches  et que deviennent elles ? Quels types d'étoiles sont formées ? Quelles sont leur durée de vie ?
+
+-Regarder sur l'ordinateur d'un autre groupe, leurs simulation est-elle identique ?
+
+-Rajouter des nuages de gaz avec la souris. Faites apparaître une supergéante rouge.
+
+-Que se passent ils si deux étoiles se rencontrent ? Si une supergéante rouge touche un trou noir ?
+
+- Faites apparaître des étoiles de tous les types.
+
+
 
 --- 
 # Traces écrites 
