@@ -7,20 +7,22 @@ from matplotlib.widgets import CheckButtons
 
 # Constante Globale : 1 pas = 1 million d'années
 TIME_PER_STEP = 1e6
-RDWARF_RFACTOR = 2
-YDWARF_RFACTOR = 3
-BGIANT_RFACTOR = 4
-RGIANT_RFACTOR = 0.2
-SRGIANT_RFACTOR = 0.05
 
+RDWARF_RFACTOR = 3
+YDWARF_RFACTOR = 4
+BGIANT_RFACTOR = 5
+RGIANT_RFACTOR = 0.4
+SRGIANT_RFACTOR = 0.1
 RADIUS_FACTOR = 6
+
 MASS_FACTOR = 20
-TRHESHOLD_FACTOR = 30
-DENSITY_THRESHOLD = 0.07 * TRHESHOLD_FACTOR
-YTHRESHOLD = 1 * TRHESHOLD_FACTOR
+TRHESHOLD_FACTOR = 20
+DENSITY_THRESHOLD = 0.05 * TRHESHOLD_FACTOR
+YTHRESHOLD = 0.8 * TRHESHOLD_FACTOR
 BTHRESHOLD = 10 * TRHESHOLD_FACTOR
 
-DISPERTION_COEF = 4.5
+DISPERTION_COEF = 2
+MAX_GRAD = 5
 
 
 class Star:
@@ -31,20 +33,21 @@ class Star:
 
         if mass > blue_threshold:
             self.type = "blue_giant"
-            self.lifetime = np.random.uniform(20, 50)
+            base_lifetime = 1e9
             self.initial_radius = radius * BGIANT_RFACTOR
             self.radius = radius * BGIANT_RFACTOR
         elif mass > yellow_threshold:
             self.type = "yellow_dwarf"
-            self.lifetime = np.random.uniform(100, 200)
+            base_lifetime = 1e8
             self.initial_radius = radius * YDWARF_RFACTOR
             self.radius = radius * YDWARF_RFACTOR
         else:
             self.type = "red_dwarf"
-            self.lifetime = np.random.uniform(400, 800)
+            base_lifetime = 1e10
             self.initial_radius = radius * RDWARF_RFACTOR
             self.radius = radius * RDWARF_RFACTOR
 
+        self.lifetime = base_lifetime / (mass**3 + 1e-8)
         self.timer = self.lifetime
 
         self.giant_timer = None
@@ -61,6 +64,7 @@ class Star:
 
 
 def redistribute_envelope(sigma, center, radius, mass):
+    """ Redistribue la masse éjectée (supernova/géante rouge) largement pour éviter l'emballement """
     nx, ny = sigma.shape
     x0, y0 = center
     shell_inner = radius + 2
@@ -78,6 +82,7 @@ def redistribute_envelope(sigma, center, radius, mass):
 
 
 def evolve_star_and_get_shed_mass(star, blue_threshold):
+    """ Fait vieillir l'étoile et renvoie strictement la masse qu'elle perd pour la conserver """
     shed_mass = 0.0
     is_supernova = False
 
@@ -90,15 +95,15 @@ def evolve_star_and_get_shed_mass(star, blue_threshold):
         if star.timer <= 0:
             if star.type == "blue_giant":
                 star.type = "red_supergiant"
-                star.giant_lifetime = np.random.uniform(20, 50)
+                star.giant_lifetime = np.random.uniform(50, 100)
                 star.giant_timer = star.giant_lifetime
                 star.timer = star.giant_lifetime
             elif star.type == "yellow_dwarf":
                 star.type = "red_giant"
-                star.giant_lifetime = np.random.uniform(50, 100)
+                star.giant_lifetime = np.random.uniform(100, 200)
                 star.giant_timer = star.giant_lifetime
                 star.timer = star.giant_lifetime
-            else:
+            else:  # Mort d'une naine rouge
                 star.type = "white_dwarf"
                 star.radius = star.white_dwarf_radius
                 core_mass = star.mass * star.core_fraction
@@ -107,30 +112,28 @@ def evolve_star_and_get_shed_mass(star, blue_threshold):
                 star.alive = False
 
     elif star.type == "red_giant":
-        # Sécurité post-fusion
         if star.giant_timer is None:
             star.giant_lifetime = np.random.uniform(50, 100)
             star.giant_timer = star.giant_lifetime
-
         if star.giant_timer > 0:
             star.giant_timer -= 1
             growth = 1 - star.giant_timer / star.giant_lifetime
-            star.radius = max(int(star.initial_radius * (1 + 39 * growth)) * RGIANT_RFACTOR, star.initial_radius)
+            star.radius = max(int(star.initial_radius * (1 + 39 * growth))
+                              * RGIANT_RFACTOR, star.initial_radius)
         else:
             core_mass = star.mass * star.core_fraction
             shed_mass = star.mass - core_mass
             star.mass, star.radius, star.type, star.alive = core_mass, star.white_dwarf_radius, "white_dwarf", False
 
     elif star.type == "red_supergiant":
-        # Sécurité post-fusion
         if star.giant_timer is None:
             star.giant_lifetime = np.random.uniform(20, 50)
             star.giant_timer = star.giant_lifetime
-
         if star.giant_timer > 0:
             star.giant_timer -= 1
             growth = 1 - star.giant_timer / star.giant_lifetime
-            star.radius = max(int(star.initial_radius * (1 + 99 * growth)) * SRGIANT_RFACTOR, star.initial_radius)
+            star.radius = max(int(star.initial_radius * (1 + 99 * growth))
+                              * SRGIANT_RFACTOR, star.initial_radius)
         else:
             core_mass = star.mass * star.massive_core_fraction
             shed_mass = star.mass - core_mass
@@ -149,6 +152,7 @@ def evolve_star_and_get_shed_mass(star, blue_threshold):
 
 
 def merge_stars(stars, yellow_threshold, blue_threshold):
+    """ fusion d'étoiles """
     used = set()
     result = []
 
@@ -205,29 +209,31 @@ def laplacian(Z):
 
 
 def compute_gravitational_potential(sigma, G=0.5):
+    """ calcul du potentiel gravitationnel"""
     nx, ny = sigma.shape
     sigma_hat = np.fft.fft2(sigma)
     kx = np.fft.fftfreq(nx).reshape(nx, 1) * 2 * np.pi
     ky = np.fft.fftfreq(ny).reshape(1, ny) * 2 * np.pi
     k2 = kx**2 + ky**2
     k2[0, 0] = 1.0
-    phi_hat = -4 * np.pi * G * sigma_hat / (k2 + 0.1)
+    phi_hat = -4 * np.pi * G * sigma_hat / k2
     phi_hat[0, 0] = 0.0
     return np.real(np.fft.ifft2(phi_hat))
 
 
 def star_occupancy_mask(sigma_shape, stars):
+    """ délimite les zones occupées par des étoiles """
     nx, ny = sigma_shape
     occ = np.zeros((nx, ny), dtype=bool)
     Y, X = np.ogrid[:nx, :ny]
 
     for star in stars:
         if star.type in ["yellow_dwarf", "blue_giant"]:
-            r = max(1, star.radius * 7)
+            r = max(5, star.radius * 7)
         elif star.type in ["red_giant", "red_supergiant"]:
-            r = max(1, star.radius)
+            r = max(5, star.radius * 1.5)
         else:
-            r = max(1, star.radius * 2)
+            r = max(5, star.radius * 2)
 
         mask = (X - star.position[1])**2 + (Y - star.position[0])**2 <= r**2
         occ |= mask
@@ -235,6 +241,7 @@ def star_occupancy_mask(sigma_shape, stars):
 
 
 def find_connected_regions(mask):
+    """ trouve des régions où une étoile peut se former"""
     nx, ny = mask.shape
     visited = np.zeros_like(mask, dtype=bool)
     regions = []
@@ -261,31 +268,22 @@ def find_connected_regions(mask):
     return regions
 
 
-def evolve_mass_distribution(sigma_gas, stars, initial_cloud_mask, steps=1, dt=0.05, D=DISPERTION_COEF, G=0.5, density_threshold=DENSITY_THRESHOLD, yellow_threshold=YTHRESHOLD, blue_threshold=BTHRESHOLD):
+def evolve_mass_distribution(sigma_gas, stars, steps=1, dt=0.05, D=DISPERTION_COEF, G=0.5, density_threshold=DENSITY_THRESHOLD, yellow_threshold=YTHRESHOLD, blue_threshold=BTHRESHOLD):
+    """ renvoie l'étape suivante de la répartition de masse et des étoiles """
     nx, ny = sigma_gas.shape
-    target_mass = np.sum(sigma_gas)
     new_supernovae = []
 
+    # Bilan strict de la masse pour éviter toute création accidentelle
+    target_mass = np.sum(sigma_gas)
+
     for _ in range(steps):
-
-        # Maintien artificiel des nuages de gaz limités aux nuages initiaux
-        feed_mask = initial_cloud_mask & (sigma_gas < density_threshold)
-        added_gas = np.sum(feed_mask) * 0.05 * dt
-        if added_gas > 0:
-            sigma_gas[feed_mask] += 0.05 * dt
-            target_mass += added_gas
-
-        total_density = sigma_gas.copy()
-        for star in stars:
-            xi, yi = int(star.position[0]) % nx, int(star.position[1]) % ny
-            total_density[xi, yi] += star.mass
-
-        phi = compute_gravitational_potential(total_density, G)
+        phi = compute_gravitational_potential(sigma_gas, G)
 
         gradx = (np.roll(phi, -1, 0) - np.roll(phi, 1, 0)) * 0.5
         grady = (np.roll(phi, -1, 1) - np.roll(phi, 1, 1)) * 0.5
 
-        max_grad = 5.0
+        # Limiteur pour éviter l'explosion numérique
+        max_grad = MAX_GRAD
         gradx = np.clip(gradx, -max_grad, max_grad)
         grady = np.clip(grady, -max_grad, max_grad)
 
@@ -300,6 +298,7 @@ def evolve_mass_distribution(sigma_gas, stars, initial_cloud_mask, steps=1, dt=0
 
         sigma_gas = sigma_gas + dt * (diffusion + gravity)
 
+        # 2. Correction stricte pour préserver la masse
         sigma_gas = np.maximum(sigma_gas, 0.0)
         sigma_gas = np.nan_to_num(sigma_gas, nan=0.0, posinf=0.0, neginf=0.0)
 
@@ -309,6 +308,7 @@ def evolve_mass_distribution(sigma_gas, stars, initial_cloud_mask, steps=1, dt=0
         elif target_mass == 0:
             sigma_gas[:] = 0.0
 
+        # 3. Formation stellaire
         occupied = star_occupancy_mask(sigma_gas.shape, stars)
         mask_formation = (sigma_gas > density_threshold) & (~occupied)
         regions = find_connected_regions(mask_formation)
@@ -328,23 +328,29 @@ def evolve_mass_distribution(sigma_gas, stars, initial_cloud_mask, steps=1, dt=0
             y_cm = int(sum_j / mass)
             radius = max(1, int(np.sqrt(len(region) / np.pi)))
 
-            new_star = Star((x_cm, y_cm), mass, radius, yellow_threshold, blue_threshold)
+            new_star = Star((x_cm, y_cm), mass, radius,
+                            yellow_threshold, blue_threshold)
             stars.append(new_star)
 
+            # L'étoile "consomme" le gaz
             for i, j in region:
                 sigma_gas[i, j] = 0.0
             target_mass -= mass
 
         stars = merge_stars(stars, yellow_threshold, blue_threshold)
 
+        # 4. Évolution stellaire (Supernovas, naines blanches...)
         for star in stars:
-            shed_mass, is_sn = evolve_star_and_get_shed_mass(star, blue_threshold)
+            shed_mass, is_sn = evolve_star_and_get_shed_mass(
+                star, blue_threshold)
             if shed_mass > 0:
-                redistribute_envelope(sigma_gas, star.position, star.radius, shed_mass)
-                target_mass += shed_mass
+                redistribute_envelope(
+                    sigma_gas, star.position, star.radius, shed_mass)
+                target_mass += shed_mass  # On rajoute la masse rejetée au bilan du gaz
             if is_sn:
                 new_supernovae.append(star.position)
 
+    # 5. Préparation de l'image (optionnel : superpose visuellement les étoiles sans altérer la physique)
     sigma_display = sigma_gas.copy()
     for star in stars:
         x0, y0 = star.position
@@ -358,48 +364,10 @@ def evolve_mass_distribution(sigma_gas, stars, initial_cloud_mask, steps=1, dt=0
     return sigma_gas, sigma_display, stars, new_supernovae
 
 
-def generate_realistic_clouds(nx, ny, num_clouds=5):
-    """
-    Génère des nuages aux formes irrégulières et évite les bords (marge de 80 cellules).
-    """
-    sigma = np.full((nx, ny), 0.01)
-    cloud_mask = np.zeros((nx, ny), dtype=bool)
-    Y, X = np.ogrid[:nx, :ny]
-
-    margin = 100  # Zone d'exclusion près du bord
-
-    for _ in range(num_clouds):
-        # 1. Sélection d'un centre loin des bords
-        cx = np.random.randint(margin, nx - margin)
-        cy = np.random.randint(margin, ny - margin)
-
-        # 2. On crée un nuage irrégulier en superposant plusieurs petits amas (blobs)
-        num_blobs = np.random.randint(2, 5)  # Entre 6 et 12 amas par nuage
-
-        for _ in range(num_blobs):
-            # Décalage aléatoire par rapport au centre pour créer l'irrégularité
-            off_x = np.random.uniform(-50, 50)
-            off_y = np.random.uniform(-50, 50)
-
-            # Paramètres du blob
-            blob_r = np.random.uniform(35, 60)
-            blob_amp = np.random.uniform(0.1, 0.3)
-
-            dist2 = (X - (cy + off_y))**2 + (Y - (cx + off_x))**2
-            layer = blob_amp * np.exp(-dist2 / (2 * (blob_r/2)**2))
-
-            sigma += layer
-            # On considère que la zone fait partie du nuage si la densité dépasse un seuil
-            cloud_mask |= (layer > 0.05)
-
-    return sigma, cloud_mask
-
-
 class Simulation:
-    def __init__(self, sigma_init, cloud_mask, step):
+    def __init__(self, sigma_init, step):
         self.sigma_init = sigma_init.copy()
-        self.sigma = sigma_init.copy()
-        self.cloud_mask = cloud_mask.copy()
+        self.sigma = sigma_init.copy()  # Gaz uniquement
         self.sigma_display = sigma_init.copy()
         self.nx, self.ny = self.sigma.shape
         self.stars = []
@@ -411,52 +379,66 @@ class Simulation:
         self.nbstars = 0
         self.totalmass = np.sum(self.sigma)
 
-        # ---------------- MISE EN PAGE CORRIGÉE ----------------
-        self.fig, self.ax = plt.subplots(figsize=(16, 10), facecolor="black")
-        # On pousse la zone de dessin sur la gauche pour laisser de la place au tableau
-        plt.subplots_adjust(bottom=0.1, right=0.53, left=0.02)
+        # Image ---
 
-        self.ax.tick_params(axis='both', which='both', length=0, labelbottom=False, labelleft=False)
+        self.fig, self.ax = plt.subplots(figsize=(16, 10), facecolor="black")
+        plt.subplots_adjust(bottom=0.1, right=0.6, left=0.0)
+
+        self.ax.tick_params(axis='both', which='both',
+                            length=0, labelbottom=False, labelleft=False)
         self.ax.set_xticks([])
         self.ax.set_yticks([])
         for spine in self.ax.spines.values():
             spine.set_color('darkgray')
             spine.set_linewidth(2)
 
-        self.im = self.ax.imshow(self.sigma_display, cmap='bone', origin='lower', animated=True, vmin=0, vmax=1)
+        self.im = self.ax.imshow(
+            self.sigma_display, cmap='bone', origin='lower', animated=True, vmin=0, vmax=1)
 
-        self.title = self.ax.set_title("", color="white", fontname="monospace", fontsize=10, pad=10)
+        # Titre
+        self.title = self.ax.set_title(
+            "", color="white", fontname="monospace", fontsize=10, pad=10)
         self.title.set_animated(True)
-        self.title.set_bbox(dict(facecolor='black', alpha=0.8, edgecolor='none'))
+        self.title.set_bbox(
+            dict(facecolor='black', alpha=0.8, edgecolor='none'))
 
+        # Sliders
         ax_slider_mass = plt.axes([0.12, 0.065, 0.4, 0.01])
-        self.slider_mass = Slider(ax=ax_slider_mass, label='Masse ajoutée', valmin=0.1, valmax=4, valinit=0.20, valstep=0.1)
+        self.slider_mass = Slider(ax=ax_slider_mass, label='Quantité de pierre',
+                                  valmin=0.1, valmax=3, valinit=0.2, valstep=0.1)
         self.slider_mass.label.set_color('white')
         self.slider_mass.valtext.set_color('white')
-        self.slider_mass.on_changed(lambda val: setattr(self, 'click_amount', val))
+        self.slider_mass.on_changed(
+            lambda val: setattr(self, 'click_amount', val))
         self.click_amount = self.slider_mass.val
 
         ax_slider_radius = plt.axes([0.12, 0.04, 0.4, 0.01])
-        self.slider_radius = Slider(ax=ax_slider_radius, label='Rayon (pixels)', valmin=1, valmax=100, valinit=50, valstep=1)
+        self.slider_radius = Slider(
+            ax=ax_slider_radius, label='Taille des pierres', valmin=1, valmax=100, valinit=50, valstep=1)
         self.slider_radius.label.set_color('white')
         self.slider_radius.valtext.set_color('white')
-        self.slider_radius.on_changed(lambda val: setattr(self, 'click_radius', int(val)))
+        self.slider_radius.on_changed(
+            lambda val: setattr(self, 'click_radius', int(val)))
         self.click_radius = int(self.slider_radius.val)
 
-        ax_button_pause = plt.axes([0.675, 0.03, 0.1, 0.04])
-        self.button_pause = Button(ax_button_pause, 'Pause', hovercolor='lightblue')
+        # Boutons
+        ax_button_pause = plt.axes([0.65, 0.03, 0.1, 0.04])
+        self.button_pause = Button(
+            ax_button_pause, 'Pause', hovercolor='lightblue')
         self.button_pause.on_clicked(self.toggle_pause)
         self.paused = False
 
-        ax_button_reset = plt.axes([0.825, 0.03, 0.1, 0.04])
-        self.button_reset = Button(ax_button_reset, 'Reset', hovercolor='lightblue')
+        ax_button_reset = plt.axes([0.8, 0.03, 0.1, 0.04])
+        self.button_reset = Button(
+            ax_button_reset, 'Reset', hovercolor='lightblue')
         self.button_reset.on_clicked(self.reset_simulation)
 
+        # Affichage
         self.star_circles = {}
         self.colors = {
             'red_dwarf': (1.0, 0.5, 0.5), 'yellow_dwarf': (1.0, 1.0, 0.6),
             'blue_giant': (0.5, 0.8, 1.0, 0.9), 'red_giant': (0.8, 0, 0, 0.6),
-            'red_supergiant': (1, 0.2, 0.2, 0.7), 'white_dwarf': (1.0, 1.0, 1.0, 0.9),
+            'red_supergiant': (1, 0.2, 0.2, 0.7), 'white_dwarf': (1.0, 1.0, 1.0),
             'neutron_star': (0.7, 0.9, 1.0, 0.7), 'black_hole': (0, 0, 0, 1)
         }
         self.names = {
@@ -469,83 +451,42 @@ class Simulation:
         self.fig.canvas.mpl_connect('button_press_event', self.on_click)
         self.fig.canvas.mpl_connect('motion_notify_event', self.info_hover)
 
+        # Infobulle
         self.tooltip = self.ax.annotate("", xy=(0, 0), xytext=(10, 10), textcoords='offset points',
-                                        bbox=dict(boxstyle='round,pad=0.5', fc='lightgray', alpha=0.5))
+                                        bbox=dict(boxstyle='round,pad=0.5',
+                                                  fc='lightgray', alpha=0.5))
         self.tooltip.set_visible(False)
         self.tooltip.set_animated(True)
         self.current_star = None
 
-        # ---------------- LE NOUVEAU TABLEAU ----------------
-        self.types_ordre = ['red_dwarf', 'yellow_dwarf', 'blue_giant', 'red_giant', 'red_supergiant', 'white_dwarf', 'neutron_star', 'black_hole']
+        # Checklist
+        self.types_ordre = ['red_dwarf', 'yellow_dwarf', 'blue_giant',
+                            'red_giant', 'red_supergiant', 'white_dwarf',
+                            'neutron_star', 'black_hole']
         self.discovered_stars = {t: None for t in self.types_ordre}
         self.ds_nb = 0
 
-        # Ajustement de l'espace alloué au tableau
-        self.ax_table = self.fig.add_axes([0.55, 0.25, 0.43, 0.6])
-        self.ax_table.axis('off')
+        self.ax_table = self.fig.add_axes([0.57, 0.3, 0.4, 0.5])
+        self.ax_table.set_facecolor('black')
+        self.ax_table.set_title(
+            f"Mission : Découvre les étoiles ! ({self.ds_nb}/8 trouvées)", color="white", fontname="monospace", fontsize=12, pad=15)
 
-        # En-tête avec la nouvelle colonne "Nombre" au lieu de "Rayon" (plus lisible pour des enfants)
-        self.head = ['Trouvé', 'Type', 'App.', 'Nombre', 'Masse (☉)', 'Vie (Ma)']
-        self.col_widths = [0.1, 0.25, 0.1, 0.12, 0.18, 0.25] # Fixation stricte des largeurs pour éviter le texte coupé
+        self.head = ['Trouvé', 'Type', 'Apparence',
+                     'Nombre', "Temps de vie moyen \n en million d'années "]
 
-        self.table = None
-        self.update_info_table() # Création initiale
-
-    def update_info_table(self):
-        """Met à jour le tableau, compte le nombre d'étoiles et arrondit les valeurs pour les CM2"""
-
-        counts = {t: 0 for t in self.types_ordre}
-        for star in self.stars:
-            if star.type in counts:
-                counts[star.type] += 1
-
-            t = star.type
-            if self.discovered_stars[t] is None:
-                self.discovered_stars[t] = {
-                    'mass': star.mass / MASS_FACTOR,
-                    'timer': star.timer,
-                    'type': star.type
-                }
-                self.ds_nb += 1
-
-        # Optimisation : On ne redessine le tableau que si le nombre d'étoiles d'un type change
-        if hasattr(self, 'last_counts') and self.last_counts == counts and self.ds_nb == getattr(self, 'last_ds_nb', 0):
-            return
-
-        self.last_counts = counts.copy()
-        self.last_ds_nb = self.ds_nb
-
-        # Titre façon "Quête"
-        self.ax_table.set_title(f"Mission : Découvre les étoiles ! ({self.ds_nb}/8 trouvées)", color="white", fontname="monospace", fontsize=12, pad=15)
-
-        lignes = []
+        lignes_init = []
         for t in self.types_ordre:
-            data = self.discovered_stars[t]
-            trouve = "✓" if data is not None else "✗"
-            nom = self.names[t]
-            apparence = "◯" if t == 'black_hole' else "⬤"
-            nombre = str(counts[t])
+            lignes_init.append(["✗", self.names[t], "●", "0", "—"])
+        lignes_init[len(lignes_init)-1][2] = "◯"
+        data_init = [self.head] + lignes_init
 
-            if data is not None:
-                masse = f"{data['mass']:.0f}"  # Chiffre simplifié (entier)
-                rem_myr = data['timer'] * TIME_PER_STEP / 1e6
-                temps = "∞" if t in ['black_hole', 'white_dwarf', 'neutron_star'] else f"{rem_myr:.0f}"
-            else:
-                masse = "—"
-                temps = "—"
-            lignes.append([trouve, nom, apparence, nombre, masse, temps])
-
-        data_complete = [self.head] + lignes
-
-        if self.table:
-            self.table.remove()
-
-        self.table = self.ax_table.table(cellText=data_complete, loc='center', cellLoc='center', colWidths=self.col_widths)
+        self.col_widths = [0.1, 0.25, 0.13, 0.12, 0.3]
+        self.table = self.ax_table.table(
+            cellText=data_init, loc='center', cellLoc='center', colWidths=self.col_widths)
         self.table.auto_set_font_size(False)
         self.table.set_fontsize(10)
-        self.table.scale(1, 2.5) # Aère les lignes
+        self.table.scale(1, 3)
 
-        # Coloration
         for (i, j), cell in self.table.get_celld().items():
             cell.set_facecolor('black')
             cell.set_text_props(color='white')
@@ -555,39 +496,93 @@ class Simulation:
                 cell.set_text_props(weight='bold', color='white')
             else:
                 if j == 0:
-                    if data_complete[i][0] == "✓": cell.set_text_props(color='lightgreen')
-                    else: cell.set_text_props(color='salmon')
+                    cell.get_text().set_color('salmon')
                 elif j == 2:
                     t = self.types_ordre[i-1]
-                    color = (1, 1, 1) if t == 'black_hole' else self.colors.get(t, (1, 1, 1))
-                    if len(color) == 4: color = color[:3]
-                    cell.set_text_props(color=color)
+                    if t == 'black_hole':
+                        cell.get_text().set_color('white')
+                    else:
+                        color = self.colors.get(t, (1, 1, 1))
+                        if len(color) == 4:
+                            color = color[:3]
+                        cell.get_text().set_color(color)
+
+    def update_info_table(self):
+        """Mise à jour de la checklist"""
+        counts = {t: 0 for t in self.types_ordre}
+        for star in self.stars:
+            if star.type in counts:
+                counts[star.type] += 1
+
+            t = star.type
+            if self.discovered_stars[t] is None:
+                self.discovered_stars[t] = {
+                    'timer': star.timer
+                }
+                self.ds_nb += 1
+
+        self.ax_table.set_title(
+            f"Mission : Découvre les étoiles ! ({self.ds_nb}/8 trouvées)", color="white", fontname="monospace", fontsize=12, pad=15)
+
+        for idx, t in enumerate(self.types_ordre):
+            ligne = idx + 1
+            data = self.discovered_stars[t]
+
+            # Colonne 0
+            cell = self.table.get_celld().get((ligne, 0))
+            if cell:
+                cell.get_text().set_text("✓" if data else "✗")
+                cell.get_text().set_color('lightgreen' if data else 'salmon')
+
+            # Colonne 3
+            cell = self.table.get_celld().get((ligne, 3))
+            if cell:
+                if data:
+                    cell.get_text().set_text(f"{counts[t]:.0f}")
+                else:
+                    cell.get_text().set_text("0")
+
+            # Colonne 4
+            cell = self.table.get_celld().get((ligne, 4))
+            if cell:
+                if data:
+                    rem_myr = data['timer'] * TIME_PER_STEP / 1e6
+                    if t in ['black_hole', 'white_dwarf', 'neutron_star']:
+                        cell.get_text().set_text("∞")
+                    else:
+                        cell.get_text().set_text(
+                            f"{rem_myr:.1f}")
+                else:
+                    cell.get_text().set_text("-")
 
     def toggle_pause(self, event):
+        """ Bonton pause """
         self.paused = not self.paused
         self.button_pause.label.set_text('Start' if self.paused else 'Pause')
 
     def reset_simulation(self, event):
-        self.sigma = self.sigma_init.copy()
-        self.sigma_display = self.sigma_init.copy()
+        """ Bouton resest """
+        self.sigma = 0.1 * np.random.rand(nx, ny)
+        self.sigma_display = self.sigma.copy()
         self.stars = []
-        self.supernovae_anim = []
         self.step_count = 0
         self.nbstars = 0
         self.im.set_array(self.sigma_display)
         for circ in self.star_circles.values():
             circ.remove()
-        for circ in self.sn_circles:
-            circ.remove()
         self.star_circles.clear()
-        self.sn_circles.clear()
         self.tooltip.set_visible(False)
         self.current_star = None
-        self.last_counts = None # Force reset du tableau
-        self.update_info_table()
+
+        self.supernovae_anim = []
+        for circ in self.sn_circles:
+            circ.remove()
+        self.sn_circles.clear()
+
         self.fig.canvas.draw_idle()
 
     def on_click(self, event):
+        """ fonctionnalité ajout de masse """
         if event.inaxes != self.ax:
             return
         i, j = int(event.ydata), int(event.xdata)
@@ -598,14 +593,16 @@ class Simulation:
                 if 0 <= ni < self.nx and 0 <= nj < self.ny:
                     dist = np.sqrt(di*di + dj*dj)
                     if dist <= r:
-                        factor = np.exp(-dist**2 / (2 * (r/3)**2))
+                        factor = np.exp(-dist**2 / (2 * (r/3)))
                         self.sigma[ni, nj] += self.click_amount * factor
-                        self.sigma_display[ni, nj] += self.click_amount * factor
+                        self.sigma_display[ni,
+                                           nj] += self.click_amount * factor
 
         self.im.set_array(self.sigma_display)
         self.fig.canvas.draw_idle()
 
     def info_hover(self, event):
+        """ affichage de l'infobulle """
         if event.inaxes != self.ax:
             if self.current_star:
                 self.tooltip.set_visible(False)
@@ -627,24 +624,24 @@ class Simulation:
             self.current_star = None
 
     def update(self, frame):
+        """ mise à jour globale """
         if not self.paused:
             self.sigma, self.sigma_display, self.stars, new_sn = evolve_mass_distribution(
-                self.sigma, self.stars, self.cloud_mask, steps=self.step)
+                self.sigma, self.stars, steps=self.step)
             self.step_count += self.step
             self.nbstars = len(self.stars)
-            self.totalmass = np.sum(self.sigma) + sum(s.mass for s in self.stars)
+            self.totalmass = np.sum(self.sigma) + \
+                sum(s.mass for s in self.stars)
 
-            # Mise à jour des ondes de choc Supernovae
             for pos in new_sn:
                 self.supernovae_anim.append({'pos': pos, 'r': 5, 'alpha': 1.0})
-
             for sn in self.supernovae_anim:
-                sn['r'] += 10
-                sn['alpha'] -= 0.08
-            self.supernovae_anim = [sn for sn in self.supernovae_anim if sn['alpha'] > 0]
+                sn['r'] += 20
+                sn['alpha'] -= 0.05
+            self.supernovae_anim = [
+                sn for sn in self.supernovae_anim if sn['alpha'] > 0]
 
-        # Appel constant pour garder la colonne "Nombre" toujours à jour
-        self.update_info_table()
+            self.update_info_table()
 
         age = self.step_count * TIME_PER_STEP / 1e6
         self.title.set_text(
@@ -690,30 +687,30 @@ class Simulation:
                     circ.set(color=self.colors.get(star.type, 'gray'),
                              edgecolor='none', linewidth=0)
 
-        # Affichage des ondes de choc
         for c in self.sn_circles:
             c.remove()
         self.sn_circles.clear()
 
         for sn in self.supernovae_anim:
-            c1 = Circle((sn['pos'][1], sn['pos'][0]), sn['r'], fill=False, edgecolor=(0.0, 1.0, 1.0, sn['alpha']), linewidth=4)
-            c2 = Circle((sn['pos'][1], sn['pos'][0]), sn['r']*0.6, fill=False, edgecolor=(1.0, 0.4, 0.0, sn['alpha']), linewidth=3)
+            c1 = Circle((sn['pos'][1], sn['pos'][0]), sn['r'], fill=False, edgecolor=(
+                0.0, 1.0, 1.0, sn['alpha']), linewidth=4)
+            c2 = Circle((sn['pos'][1], sn['pos'][0]), sn['r']*0.6, fill=False,
+                        edgecolor=(1.0, 0.4, 0.0, sn['alpha']), linewidth=3)
             self.ax.add_patch(c1)
             self.ax.add_patch(c2)
             self.sn_circles.extend([c1, c2])
-
         return [self.im, self.title, self.tooltip, self.table] + list(self.star_circles.values()) + self.sn_circles
 
     def animate(self, frames=500, interval=50):
-        # L'argument cache_frame_data=False permet d'éviter l'erreur qui saturait la mémoire
+        """ lance l'animation """
         ani = FuncAnimation(self.fig, self.update, frames=frames,
-                            interval=interval, blit=True, repeat=False, cache_frame_data=False)
+                            interval=interval, blit=True, repeat=False)
         plt.show()
         return ani
 
 
 if __name__ == "__main__":
     nx, ny = 500, 500
-    sigma_initial, cloud_mask = generate_realistic_clouds(nx, ny)
-    sim = Simulation(sigma_initial, cloud_mask, step=1)
+    sigma = 0.1 * np.random.rand(nx, ny)
+    sim = Simulation(sigma, step=1)
     sim.animate(frames=None, interval=40)
