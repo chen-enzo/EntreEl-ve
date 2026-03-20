@@ -11,15 +11,15 @@ TIME_PER_STEP = 1e6
 RDWARF_RFACTOR = 3
 YDWARF_RFACTOR = 4
 BGIANT_RFACTOR = 5
-RGIANT_RFACTOR = 0.4
-SRGIANT_RFACTOR = 0.1
+RGIANT_RFACTOR = 0.1
+SRGIANT_RFACTOR = 0.05
 RADIUS_FACTOR = 6
 
 MASS_FACTOR = 20
 TRHESHOLD_FACTOR = 20
 DENSITY_THRESHOLD = 0.05 * TRHESHOLD_FACTOR
 YTHRESHOLD = 0.8 * TRHESHOLD_FACTOR
-BTHRESHOLD = 10 * TRHESHOLD_FACTOR
+BTHRESHOLD = 8 * TRHESHOLD_FACTOR
 
 DISPERTION_COEF = 2
 MAX_GRAD = 5
@@ -47,7 +47,7 @@ class Star:
             self.initial_radius = radius * RDWARF_RFACTOR
             self.radius = radius * RDWARF_RFACTOR
 
-        self.lifetime = base_lifetime / (mass**3 + 1e-8)
+        self.lifetime = 1e10 * ((mass*15)**-2.5 + 1e-8)
         self.timer = self.lifetime
 
         self.giant_timer = None
@@ -144,6 +144,7 @@ def evolve_star_and_get_shed_mass(star, blue_threshold):
             if star.mass > blue_threshold * 0.2:
                 star.type = "black_hole"
                 star.radius = star.black_hole_radius
+
             else:
                 star.type = "neutron_star"
                 star.radius = star.neutron_star_radius
@@ -404,7 +405,7 @@ class Simulation:
 
         # Sliders
         ax_slider_mass = plt.axes([0.12, 0.065, 0.4, 0.01])
-        self.slider_mass = Slider(ax=ax_slider_mass, label='Quantité de pierre',
+        self.slider_mass = Slider(ax=ax_slider_mass, label='Masse solaire',
                                   valmin=0.1, valmax=3, valinit=0.2, valstep=0.1)
         self.slider_mass.label.set_color('white')
         self.slider_mass.valtext.set_color('white')
@@ -414,7 +415,7 @@ class Simulation:
 
         ax_slider_radius = plt.axes([0.12, 0.04, 0.4, 0.01])
         self.slider_radius = Slider(
-            ax=ax_slider_radius, label='Taille des pierres', valmin=1, valmax=100, valinit=50, valstep=1)
+            ax=ax_slider_radius, label='Rayon ', valmin=1, valmax=50, valinit=10, valstep=1)
         self.slider_radius.label.set_color('white')
         self.slider_radius.valtext.set_color('white')
         self.slider_radius.on_changed(
@@ -432,6 +433,11 @@ class Simulation:
         self.button_reset = Button(
             ax_button_reset, 'Reset', hovercolor='lightblue')
         self.button_reset.on_clicked(self.reset_simulation)
+
+        ax_button_reset_to_zero = plt.axes([0.8, 0.08, 0.1, 0.04])
+        self.button_reset_to_zero = Button(
+            ax_button_reset_to_zero, 'Reset to zero', hovercolor='lightblue')
+        self.button_reset_to_zero.on_clicked(self.reset_simulation_to_zero)
 
         # Affichage
         self.star_circles = {}
@@ -472,7 +478,7 @@ class Simulation:
             f"Mission : Découvre les étoiles ! ({self.ds_nb}/8 trouvées)", color="white", fontname="monospace", fontsize=12, pad=15)
 
         self.head = ['Trouvé', 'Type', 'Apparence',
-                     'Nombre', "Temps de vie moyen \n en million d'années "]
+                     'Nombre', "Temps de vie \n en million d'années "]
 
         lignes_init = []
         for t in self.types_ordre:
@@ -581,6 +587,27 @@ class Simulation:
 
         self.fig.canvas.draw_idle()
 
+    def reset_simulation_to_zero(self, event):
+        """ Bouton resest """
+        self.sigma = 0 * np.random.rand(nx, ny)
+        self.sigma_display = self.sigma.copy()
+        self.stars = []
+        self.step_count = 0
+        self.nbstars = 0
+        self.im.set_array(self.sigma_display)
+        for circ in self.star_circles.values():
+            circ.remove()
+        self.star_circles.clear()
+        self.tooltip.set_visible(False)
+        self.current_star = None
+
+        self.supernovae_anim = []
+        for circ in self.sn_circles:
+            circ.remove()
+        self.sn_circles.clear()
+
+        self.fig.canvas.draw_idle()
+
     def on_click(self, event):
         """ fonctionnalité ajout de masse """
         if event.inaxes != self.ax:
@@ -593,7 +620,7 @@ class Simulation:
                 if 0 <= ni < self.nx and 0 <= nj < self.ny:
                     dist = np.sqrt(di*di + dj*dj)
                     if dist <= r:
-                        factor = np.exp(-dist**2 / (2 * (r/3)))
+                        factor = np.exp(-dist**2 / (2 * (r/3)**2))
                         self.sigma[ni, nj] += self.click_amount * factor
                         self.sigma_display[ni,
                                            nj] += self.click_amount * factor
@@ -649,12 +676,16 @@ class Simulation:
         self.im.set_array(self.sigma_display)
 
         if self.current_star and self.current_star in self.stars:
+            lifetime = self.current_star.giant_lifetime if self.current_star.type in [
+                "red_giant", "red_supergiant"] else self.current_star.lifetime
+            lftext = "« infini »" if self.current_star.type in [
+                "black_hole", "white_dwarf", "neutron_star"] else f"{lifetime:1f} M d'années"
             rem = self.current_star.timer * TIME_PER_STEP / 1e6
             timetext = "« infini »" if self.current_star.type in [
                 "black_hole", "white_dwarf", "neutron_star"] else f"{rem:.1f} M d'années"
             self.tooltip.set_text((f"Type: {self.names[self.current_star.type]}\n"
                                    f"Masse: {self.current_star.mass/MASS_FACTOR:.2f} M☉\n"
-                                   f"Rayon: {self.current_star.radius:1f} px\n"
+                                   f"Temps de vie: {lftext}\n"
                                    f"Temps restant: {timetext}"))
         else:
             self.tooltip.set_visible(False)
@@ -712,5 +743,5 @@ class Simulation:
 if __name__ == "__main__":
     nx, ny = 500, 500
     sigma = 0.1 * np.random.rand(nx, ny)
-    sim = Simulation(sigma, step=1)
+    sim = Simulation(sigma, step=5)
     sim.animate(frames=None, interval=40)
