@@ -6,11 +6,12 @@ from matplotlib.widgets import Slider, Button
 from matplotlib.widgets import CheckButtons
 
 # Constante Globale : 1 pas = 1 million d'années
+STEP = 1
 TIME_PER_STEP = 1e6
 
-RDWARF_RFACTOR = 3
+RDWARF_RFACTOR = 0.8
 YDWARF_RFACTOR = 4
-BGIANT_RFACTOR = 5
+BGIANT_RFACTOR = 4
 RGIANT_RFACTOR = 0.1
 SRGIANT_RFACTOR = 0.05
 RADIUS_FACTOR = 6
@@ -34,28 +35,24 @@ class Star:
         if mass > blue_threshold:
             self.type = "blue_giant"
             base_lifetime = 1e9
-            self.initial_radius = radius * BGIANT_RFACTOR
-            self.radius = radius * BGIANT_RFACTOR
+            self.initial_radius = max(
+                (self.mass/MASS_FACTOR)**0.6 * BGIANT_RFACTOR, (blue_threshold/MASS_FACTOR) * YDWARF_RFACTOR)
         elif mass > yellow_threshold:
             self.type = "yellow_dwarf"
             base_lifetime = 1e8
-            self.initial_radius = radius * YDWARF_RFACTOR
-            self.radius = radius * YDWARF_RFACTOR
+            self.initial_radius = min(
+                (self.mass/MASS_FACTOR) * YDWARF_RFACTOR, (blue_threshold/MASS_FACTOR)**0.6 * BGIANT_RFACTOR)
         else:
             self.type = "red_dwarf"
             base_lifetime = 1e10
-            self.initial_radius = radius * RDWARF_RFACTOR
-            self.radius = radius * RDWARF_RFACTOR
+            self.initial_radius = self.mass**0.5 * RDWARF_RFACTOR
+        self.radius = self.initial_radius
 
         self.lifetime = 1e10 * ((mass*15)**-2.5 + 1e-8)
         self.timer = self.lifetime
 
         self.giant_timer = None
         self.giant_lifetime = None
-
-        self.white_dwarf_radius = max(1, int(self.initial_radius))
-        self.neutron_star_radius = max(1, int(self.initial_radius))
-        self.black_hole_radius = max(1, int(self.initial_radius))
 
         self.core_fraction = 0.25
         self.massive_core_fraction = 0.15
@@ -95,59 +92,63 @@ def evolve_star_and_get_shed_mass(star, blue_threshold):
         if star.timer <= 0:
             if star.type == "blue_giant":
                 star.type = "red_supergiant"
-                star.giant_lifetime = np.random.uniform(50, 100)
+                star.giant_lifetime = np.random.uniform(15, 25)
                 star.giant_timer = star.giant_lifetime
                 star.timer = star.giant_lifetime
             elif star.type == "yellow_dwarf":
                 star.type = "red_giant"
-                star.giant_lifetime = np.random.uniform(100, 200)
+                star.giant_lifetime = np.random.uniform(40, 120)
                 star.giant_timer = star.giant_lifetime
                 star.timer = star.giant_lifetime
             else:  # Mort d'une naine rouge
                 star.type = "white_dwarf"
-                star.radius = star.white_dwarf_radius
                 core_mass = star.mass * star.core_fraction
                 shed_mass = star.mass - core_mass
                 star.mass = core_mass
+                star.radius = (star.mass/MASS_FACTOR)**(-1/3) * 7
                 star.alive = False
 
     elif star.type == "red_giant":
         if star.giant_timer is None:
-            star.giant_lifetime = np.random.uniform(50, 100)
+            star.giant_lifetime = np.random.uniform(35, 70)
             star.giant_timer = star.giant_lifetime
         if star.giant_timer > 0:
             star.giant_timer -= 1
             growth = 1 - star.giant_timer / star.giant_lifetime
-            star.radius = max(int(star.initial_radius * (1 + 39 * growth))
+            star.radius = max(int(star.initial_radius * (1 + 45 * growth))
                               * RGIANT_RFACTOR, star.initial_radius)
         else:
             core_mass = star.mass * star.core_fraction
             shed_mass = star.mass - core_mass
-            star.mass, star.radius, star.type, star.alive = core_mass, star.white_dwarf_radius, "white_dwarf", False
+            star.mass = core_mass
+            star.radius = (star.mass/MASS_FACTOR)**(-1/3) * 7
+            star.type = "white_dwarf"
+            star.alive = False
 
     elif star.type == "red_supergiant":
         if star.giant_timer is None:
-            star.giant_lifetime = np.random.uniform(20, 50)
+            star.giant_lifetime = np.random.uniform(15, 25)
             star.giant_timer = star.giant_lifetime
         if star.giant_timer > 0:
             star.giant_timer -= 1
             growth = 1 - star.giant_timer / star.giant_lifetime
-            star.radius = max(int(star.initial_radius * (1 + 99 * growth))
+            star.radius = max(int(star.initial_radius * (1 + 70 * growth))
                               * SRGIANT_RFACTOR, star.initial_radius)
         else:
             core_mass = star.mass * star.massive_core_fraction
             shed_mass = star.mass - core_mass
-            star.mass = core_mass
             star.alive = False
             is_supernova = True
 
-            if star.mass > blue_threshold * 0.2:
+            if star.mass > 20 * MASS_FACTOR:
                 star.type = "black_hole"
-                star.radius = star.black_hole_radius
+                star.mass = core_mass
+                star.radius = max(11, star.mass / MASS_FACTOR * 3)
 
             else:
                 star.type = "neutron_star"
-                star.radius = star.neutron_star_radius
+                star.mass = core_mass
+                star.radius = 3.5
 
     return shed_mass, is_supernova
 
@@ -406,7 +407,7 @@ class Simulation:
         # Sliders
         ax_slider_mass = plt.axes([0.12, 0.065, 0.4, 0.01])
         self.slider_mass = Slider(ax=ax_slider_mass, label='Masse solaire',
-                                  valmin=0.1, valmax=3, valinit=0.2, valstep=0.1)
+                                  valmin=0.1, valmax=2, valinit=0.2, valstep=0.1)
         self.slider_mass.label.set_color('white')
         self.slider_mass.valtext.set_color('white')
         self.slider_mass.on_changed(
@@ -415,7 +416,7 @@ class Simulation:
 
         ax_slider_radius = plt.axes([0.12, 0.04, 0.4, 0.01])
         self.slider_radius = Slider(
-            ax=ax_slider_radius, label='Rayon ', valmin=1, valmax=50, valinit=10, valstep=1)
+            ax=ax_slider_radius, label='Rayon ', valmin=1, valmax=40, valinit=10, valstep=1)
         self.slider_radius.label.set_color('white')
         self.slider_radius.valtext.set_color('white')
         self.slider_radius.on_changed(
@@ -664,7 +665,7 @@ class Simulation:
                 self.supernovae_anim.append({'pos': pos, 'r': 5, 'alpha': 1.0})
             for sn in self.supernovae_anim:
                 sn['r'] += 20
-                sn['alpha'] -= 0.05
+                sn['alpha'] -= 0.08
             self.supernovae_anim = [
                 sn for sn in self.supernovae_anim if sn['alpha'] > 0]
 
@@ -743,5 +744,5 @@ class Simulation:
 if __name__ == "__main__":
     nx, ny = 500, 500
     sigma = 0.1 * np.random.rand(nx, ny)
-    sim = Simulation(sigma, step=5)
+    sim = Simulation(sigma, step=STEP)
     sim.animate(frames=None, interval=40)
