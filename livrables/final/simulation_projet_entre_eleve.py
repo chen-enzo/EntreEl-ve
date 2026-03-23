@@ -19,8 +19,8 @@ RADIUS_FACTOR = 6
 
 MASS_FACTOR = 20
 TRHESHOLD_FACTOR = 20
-DENSITY_THRESHOLD = 0.07 * TRHESHOLD_FACTOR
-YTHRESHOLD = 1 * TRHESHOLD_FACTOR
+DENSITY_THRESHOLD = 0.05 * TRHESHOLD_FACTOR
+YTHRESHOLD = 0.8 * TRHESHOLD_FACTOR
 BTHRESHOLD = 8 * TRHESHOLD_FACTOR
 
 DISPERTION_COEF = 2
@@ -153,6 +153,7 @@ def evolve_star_and_get_shed_mass(star, blue_threshold):
 
     return shed_mass, is_supernova
 
+
 def merge_stars(stars, yellow_threshold, blue_threshold):
     """ fusion d'étoiles """
     used = set()
@@ -239,7 +240,7 @@ def star_occupancy_mask(sigma_shape, stars):
     for star in stars:
         if star.type in ["yellow_dwarf", "red_dwarf"]:
             r = max(5, star.radius * 7)
-        elif star.type == "blue_giant" :
+        elif star.type == "blue_giant":
             r = max(5, star.radius * 2.5)
         elif star.type in ["red_giant", "red_supergiant"]:
             r = max(5, star.radius * 1.5)
@@ -278,6 +279,7 @@ def find_connected_regions(mask):
 
             regions.append(region)
     return regions
+
 
 def evolve_mass_distribution(sigma_gas, stars, steps=1, dt=0.05, D=DISPERTION_COEF, G=0.5, density_threshold=DENSITY_THRESHOLD, yellow_threshold=YTHRESHOLD, blue_threshold=BTHRESHOLD):
     """ renvoie l'étape suivante de la répartition de masse et des étoiles """
