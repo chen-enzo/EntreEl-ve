@@ -4,8 +4,8 @@
 Bonjour à tous, je suis Enzo Chen et voici mon camarade Raphaël Cadier--Giard. 
 Nous sommes des étudiants en première année à Centrale Supélec, une école d'ingénieur.
 
-Aujourd'hui, nous somme venus pour vous parler de science. 
-Vous êtes prêts ? 
+Aujourd'hui, nous somme venus pour vous parler d'un peu de science.
+Mais d'abord, un  petit avertissement : on ne décrira pas la réalité absolue mais des approximations.
 Bon aller c'est parti. 
 
 ## Dézoom 
@@ -25,6 +25,9 @@ Mais dit moi Raphaël, qu'est que le Soleil ?
 # Etoiles 
 ## Explication Soleil
 Tout d'abord le Soleil, c'est une étoile ; Ou encore une énorme boule de feu composée de plusieurs à différentes températures. 
+
+Mais le Soleil ne ressemble pas aux autres étoiles dans le ciel ? le Soleil, on le voit de jour alors que les étoiles sont là la nuit ? Est-ce que l'un d'entre vous aurait une idée ? 
+
 - Coeur 
 - ...
 - Couronne 
@@ -38,23 +41,27 @@ Forces
 
 #### Nuages de Gaz / Nébuleuses 
 A la base les étoiles étaient d'immenses nuages de gaz qu'on appelle nébuleuse. Elles n'emettaient pas de lumière. Il faut imaginé plein de petit bout de matière éparpillés dans l'espace. 
+
 Question : pourquoi cette matière ne tombe pas ?
+
 Réponse parce que dans l'espace les choses ne tombe pas : la matière reste immobile, les choses flottent. 
 En effet si sur terre on voit les choses tomber : c'est à cause la gravité. La gravité c'est une force qui fait que la matière attire la matière proche d'elle : Ainsi la terre est composée de plein de matière et nous attire donc nous tous vers le bas.
 Or ces nuages de gaz sont trop loin de la terre et des autres planètes ou étoiles pour être attiré par la gravité. C'est pour cela qu'ils flottent.
 Or les bouts de matières composant un nuages sont proches des autres bouts de matières qui le composent. Ils s'attirent donc entre eux.
-En conséquence les bouts de matières se rapprochent et le nuage se contracte sur lui même.
+En conséquence les bouts de matières se rapprochent et le nuage se contracte sur lui même ainsi, la densité augmente c'est-à-dire que la masse dans une zone donnée augmente. 
 
 #### Naine Brune 
-Première possibilité : le nuage continue de se contracter jusqu'a que sa densité augmente au point qu'il ne puisse plus se contracter. L'objet qui en résulte s'appelle une naine brune un objet qui est plus petit que les étoile et n'emet pas de lumière.
+Première possibilité : le nuage continue de se contracter jusqu'a que sa densité 
+augmente au point qu'il ne puisse plus se contracter. L'objet qui en résulte s'appelle une naine brune un objet qui est plus petit que les étoile et n'emet pas de lumière.
 
  
 ## Séquence Principale 
 Autre possibilité : le nuage de gaz se concentre suffisament pour que des réactions de fusion nucléaires se produisent. Ces réactions produisent de la lumière et empechent l'étoile de continuer à rétrécir. 
 Qu'est ce qu'une réaction nucléaire ?
 Toute la matière est composée d'atomes : de minuscules particules qui en s'assemblant compose l'eau, les métaux, les être vivants, les panétes, les étoiles ...
-Or il y a différent type d'atome et parfois plusieurs atomes peuvent se combiner pour créer un autre atome plus gros : c'est ce qu'on appelle une réaction de fusion nucléaire et c'est ce qui a lieu dans les étoiles.
+Or il y a différent type d'atome et parfois plusieurs atomes peuvent se combiner pour créer un autre atome plus gros : c'est ce qu'on appelle une réaction de fusion nucléaire et c'est ce qui a lieu dans les étoiles. 
 C'est ça une étoile : un nuage de gaz dans lequel il y a des réactions emettant de la lumière et l'empechant de s'effondrer sur elle-même
+
 //Question avez vous déjà entendu parlé de réaction nucléaire  ?( bombes atomiques, centrale nucléaires)
 
 En fonction de leur masse on classe les étoiles en différentes catégories qui n'ont pas toutes la même évolution.
