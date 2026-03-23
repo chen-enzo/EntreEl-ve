@@ -392,7 +392,8 @@ class Simulation:
 
         # Image ---
 
-        self.fig, self.ax = plt.subplots(figsize=(16, 10), facecolor="black")
+        self.fig, self.ax = plt.subplots(
+            figsize=(15, 9), facecolor="black")
         plt.subplots_adjust(bottom=0.1, right=0.6, left=0.0)
 
         self.ax.tick_params(axis='both', which='both',
@@ -482,7 +483,8 @@ class Simulation:
         self.discovered_stars = {t: None for t in self.types_ordre}
         self.ds_nb = 0
 
-        self.ax_table = self.fig.add_axes([0.57, 0.3, 0.4, 0.5])
+        self.ax_table = self.fig.add_axes([0.57, 0.2, 0.4, 0.5])
+        self.ax_table.axes.set_axis_off()
         self.ax_table.set_facecolor('black')
         self.ax_table.set_title(
             f"Mission : Découvre les étoiles ! ({self.ds_nb}/8 trouvées)", color="white", fontname="monospace", fontsize=12, pad=15)
@@ -501,7 +503,7 @@ class Simulation:
             cellText=data_init, loc='center', cellLoc='center', colWidths=self.col_widths)
         self.table.auto_set_font_size(False)
         self.table.set_fontsize(10)
-        self.table.scale(1, 3)
+        self.table.scale(1, 2.5)
 
         for (i, j), cell in self.table.get_celld().items():
             cell.set_facecolor('black')
