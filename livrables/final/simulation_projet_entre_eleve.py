@@ -418,7 +418,7 @@ class Simulation:
 
         # Sliders
         ax_slider_mass = plt.axes([0.12, 0.065, 0.4, 0.01])
-        self.slider_mass = Slider(ax=ax_slider_mass, label='Masse solaire',
+        self.slider_mass = Slider(ax=ax_slider_mass, label='Densité',
                                   valmin=0.1, valmax=2, valinit=0.2, valstep=0.1)
         self.slider_mass.label.set_color('white')
         self.slider_mass.valtext.set_color('white')
