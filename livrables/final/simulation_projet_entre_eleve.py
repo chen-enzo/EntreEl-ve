@@ -18,7 +18,7 @@ RADIUS_FACTOR = 6
 
 MASS_FACTOR = 20
 TRHESHOLD_FACTOR = 20
-DENSITY_THRESHOLD = 0.05 * TRHESHOLD_FACTOR
+DENSITY_THRESHOLD = 0.07 * TRHESHOLD_FACTOR
 YTHRESHOLD = 0.8 * TRHESHOLD_FACTOR
 BTHRESHOLD = 8 * TRHESHOLD_FACTOR
 
@@ -152,7 +152,6 @@ def evolve_star_and_get_shed_mass(star, blue_threshold):
 
     return shed_mass, is_supernova
 
-
 def merge_stars(stars, yellow_threshold, blue_threshold):
     """ fusion d'étoiles """
     used = set()
@@ -172,10 +171,17 @@ def merge_stars(stars, yellow_threshold, blue_threshold):
             dist = np.hypot(dx, dy)
 
             if dist < (s1.radius + s2.radius):
-                if s1.mass >= s2.mass:
+                
+                # --- MODIFICATION ICI : Priorité absolue au trou noir pour le centre ---
+                if s1.type == "black_hole":
+                    big, small, small_index = s1, s2, j
+                elif s2.type == "black_hole":
+                    big, small, small_index = s2, s1, i
+                elif s1.mass >= s2.mass:
                     big, small, small_index = s1, s2, j
                 else:
                     big, small, small_index = s2, s1, i
+                # ----------------------------------------------------------------------
 
                 big.mass += small.mass
                 big.radius = np.sqrt(big.mass)
@@ -230,8 +236,10 @@ def star_occupancy_mask(sigma_shape, stars):
     Y, X = np.ogrid[:nx, :ny]
 
     for star in stars:
-        if star.type in ["yellow_dwarf", "blue_giant"]:
+        if star.type in ["yellow_dwarf", "red_dwarf"]:
             r = max(5, star.radius * 7)
+        elif star.type == "blue_giant" :
+            r = max(5, star.radius * 2.5)    
         elif star.type in ["red_giant", "red_supergiant"]:
             r = max(5, star.radius * 1.5)
         else:
