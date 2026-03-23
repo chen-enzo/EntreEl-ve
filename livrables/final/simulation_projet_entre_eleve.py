@@ -7,7 +7,7 @@ from matplotlib.widgets import CheckButtons
 from scipy.ndimage import label
 
 # Constante Globale : 1 pas = 1 million d'années
-STEP = 1
+STEP = 5
 TIME_PER_STEP = 1e6
 
 RDWARF_RFACTOR = 0.8
