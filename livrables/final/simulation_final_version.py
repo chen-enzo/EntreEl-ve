@@ -586,6 +586,7 @@ class Simulation:
         """ Bonton pause """
         self.paused = not self.paused
         self.button_pause.label.set_text('Start' if self.paused else 'Pause')
+        self.fig.canvas.draw_idle()
 
     def reset_simulation(self, event):
         """ Bouton resest """
@@ -623,7 +624,6 @@ class Simulation:
             self.slider_radius.ax.set_visible(True)
             self.ax_table.set_visible(True)
             self.table.set_visible(True)
-
             self.button_changepart.label.set_text('Partie 1')
 
         else:
@@ -631,12 +631,10 @@ class Simulation:
             self.slider_radius.ax.set_visible(False)
             self.ax_table.set_visible(False)
             self.table.set_visible(False)
-
             self.button_changepart.label.set_text('Partie 2')
 
         self.reset_simulation(event)
-        self.ax_table.set_title(
-            f"Mission : Découvre les étoiles ! ({self.ds_nb}/8 trouvées)", color="white", fontname="monospace", fontsize=12, pad=15)
+        self.fig.canvas.draw_idle()
 
     def on_click(self, event):
         """ fonctionnalité ajout de masse """
