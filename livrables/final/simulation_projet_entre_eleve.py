@@ -4,6 +4,7 @@ from matplotlib.animation import FuncAnimation
 from matplotlib.patches import Circle
 from matplotlib.widgets import Slider, Button
 from matplotlib.widgets import CheckButtons
+from scipy.ndimage import label
 
 # Constante Globale : 1 pas = 1 million d'années
 STEP = 1
@@ -19,7 +20,7 @@ RADIUS_FACTOR = 6
 MASS_FACTOR = 20
 TRHESHOLD_FACTOR = 20
 DENSITY_THRESHOLD = 0.07 * TRHESHOLD_FACTOR
-YTHRESHOLD = 0.8 * TRHESHOLD_FACTOR
+YTHRESHOLD = 1 * TRHESHOLD_FACTOR
 BTHRESHOLD = 8 * TRHESHOLD_FACTOR
 
 DISPERTION_COEF = 2
@@ -171,7 +172,7 @@ def merge_stars(stars, yellow_threshold, blue_threshold):
             dist = np.hypot(dx, dy)
 
             if dist < (s1.radius + s2.radius):
-                
+
                 # --- MODIFICATION ICI : Priorité absolue au trou noir pour le centre ---
                 if s1.type == "black_hole":
                     big, small, small_index = s1, s2, j
@@ -239,7 +240,7 @@ def star_occupancy_mask(sigma_shape, stars):
         if star.type in ["yellow_dwarf", "red_dwarf"]:
             r = max(5, star.radius * 7)
         elif star.type == "blue_giant" :
-            r = max(5, star.radius * 2.5)    
+            r = max(5, star.radius * 2.5)
         elif star.type in ["red_giant", "red_supergiant"]:
             r = max(5, star.radius * 1.5)
         else:
@@ -251,32 +252,32 @@ def star_occupancy_mask(sigma_shape, stars):
 
 
 def find_connected_regions(mask):
-    """ trouve des régions où une étoile peut se former"""
+    """ Trouve des régions où une étoile peut se former (Optimisé avec NumPy) """
     nx, ny = mask.shape
     visited = np.zeros_like(mask, dtype=bool)
     regions = []
+    active_pixels = np.argwhere(mask)
 
-    for i in range(nx):
-        for j in range(ny):
-            if mask[i, j] and not visited[i, j]:
-                stack = [(i, j)]
-                region = []
-                visited[i, j] = True
+    for pixel in active_pixels:
+        i, j = pixel[0], pixel[1]
+        if not visited[i, j]:
+            stack = [(i, j)]
+            region = []
+            visited[i, j] = True
 
-                while stack:
-                    x, y = stack.pop()
-                    region.append((x, y))
+            while stack:
+                x, y = stack.pop()
+                region.append((x, y))
 
-                    for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
-                        xn, yn = x + dx, y + dy
-                        if 0 <= xn < nx and 0 <= yn < ny:
-                            if mask[xn, yn] and not visited[xn, yn]:
-                                visited[xn, yn] = True
-                                stack.append((xn, yn))
+                for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                    xn, yn = x + dx, y + dy
+                    if 0 <= xn < nx and 0 <= yn < ny:
+                        if mask[xn, yn] and not visited[xn, yn]:
+                            visited[xn, yn] = True
+                            stack.append((xn, yn))
 
-                regions.append(region)
+            regions.append(region)
     return regions
-
 
 def evolve_mass_distribution(sigma_gas, stars, steps=1, dt=0.05, D=DISPERTION_COEF, G=0.5, density_threshold=DENSITY_THRESHOLD, yellow_threshold=YTHRESHOLD, blue_threshold=BTHRESHOLD):
     """ renvoie l'étape suivante de la répartition de masse et des étoiles """
