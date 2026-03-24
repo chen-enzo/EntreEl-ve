@@ -115,12 +115,17 @@ Chaque groupe aura un ordinateur qui pourra faire tourner un programme informati
 
 -Regarder sur l'ordinateur d'un autre groupe, leurs simulation est-elle identique ?
 
--Rajouter des nuages de gaz avec la souris. Faites apparaître une supergéante rouge.
+-Passer à la partie 2
+
+-Rajouter des nuages de gaz avec la souris. Faites apparaître une naine jaune puis une supergéante rouge.
+
+-Ques se passe-t-il à sa mort ?
 
 -Que se passent ils si deux étoiles se rencontrent ? Si une supergéante rouge touche un trou noir ?
 
-- Faites apparaître des étoiles de tous les types.
+- Faites apparaître des étoiles de tous les types. Quelles sont les étoiles qui vivent le plus longtemps ? le moins lomgtemps ?
 
+-Faire un trou noir géant
 
 
 --- 
@@ -129,17 +134,15 @@ Chaque groupe aura un ordinateur qui pourra faire tourner un programme informati
 
 ### Consignes 
 
-
-## Distribution d'un texte à collé
+Les élèves viennent au tableau placer les cartes sur la frise
 
 --- 
 # Bonus 
 
-## Présentation du cursus Ingénieur 
-#### Parcours Scolaire
-#### CentraleSupélec 
+## Présentation du cursus Ingénieur et des études scientifiques 
+-On présente rapidement à tour de rôle pourquoi on an choisit de faire des études scientifiques.
+Enzo :
+Raphaël : 
 
 
 ## Trou Noir 
-
-## Duo d'Etoiles
