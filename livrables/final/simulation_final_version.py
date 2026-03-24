@@ -422,7 +422,7 @@ class Simulation:
         # Sliders
         ax_slider_mass = plt.axes([0.12, 0.065, 0.4, 0.01])
         self.slider_mass = Slider(ax=ax_slider_mass, label='Masse Solaire',
-                                  valmin=0.1, valmax=2, valinit=0.2, valstep=0.1)
+                                  valmin=0.1, valmax=2, valinit=1, valstep=0.1)
         self.slider_mass.label.set_color('white')
         self.slider_mass.valtext.set_color('white')
         self.slider_mass.on_changed(
@@ -431,7 +431,7 @@ class Simulation:
 
         ax_slider_radius = plt.axes([0.12, 0.03, 0.4, 0.01])
         self.slider_radius = Slider(
-            ax=ax_slider_radius, label='Rayon du nuage \n en Rayon solair', valmin=1, valmax=5, valinit=1, valstep=0.1)
+            ax=ax_slider_radius, label='Rayon du nuage \n en Rayon solair', valmin=0, valmax=5, valinit=1, valstep=0.1)
         self.slider_radius.label.set_color('white')
         self.slider_radius.valtext.set_color('white')
         self.slider_radius.on_changed(
@@ -452,7 +452,7 @@ class Simulation:
 
         ax_button_changepart = plt.axes([0.25, 0.95, 0.5, 0.04])
         self.button_changepart = Button(
-            ax_button_changepart, 'Partie 2', hovercolor=(1, 0, 0, 0.8), color=(0.1, 0.1, 0.1))
+            ax_button_changepart, 'Partie 1', hovercolor=(1, 0, 0, 0.8), color=(0.1, 0.1, 0.1))
         self.button_changepart.label.set_color("white")
         self.button_changepart.on_clicked(self.changepart)
         self.part2 = False
@@ -638,7 +638,8 @@ class Simulation:
             self.slider_radius.ax.set_visible(True)
             self.ax_table.set_visible(True)
             self.table.set_visible(True)
-            self.button_changepart.label.set_text('Partie 1')
+            self.button_changepart.label.set_text('Partie 2')
+            self.totalmass = 0
 
         else:
             # self.fig.suptitle('Partie 1', color='white')
@@ -646,7 +647,7 @@ class Simulation:
             self.slider_radius.ax.set_visible(False)
             self.ax_table.set_visible(False)
             self.table.set_visible(False)
-            self.button_changepart.label.set_text('Partie 2')
+            self.button_changepart.label.set_text('Partie 1')
 
         self.reset_simulation(event)
         self.fig.canvas.draw_idle()
@@ -718,7 +719,7 @@ class Simulation:
 
         age = self.step_count * TIME_PER_STEP / 1e6
         self.title.set_text(
-            f"Simulation stellaire\nÂge : {age:.2f} millions d'années | {self.nbstars} étoiles | masse totale = {self.totalmass:.1f}")
+            f"Simulation stellaire\nÂge : {age:.2f} millions d'années | {self.nbstars} étoiles | masse totale = {self.totalmass:.1f} en masse solaire")
         self.im.set_array(self.sigma_display)
 
         if self.current_star and self.current_star in self.stars:
