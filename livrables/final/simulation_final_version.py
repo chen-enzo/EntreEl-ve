@@ -10,6 +10,8 @@ from scipy.ndimage import label
 STEP = 5
 TIME_PER_STEP = 1e6
 
+ONCLICK_RFACTOR = 10
+
 RDWARF_RFACTOR = 0.8
 YDWARF_RFACTOR = 4
 BGIANT_RFACTOR = 4
@@ -396,6 +398,7 @@ class Simulation:
 
         self.fig, self.ax = plt.subplots(
             figsize=(15, 9), facecolor="black")
+        # self.fig.suptitle('Partie 1', color='white')
         plt.subplots_adjust(bottom=0.1, right=0.6, left=0.0)
 
         self.ax.tick_params(axis='both', which='both',
@@ -418,7 +421,7 @@ class Simulation:
 
         # Sliders
         ax_slider_mass = plt.axes([0.12, 0.065, 0.4, 0.01])
-        self.slider_mass = Slider(ax=ax_slider_mass, label='Densité',
+        self.slider_mass = Slider(ax=ax_slider_mass, label='Masse Solaire',
                                   valmin=0.1, valmax=2, valinit=0.2, valstep=0.1)
         self.slider_mass.label.set_color('white')
         self.slider_mass.valtext.set_color('white')
@@ -426,9 +429,9 @@ class Simulation:
             lambda val: setattr(self, 'click_amount', val))
         self.click_amount = self.slider_mass.val
 
-        ax_slider_radius = plt.axes([0.12, 0.04, 0.4, 0.01])
+        ax_slider_radius = plt.axes([0.12, 0.03, 0.4, 0.01])
         self.slider_radius = Slider(
-            ax=ax_slider_radius, label='Rayon ', valmin=1, valmax=40, valinit=10, valstep=1)
+            ax=ax_slider_radius, label='Rayon du nuage \n en Rayon solair', valmin=1, valmax=5, valinit=1, valstep=0.1)
         self.slider_radius.label.set_color('white')
         self.slider_radius.valtext.set_color('white')
         self.slider_radius.on_changed(
@@ -436,20 +439,21 @@ class Simulation:
         self.click_radius = int(self.slider_radius.val)
 
         # Boutons
-        ax_button_pause = plt.axes([0.65, 0.03, 0.1, 0.04])
+        ax_button_pause = plt.axes([0.65, 0.1, 0.1, 0.04])
         self.button_pause = Button(
-            ax_button_pause, 'Pause', hovercolor='lightblue')
+            ax_button_pause, 'Start', hovercolor='lightblue')
         self.button_pause.on_clicked(self.toggle_pause)
-        self.paused = False
+        self.paused = True
 
-        ax_button_reset = plt.axes([0.8, 0.03, 0.1, 0.04])
+        ax_button_reset = plt.axes([0.8, 0.1, 0.1, 0.04])
         self.button_reset = Button(
             ax_button_reset, 'Reset', hovercolor='lightblue')
         self.button_reset.on_clicked(self.reset_simulation)
 
-        ax_button_changepart = plt.axes([0.8, 0.08, 0.1, 0.04])
+        ax_button_changepart = plt.axes([0.25, 0.95, 0.5, 0.04])
         self.button_changepart = Button(
-            ax_button_changepart, 'Partie 2', hovercolor='lightblue')
+            ax_button_changepart, 'Partie 2', hovercolor=(1, 0, 0, 0.8), color=(0.1, 0.1, 0.1))
+        self.button_changepart.label.set_color("white")
         self.button_changepart.on_clicked(self.changepart)
         self.part2 = False
 
@@ -611,6 +615,15 @@ class Simulation:
             circ.remove()
         self.sn_circles.clear()
 
+        for idx, t in enumerate(self.types_ordre):
+            ligne = idx + 1
+            data = self.discovered_stars[t]
+            cell = self.table.get_celld().get((ligne, 3))
+            if cell:
+                if data:
+                    cell.get_text().set_text("0")
+        self.paused = True
+        self.button_pause.label.set_text('Start')
         self.fig.canvas.draw_idle()
 
     def changepart(self, event):
@@ -620,6 +633,7 @@ class Simulation:
         self.ds_nb = 0
 
         if self.part2:
+            # self.fig.suptitle('Partie 2', color='white')
             self.slider_mass.ax.set_visible(True)
             self.slider_radius.ax.set_visible(True)
             self.ax_table.set_visible(True)
@@ -627,6 +641,7 @@ class Simulation:
             self.button_changepart.label.set_text('Partie 1')
 
         else:
+            # self.fig.suptitle('Partie 1', color='white')
             self.slider_mass.ax.set_visible(False)
             self.slider_radius.ax.set_visible(False)
             self.ax_table.set_visible(False)
@@ -640,21 +655,23 @@ class Simulation:
         """ fonctionnalité ajout de masse """
         if event.inaxes != self.ax:
             return
-        i, j = int(event.ydata), int(event.xdata)
-        r = self.click_radius
-        for di in range(-r, r + 1):
-            for dj in range(-r, r + 1):
-                ni, nj = i + di, j + dj
-                if 0 <= ni < self.nx and 0 <= nj < self.ny:
-                    dist = np.sqrt(di*di + dj*dj)
-                    if dist <= r:
-                        factor = np.exp(-dist**2 / (2 * (r/3)**2))
-                        self.sigma[ni, nj] += self.click_amount * factor
-                        self.sigma_display[ni,
-                                           nj] += self.click_amount * factor
 
-        self.im.set_array(self.sigma_display)
-        self.fig.canvas.draw_idle()
+        if self.part2:
+            i, j = int(event.ydata), int(event.xdata)
+            r = self.click_radius * ONCLICK_RFACTOR
+            for di in range(-r, r + 1):
+                for dj in range(-r, r + 1):
+                    ni, nj = i + di, j + dj
+                    if 0 <= ni < self.nx and 0 <= nj < self.ny:
+                        dist = np.sqrt(di*di + dj*dj)
+                        if dist <= r:
+                            factor = np.exp(-dist**2 / (2 * (r/3)**2))
+                            self.sigma[ni, nj] += self.click_amount * factor
+                            self.sigma_display[ni,
+                                               nj] += self.click_amount * factor
+
+            self.im.set_array(self.sigma_display)
+            self.fig.canvas.draw_idle()
 
     def info_hover(self, event):
         """ affichage de l'infobulle """
