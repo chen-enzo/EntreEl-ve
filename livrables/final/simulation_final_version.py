@@ -633,16 +633,13 @@ class Simulation:
         self.ds_nb = 0
 
         if self.part2:
-            # self.fig.suptitle('Partie 2', color='white')
             self.slider_mass.ax.set_visible(True)
             self.slider_radius.ax.set_visible(True)
             self.ax_table.set_visible(True)
             self.table.set_visible(True)
             self.button_changepart.label.set_text('Partie 2')
-            self.totalmass = 0
 
         else:
-            # self.fig.suptitle('Partie 1', color='white')
             self.slider_mass.ax.set_visible(False)
             self.slider_radius.ax.set_visible(False)
             self.ax_table.set_visible(False)
@@ -703,8 +700,6 @@ class Simulation:
                 self.sigma, self.stars, steps=self.step)
             self.step_count += self.step
             self.nbstars = len(self.stars)
-            self.totalmass = np.sum(self.sigma) + \
-                sum(s.mass for s in self.stars)
 
             for pos in new_sn:
                 self.supernovae_anim.append({'pos': pos, 'r': 5, 'alpha': 1.0})
@@ -717,6 +712,8 @@ class Simulation:
             if self.part2:
                 self.update_info_table()
 
+        self.totalmass = np.sum(self.sigma) + \
+            sum(s.mass for s in self.stars)
         age = self.step_count * TIME_PER_STEP / 1e6
         self.title.set_text(
             f"Simulation stellaire\nÂge : {age:.2f} millions d'années | {self.nbstars} étoiles | masse totale = {self.totalmass:.1f} en masse solaire")
