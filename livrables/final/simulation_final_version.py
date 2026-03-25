@@ -597,6 +597,7 @@ class Simulation:
         if self.part2:
             self.sigma = np.zeros((self.nx, self.ny))
         else:
+            self.paused = True
             self.sigma = 0.1 * np.random.rand(self.nx, self.ny)
 
         self.sigma_display = self.sigma.copy()
@@ -622,7 +623,7 @@ class Simulation:
             if cell:
                 if data:
                     cell.get_text().set_text("0")
-        self.paused = True
+
         self.button_pause.label.set_text('Start')
         self.fig.canvas.draw_idle()
 
@@ -638,6 +639,7 @@ class Simulation:
             self.ax_table.set_visible(True)
             self.table.set_visible(True)
             self.button_changepart.label.set_text('Partie 2')
+            self.paused = False
 
         else:
             self.slider_mass.ax.set_visible(False)
