@@ -69,6 +69,12 @@ En fonction de leur masse on classe les étoiles en différentes catégories qui
 
 naine rouge : les plus petites étoiles et aussi les moins lumineuses. Elles sont entre 2 et 13 fois plus légères que le Soleil. Elles vivent des centaines voire des milliers de millard d'années, ce qui est bien plus long que l'age actuel de l'univers.
 
+
+Les réactions de fusion ayant lieu dans les étoiles ont besoin d'hydrogène pour avoir lieu. Une fois que tous l'hydrogène a été consommé, l'évolution des différents types d'étoile diffère
+###### Naine blanche 
+Une fois que les naines rouges n'ont plus d'hydrogène, les réactions nucléaires cessent et l'étoile n'emet plus de lumière et recommence à rétrécir sous l'effet de la gravité. C'est qu'on appelle une naine blanche
+Ces naines blanches vont petit à petit refroidir pour s'éteindre et devenir une naine noire 
+
 Naine jaune : Les étoiles les plus communes; Le soleil est une naine jaune. Elles vivent environ 10 millard d'années ce qui est énorme mais est beaucoup moins que les naines rouges;
 
 #### Etoiles de masse élevée
@@ -78,12 +84,10 @@ Les géantes : les plus grosses des étoiles mais aussi celles qui vivent le moi
 
 ## Evolution finale 
 
-#### Etoiles de masse faible 
-Les réactions de fusion ayant lieu dans les étoiles ont besoin d'hydrogène pour avoir lieu. Une fois que tous l'hydrogène a été consommé, l'évolution des différents types d'étoile diffère
+
 
  
-###### Naine blanche 
-Une fois que les naines rouges n'ont plus d'hydrogène, les réactions nucléaires cessent et l'étoile n'emet plus de lumière et recommence à rétrécir sous l'effet de la gravité. C'est qu'on appelle une naine blanche
+
 
 ##### Géante rouge 
 Comme les naine rouge, les naines blanches recommencent à s'effondrer sur elles même une fois leur hydrogène consommer.Toutefois, en rétrécissant leur température et densité augmente tellement qu'une réaction de fusion plus puissante a lieu : la fusion de l'hellium en carbone. Sous l'effet de ces réactions, l'étoile grossit et devient une géante rouge. Lorsque le soleil deviendra une géante rouge, il engloutira les planètes le plus proches.

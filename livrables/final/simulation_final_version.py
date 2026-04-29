@@ -4,7 +4,6 @@ from matplotlib.animation import FuncAnimation
 from matplotlib.patches import Circle
 from matplotlib.widgets import Slider, Button
 from matplotlib.widgets import CheckButtons
-from scipy.ndimage import label
 
 # Constante Globale : 1 pas = 1 million d'années
 STEP = 5
