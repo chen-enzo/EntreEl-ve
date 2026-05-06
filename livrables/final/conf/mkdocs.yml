@@ -1,0 +1,24 @@
+site_name: Projet EntreElève 
+site_description: Projet de dissémination scientifique 
+site_author: Enzo CHEN
+#- Raphaël Cadier--Giard
+site_url: https://Projet_EntreEleve_chen_cadier--giard.com
+
+docs_dir: docs
+
+
+
+
+nav:
+  - Accueil: index.md
+  - Script: Script.md
+  - Matériel: Materiel.md
+  - Déroulement: Deroulement.md
+  - Crédit: Credit.md
+
+
+theme:
+  name: material                            # ou 'mkdocs' (thème de base)
+  language: fr                              # Langue de l'interface
+  logo: assets/logo.svg                     # Logo dans la barre
+  favicon: assets/favicon.png 
