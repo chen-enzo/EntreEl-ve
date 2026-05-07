@@ -1,4 +1,3 @@
-# **Projet EntreElève** 
 
 ## **Description** 
 
@@ -35,3 +34,74 @@ Cette intervention a pour objectif de faire découvrir aux élèves de CM2 les �
 - L’ensemble de la séance, dont les supports utilisés lors des expériences, doit être reproductible à partir des ressources du projet. 
 - Fournir aux élèves une trace écrite synthétique. 
 - Respecter le budget alloué.
+
+
+---
+## **Matériel**
+Une partie du matériel décrit ci-dessous nous a été fourni par CentraleSupélec.
+
+**Frise / Carte mentale:** 
+
+- Une grande feuille canson en tant que support ∼ 2-5€ 
+- 11 de cartes pour compléter la fresque 
+- Plastifieuse ∼ 20-30€ 
+- Pochette de plastification s ∼ 15€ 
+- Carte (papier) 
+- Scotch double face 
+
+> Total : 50€ 
+
+
+---
+## **Déroulement de la séance**
+
+
+### **Simulation Informatique**
+
+
+
+---
+## **Ressources** 
+
+### **Nos Supports et Documents**
+
+
+- [Simulation python](assets/ressource/simulation_final_version.py)
+- [Présentation / diapositives](assets/ressource/presentation_entreeleve.pptx)
+- [Frise / Carte Mentale initiale]()
+- [Cartes pour la frise](assets/ressource/cartes_frises.pdf)
+- [Texte à trous](assets/ressource/texte-a-trou.pdf)
+
+### **Images utilisées** 
+
+- [Image Soleil](assets/image/sun.png) : image du Soleil générée par IA 
+- ? [Coupe du Soleil](assets/image/slice_sun.png) : Vue en coupe du Soleil, réalisé par C.P Rigel ([lien](https://www.orionpx.fr/project/blog/les-etoiles-qui-sont-elles/coupe-du-soleil/))
+- [Pilier de la création](assets/image/pillar_of_creation.jpeg) : Prise par le télescope Hubble (*NASA*, *ESA*)
+- [Nébuleuse d'Orion](assets/image/Orion_Nebula.jpg) : Vue par le télescope spatial Hubble (*NASA*, *STScI*, *ESA*)
+- [Naine Brune](assets/image/browndwarf.jpg) : Vue d'artiste inspirée d'image prise par Hubble (*Centre spatial Goddard*, *NASA*)
+- [Naine rouge](assets/image/reddwarf.png) : image générée par IA
+- [Naine blanche](assets/image/whitedwarf.jpg) : CC BY-NC-SA Eric Simon
+- [Naine blanche dézoomée](assets/image/whitedwarf_unzoomed.png) : Image dézoomée par IA 
+- ? [Géante rouge](assets/image/redgiant.png) : réalisé par C.P Rigel ([lien](https://www.orionpx.fr/project/blog/les-etoiles-qui-sont-elles/geante-rouge/))
+- [Nébuleuse planétaire](assets/image/planetary_nebula.jpg) : La nébuleuse de l'Hélice (*NGC 7293) (NASA, NOAO, ESA, the Hubble Helix Nebula Team, M. Meixner (STScI), and T.A. Rector (NRAO)*)
+- [Géante bleu](assets/image/bluegiant.png) : image générée par IA
+- [Comparaison des Géantes bleus](assets/image/blue_star_comparaison.jpg) : ESO/M. Kornmesser ([http://www.eso.org/public/images/eso1030c/](http://www.eso.org/public/images/eso1030c/))
+- [Supernova](assets/image/supernova.jpeg) : Vue d'artiste de la supernova SN2016aps (*© M. Weiss, Center for Astrophysics Harvard & Smithsonian*)
+- [Etoile à neutrons](assets/image/neutronstar.jpg) : Image de l'*ESA*
+- [Trou noir](assets/image/black_hole_NASA.jpg) : Image composite du disque d'accrétion du trou noir M87* (*Event Horizon Telescope*) 
+- [Trou noir Interstellar](assets/image/black_hole_interstellar.jpg) : Image issue du film *Interstellar* réalisé par Christopher Nolan
+- [Proto-étoile](assets/image/Protostar.jpeg) : Image de [L1527 IRS](https://fr.wikipedia.org/wiki/L1527_IRS "L1527 IRS"), prise par le télescope spatial James-Webb  en 2022 (*NASA, ESA, CSA, and STScI, J. DePasquale*)
+
+
+
+---
+## **Crédits**
+### **Contributions** 
+- **Auteurs** : Raphaël CADIER--GIARD, Enzo CHEN 
+- **Professeur Encadrant** : Paul FRAUX 
+- **Professeur des Ecoles** : Victor RENAUX 
+
+
+---
+## **Bibliographie**
+
