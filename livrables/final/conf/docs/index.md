@@ -1,3 +1,19 @@
+## **Situation ** 
+Cette intervention a pour ambition de faire découvrir à une classe de CM2 les différents types étoiles et leur évolution. Pour ce faire elle aborde la formation des étoiles à partir de nuages de gaz, l'évolution de ces nuages en naine rouge, naine jaune ou géante bleu puis la trajectoire de ces différentes étoiles qui évoluent en des naines blanches, des géantes rouges, des étoiles à neutrons et des trous noirs. L'objectif recherché est d'émerveiller les élèves en leur faisant prendre conscience que l'univers contient de nombreux corps célestes fondamentalement différent des objets avec lesquels nous intérragissons sur Terre. 
+Concrètement, la séance d'une totale de deux heures comprendra une présentation d'environ 45 minutes avec des slides projetées au tableau, une activité sur ordinateur d'environ 30 minutes durant laquelle les élèves interragiront avec une simulation de la vie des étoiles,une activité d'environ 30 minutes durant laquelle la classe devra compléter une fresque synthétisant les rapports entre les différents types d'étoiles vus précédament puis d'une trace écrite consistant en la complétion d'un texte à trou.
+L'animation fonctionne bien avec une vingtaine d'élèves.
+
+## ** conditions matérielles requise** 
+Une salle de classe comprenant assez de tables et de chaise pour que chaque élève ait une place.
+Au minimum un ordinateur par paire d'élèves. Avoir un ordinateur par élève est préférable. Sur chacun de ces ordinateurs doit être installé le programme python effectuant la simulation.
+Un vidéoprojecteur connecté à ordinateur distinct de ceux utilisé par les élèves lors de la simulation.
+De quoi faire tenir la fresque sur le tableau (ou un mur s'il n'y a pas de tableau), par exemple des aimants.
+
+## ** Choix de conception fait pour la simulation** 
+Le programme python simule l'évolution d'une masse de gaz initiale dans un univers fini en deux dimension.
+La distribution de masse est donc représentée par un array numpy dont les cases correspondent à des densité de masse.
+L'évolution de la répartition de masse se fait suivant selon un modèle simplifié de mécanique des fluides prenant en compte la diffusion et la gravité.La diffusion est calculée selon la deuxième loi de Fick 
+
 
 ## **Description** 
 
