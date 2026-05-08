@@ -3,7 +3,8 @@
 
 ## **Description** 
 
-`Description à faire`
+Le projet EntreElève a pour but d'éveiller la curiosité scientifique des plus jeunes tout en luttant contre les stéréotypes de genre dans les domaines scientifiques. En encourageant le questionnement et la participation, ce projet vise à rendre les sciences accessibles et attrayantes pour tous les enfants, indépendamment de leur genre, et à promouvoir une image positive et inclusive des sciences dès le plus jeune âge.
+Pour atteindre ces objectifs, nous avons conçu une séance de sciences interactive destinée à une classe de primaire. 
 ### **Besoins** 
 - Augmenter l’intérêt des plus jeunes pour les filières scientifiques, en particulier chez les filles. 
 - Lutter contre les stéréotypes. 
@@ -43,9 +44,9 @@
 - Carte (papier) 
 - Scotch double face 
 
-> **Total : 50€** 
+	**Total : 50€** 
 
-*<font color="#7f7f7f">Une partie du matériel décrit nous a été fourni par CentraleSupélec.</font>*
+> *<font color="#7f7f7f">Une partie du matériel décrit nous a été fourni par CentraleSupélec.</font>*
 
 
 ---
@@ -55,7 +56,7 @@
 Cette intervention est une séance de médiation scientifique ayant pour ambition de faire découvrir à une classe de CM2 les différents types étoiles et leur évolution. Pour ce faire elle aborde la formation des étoiles à partir de nuages de gaz, l'évolution de ces nuages en naine rouge, naine jaune ou géante bleu puis la trajectoire de ces différentes étoiles qui évoluent en des naines blanches, des géantes rouges, des étoiles à neutrons et des trous noirs. L'objectif recherché est d'émerveiller les élèves en leur faisant prendre conscience que l'univers contient de nombreux corps célestes fondamentalement différent des objets avec lesquels nous interagissons sur Terre. 
 
 
-### **Conditions matérielles requise** 
+### **Conditions matérielles requises** 
 
 Au minimum un ordinateur par paire d'élèves. Avoir un ordinateur par élève est préférable. Sur chacun de ces ordinateurs doit être installé le programme python effectuant la simulation.
 Un vidéo-projecteur est nécessaire pour la projection des diapositives. 
@@ -65,7 +66,7 @@ La fresque doit pouvoir être accrochée sur le tableau (ou un mur s'il n'y a pa
 
 Concrètement, la séance d'une totale de deux heures comprendra une présentation d'environ 45 minutes avec des slides projetées au tableau, une activité sur ordinateur d'environ 30 minutes durant laquelle les élèves interagiront avec une simulation de la vie des étoiles, une activité d'environ 30 minutes durant laquelle la classe devra compléter une fresque synthétisant les rapports entre les différents types d'étoiles vus précédemment puis d'une trace écrite consistant en la complétion d'un texte à trou.
 
-Pour le plan détaillé de la séance, veuillez le retrouver dans l'onglet [Plan de la séance](plan.md)
+Pour le plan détaillé de la séance, voir la rubrique «[Plan détaillé](plan.md)»
 
 
 ### **Simulation Informatique**
@@ -76,6 +77,8 @@ La distribution de masse est donc représentée par un `array numpy` dont les ca
 L'évolution de la répartition de masse se fait suivant selon un modèle simplifié de mécanique des fluides prenant en compte la diffusion et la gravité. La diffusion est calculée selon la deuxième loi de Fick. Pour calculer l'effet de la gravité, nous utilisons l'équation de continuité de la mécanique des fluides dans laquelle nous approximons la vitesse locale des particules par une valeur proportionnelle au champ gravitationnel.  
 Lorsque que la densité dépasse un certain seuil dans une certain ensemble connexe de points, une étoile est formée. 
 La matière à l'intérieur d'une étoile n'évolue plus suivant les équations décrite précédemment mais évolue d'une manière entièrement déterminée par le type de l'étoile. Ainsi, les étoiles n'ont pas de vitesse, elles sont fixes.
+
+Pour les détails du fonctionnement, voir la rubrique «[Simulation Informatique](simulation.md)».
 
 ### **Extensions et Piste d'améliorations**
 
@@ -94,7 +97,6 @@ Faire attention à la version de `Powerpoint` disponible et au format de project
 
 ### **Nos Supports et Documents**
 
-
 - [Simulation python](assets/ressource/simulation_final_version.py)
 - [Présentation / diapositives](assets/ressource/presentation_entreeleve.pptx)
 - [Fresque / Carte Mentale initiale]()
@@ -103,7 +105,7 @@ Faire attention à la version de `Powerpoint` disponible et au format de project
 
 ### **Images utilisées** 
 
-Pour plus de visibilité, une [galerie](galerie_photo.md) des images utilisées est disponible.
+Pour plus de visibilité, voir la rubrique «[Galerie](galerie_photo.md)».
 
 - [Image Soleil](assets/image/sun.jpg) : Image du Soleil (*NASA/Goddard/SDO*)
 - [Coupe du Soleil](assets/image/slice_sun.png) : Vue en coupe du Soleil générée par IA à partir de l'image du Soleil
