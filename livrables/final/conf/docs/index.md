@@ -3,33 +3,12 @@
 
 ## **Description** 
 
-Le projet EntreElève a pour but d'éveiller la curiosité scientifique des plus jeunes tout en luttant contre les stéréotypes de genre dans les domaines scientifiques. En encourageant le questionnement et la participation, ce projet vise à rendre les sciences accessibles et attrayantes pour tous les enfants, indépendamment de leur genre, et à promouvoir une image positive et inclusive des sciences dès le plus jeune âge.
-Pour atteindre ces objectifs, nous avons conçu une séance de sciences interactive destinée à une classe de primaire. 
-### **Besoins** 
-- Augmenter l’intérêt des plus jeunes pour les filières scientifiques, en particulier chez les filles. 
-- Lutter contre les stéréotypes. 
-- Rendre accessible des notions scientifiques abstraites.
+Le projet EntreElève a pour but d'éveiller la curiosité scientifique des plus jeunes tout en contribuant à réduire les stéréotypes de genre dans les domaines scientifiques. En encourageant les élèves aux questionnement et la participation, ce projet vise à rendre les sciences plus accessibles et plus attrayantes pour tous, indépendamment du genre, et à promouvoir une image positive et inclusive des sciences dès le plus jeune âge.
 
-### **Objectifs pédagogiques**
+Dans cette optique, nous avons conçu une séance interactive de deux heures destinée à une classe de CM1/CM2, autour de notions d’astronomie. Cette séance a pour objectif d'aider les élèves à prendre conscience de l’immensité de l’univers, à connaître les grandes étapes de la vie d’une étoile et à identifier quelques objets célestes importants. 
 
--  Éveiller l’intérêt et la curiosité des élèves pour les sciences. 
-- Faire prendre conscience aux élèves de l’immensité de l’univers. 
+Plusieurs contraintes ont guidé la conception de cette intervention. Le contenu doit être adapté au niveau CM1/CM2 ainsi qu'au contexte socio-économique de l’école. La séance doit proposer des activités ludiques et ne pas être uniquement un cours magistral. L’ensemble des supports et expériences doit être reproductible à partir des ressources du projet, dans le respect d’un budget limité. Enfin, une trace écrite synthétique doit être fournie aux élèves à l’issue de la séance.
 
-
-À l’issue de la séance, les élèves doivent être capables de :
-
-- Comprendre ce qu’est une étoile et que le Soleil en est une. 
-- Connaître les grandes étapes de la vie d’une étoile. 
-- Reconnaître certains objets célestes liés à la vie des étoiles. 
-
-### **Contraintes de l’intervention** 
-- Public : Faire un cours adapté à des élèves de CM1/CM2. 
-- Tenir compte du niveau socio-économique de l’école. 
-- Durée totale : 2 heures. 
-- Ne pas faire un cours magistrale pendant 2 heures mais proposer des activités ou expériences aux élèves. 
-- L’ensemble de la séance, dont les supports utilisés lors des expériences, doit être reproductible à partir des ressources du projet. 
-- Fournir aux élèves une trace écrite synthétique. 
-- Respecter le budget alloué.
 
 
 ---
@@ -78,7 +57,7 @@ L'évolution de la répartition de masse se fait suivant selon un modèle simpli
 Lorsque que la densité dépasse un certain seuil dans une certain ensemble connexe de points, une étoile est formée. 
 La matière à l'intérieur d'une étoile n'évolue plus suivant les équations décrite précédemment mais évolue d'une manière entièrement déterminée par le type de l'étoile. Ainsi, les étoiles n'ont pas de vitesse, elles sont fixes.
 
-Pour les détails du fonctionnement, voir la rubrique «[Simulation Informatique](simulation.md)».
+Pour plus d'informations sur la simulation, voir la rubrique «[Simulation Informatique](simulation.md)».
 
 ### **Extensions et Piste d'améliorations**
 
@@ -99,7 +78,7 @@ Faire attention à la version de `Powerpoint` disponible et au format de project
 
 - [Simulation python](assets/ressource/simulation_final_version.py)
 - [Présentation / diapositives](assets/ressource/presentation_entreeleve.pptx)
-- [Fresque / Carte Mentale initiale]()
+- [Fresque / Carte Mentale initiale](assets/ressource/fresque.png)
 - [Cartes pour la frise](assets/ressource/cartes_frises.pdf)
 - [Texte à trous](assets/ressource/texte-a-trou.pdf)
 
