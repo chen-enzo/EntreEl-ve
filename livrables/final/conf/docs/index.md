@@ -2,8 +2,8 @@
 # **Projet EntreÉlève**
 
 ## **Description** 
-Cette intervention a pour objectif de faire découvrir aux élèves de CM2 les étoiles, leur nature et leur évolution, à travers une approche visuelle et interactive. La séance s’inscrit dans une démarche de médiation scientifique adaptée à un jeune public, et ne suppose aucune connaissance préalable en physique ou en astronomie. L’intervention privilégie l’émerveillement, la curiosité et la manipulation, tout en transmet- tant des notions scientifiques rigoureuses sous une forme accessible.
 
+`Description à faire`
 ### **Besoins** 
 - Augmenter l’intérêt des plus jeunes pour les filières scientifiques, en particulier chez les filles. 
 - Lutter contre les stéréotypes. 
@@ -11,13 +11,10 @@ Cette intervention a pour objectif de faire découvrir aux élèves de CM2 les �
 
 ### **Objectifs pédagogiques**
 
-#### **Objectifs généraux** 
-
 -  Éveiller l’intérêt et la curiosité des élèves pour les sciences. 
 - Faire prendre conscience aux élèves de l’immensité de l’univers. 
 
 
-#### **Objectifs spécifiques** 
 À l’issue de la séance, les élèves doivent être capables de :
 
 - Comprendre ce qu’est une étoile et que le Soleil en est une. 
@@ -60,10 +57,9 @@ Cette intervention est une séance de médiation scientifique ayant pour ambitio
 
 ### **Conditions matérielles requise** 
 
-Une salle de classe comprenant assez de tables et de chaise pour que chaque élève ait une place.
 Au minimum un ordinateur par paire d'élèves. Avoir un ordinateur par élève est préférable. Sur chacun de ces ordinateurs doit être installé le programme python effectuant la simulation.
-Un vidéo-projecteur connecté à ordinateur distinct de ceux utilisé par les élèves lors de la simulation.
-De quoi faire tenir la fresque sur le tableau (ou un mur s'il n'y a pas de tableau), par exemple des aimants.
+Un vidéo-projecteur est nécessaire pour la projection des diapositives. 
+La fresque doit pouvoir être accrochée sur le tableau (ou un mur s'il n'y a pas de tableau), par exemple avec des aimants.
 
 ### **Plan de la Séance** 
 
@@ -73,6 +69,7 @@ L'animation fonctionne bien avec une vingtaine d'élèves.
 Pour le plan détaillé de la séance, veuillez le retrouver dans l'onglet [Plan de la séance][plan.md]
 
 
+### **Simulation Informatique**
 #### **Choix de Conception** 
 
 Le programme python simule l'évolution d'une masse de gaz initiale dans un univers fini en deux dimension.
@@ -84,7 +81,6 @@ La matière à l'intérieur d'une étoile n'évolue plus suivant les équations 
 ### **Extensions**
 
 En fonction du déroulement de la séance il est possible de la compléter par une explication des phénomènes contre-intuitif se déroulant au voisinage des trou noirs, une présentation des études scientifiques ou  une introduction à la méthode scientifique, permettant ainsi de comprendre par quel processus les modèles présentés lors de la séance ont été établis. 
-
 
 
 
