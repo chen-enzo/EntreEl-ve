@@ -12,9 +12,12 @@ De quoi faire tenir la fresque sur le tableau (ou un mur s'il n'y a pas de table
 ## ** Choix de conception fait pour la simulation** 
 Le programme python simule l'évolution d'une masse de gaz initiale dans un univers fini en deux dimension.
 La distribution de masse est donc représentée par un array numpy dont les cases correspondent à des densité de masse.
-L'évolution de la répartition de masse se fait suivant selon un modèle simplifié de mécanique des fluides prenant en compte la diffusion et la gravité.La diffusion est calculée selon la deuxième loi de Fick 
+L'évolution de la répartition de masse se fait suivant selon un modèle simplifié de mécanique des fluides prenant en compte la diffusion et la gravité.La diffusion est calculée selon la deuxième loi de Fick. Pour calculer l'effet de la gravité, nous utilisons de l'équation de continuité de la mécanique des fluides dans laquelle nous approximons la vitesse locale des particules par une valeur proportionnelle au champ gravitationnel.
+Lorsque que la densité dépasse un certain seuil dans une certain ensemble connexe de points, une étoile est formée. 
+La matière à l'intérieur d'une étoile n'évolue plus suivant les équations décrite précédament mais évolue d'une manière entièrement déteerminée par le type de l'étoile. Ainsi, les étoiles n'ont pas de vitesse, i.e elles sont fixes.
 
-
+## **extensions pour aller plus loin si le public accroche et qu'on a du temps**
+En fonction du déroulement de la séance il est possible de la compléter par une explication des phénomèes contre-intuitif se déroulant au voisinage des trou noirs, une présentation des études scientifiques ou  une introduction à la méthode scientifique, permettant ainsi de comprendre par quel processus les modèles présentés lors de la séance ont été établis. 
 ## **Description** 
 
 Cette intervention a pour objectif de faire découvrir aux élèves de CM2 les étoiles, leur nature et leur évolution, à travers une approche visuelle et interactive. La séance s’inscrit dans une démarche de médiation scientifique adaptée à un jeune public, et ne suppose aucune connaissance préalable en physique ou en astronomie. L’intervention privilégie l’émerveillement, la curiosité et la manipulation, tout en transmet- tant des notions scientifiques rigoureuses sous une forme accessible.
