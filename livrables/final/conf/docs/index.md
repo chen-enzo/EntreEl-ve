@@ -34,7 +34,7 @@
 ---
 ## **Matériel**
 
-**Frise / Carte mentale:** 
+**Fresque / Carte mentale:** 
 
 - Une grande feuille CANSON (50cm x 70cm) ∼ 2-5€ 
 - 11 de cartes pour compléter la fresque 
@@ -59,14 +59,13 @@ Cette intervention est une séance de médiation scientifique ayant pour ambitio
 
 Au minimum un ordinateur par paire d'élèves. Avoir un ordinateur par élève est préférable. Sur chacun de ces ordinateurs doit être installé le programme python effectuant la simulation.
 Un vidéo-projecteur est nécessaire pour la projection des diapositives. 
-La fresque doit pouvoir être accrochée sur le tableau (ou un mur s'il n'y a pas de tableau), par exemple avec des aimants.
+La fresque doit pouvoir être accrochée sur le tableau (ou un mur s'il n'y a pas de tableau) pour faire , par exemple avec des aimants.
 
 ### **Plan de la Séance** 
 
 Concrètement, la séance d'une totale de deux heures comprendra une présentation d'environ 45 minutes avec des slides projetées au tableau, une activité sur ordinateur d'environ 30 minutes durant laquelle les élèves interagiront avec une simulation de la vie des étoiles, une activité d'environ 30 minutes durant laquelle la classe devra compléter une fresque synthétisant les rapports entre les différents types d'étoiles vus précédemment puis d'une trace écrite consistant en la complétion d'un texte à trou.
-L'animation fonctionne bien avec une vingtaine d'élèves.
 
-Pour le plan détaillé de la séance, veuillez le retrouver dans l'onglet [Plan de la séance][plan.md]
+Pour le plan détaillé de la séance, veuillez le retrouver dans l'onglet [Plan de la séance](plan.md)
 
 
 ### **Simulation Informatique**
@@ -78,9 +77,15 @@ L'évolution de la répartition de masse se fait suivant selon un modèle simpli
 Lorsque que la densité dépasse un certain seuil dans une certain ensemble connexe de points, une étoile est formée. 
 La matière à l'intérieur d'une étoile n'évolue plus suivant les équations décrite précédemment mais évolue d'une manière entièrement déterminée par le type de l'étoile. Ainsi, les étoiles n'ont pas de vitesse, elles sont fixes.
 
-### **Extensions**
+### **Extensions et Piste d'améliorations**
 
 En fonction du déroulement de la séance il est possible de la compléter par une explication des phénomènes contre-intuitif se déroulant au voisinage des trou noirs, une présentation des études scientifiques ou  une introduction à la méthode scientifique, permettant ainsi de comprendre par quel processus les modèles présentés lors de la séance ont été établis. 
+
+Pour aller plus loin, notre simulation peut être améliorée ... 
+
+## Difficultés à prévoir
+
+Faire attention à la version de `Powerpoint` disponible et au format de projection du vidéo-projecteur, le rendu des diapositives et de certaines animations peuvent être différent. 
 
 
 
@@ -92,7 +97,7 @@ En fonction du déroulement de la séance il est possible de la compléter par u
 
 - [Simulation python](assets/ressource/simulation_final_version.py)
 - [Présentation / diapositives](assets/ressource/presentation_entreeleve.pptx)
-- [Frise / Carte Mentale initiale]()
+- [Fresque / Carte Mentale initiale]()
 - [Cartes pour la frise](assets/ressource/cartes_frises.pdf)
 - [Texte à trous](assets/ressource/texte-a-trou.pdf)
 

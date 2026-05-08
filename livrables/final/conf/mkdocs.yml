@@ -9,7 +9,7 @@ docs_dir: docs
 
 nav:
   - Projet EntreElève: index.md
-  - Plan de la séance: plan.md
+  - Plan détaillé: plan.md
   - Simulation informatique: simulation.md
   - Galerie Photo: galerie_photo.md
 
@@ -31,13 +31,6 @@ theme:
       scheme: default
       primary: blue-grey
       accent: blue-grey
-
-markdown_extensions:
-  - md_in_html
-  - attr_list
-  
-extra_css:
-  - stylesheets/extra.css
 
 copyright: >
   Copyright &copy; 2026 - CS Students –
