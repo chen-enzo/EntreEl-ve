@@ -1,21 +1,30 @@
 site_name: Projet EntreElève 
 site_description: Projet de dissémination scientifique 
-site_author: Enzo CHEN
-#- Raphaël Cadier--Giard
+site_authors:
+- Enzo CHEN
+- Raphaël Cadier--Giard
 #site_url: https://Projet_EntreEleve_chen_cadier--giard.com
 
 docs_dir: docs
 
-
+nav:
+  - Projet EntreElève: index.md
+  - Plan de la séance: plan.md
+  - Simulation informatique: simulation.md
+  - Galerie Photo: galerie_photo.md
 
 
 theme:
   name: material
   language: fr
   features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - toc.follow
     - navigation.sections
     - toc.follow
     - toc.integrate
+    - navigation.top
 
   palette:
     - media: "(prefers-color-scheme: light)"
@@ -23,6 +32,13 @@ theme:
       primary: blue-grey
       accent: blue-grey
 
+markdown_extensions:
+  - md_in_html
+  - attr_list
+  
+extra_css:
+  - stylesheets/extra.css
+
 copyright: >
-  Copyright &copy; 2025 - CS Students –
+  Copyright &copy; 2026 - CS Students –
 
