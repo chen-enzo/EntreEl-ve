@@ -1,23 +1,5 @@
-## **Situation ** 
-Cette intervention a pour ambition de faire découvrir à une classe de CM2 les différents types étoiles et leur évolution. Pour ce faire elle aborde la formation des étoiles à partir de nuages de gaz, l'évolution de ces nuages en naine rouge, naine jaune ou géante bleu puis la trajectoire de ces différentes étoiles qui évoluent en des naines blanches, des géantes rouges, des étoiles à neutrons et des trous noirs. L'objectif recherché est d'émerveiller les élèves en leur faisant prendre conscience que l'univers contient de nombreux corps célestes fondamentalement différent des objets avec lesquels nous intérragissons sur Terre. 
-Concrètement, la séance d'une totale de deux heures comprendra une présentation d'environ 45 minutes avec des slides projetées au tableau, une activité sur ordinateur d'environ 30 minutes durant laquelle les élèves interragiront avec une simulation de la vie des étoiles,une activité d'environ 30 minutes durant laquelle la classe devra compléter une fresque synthétisant les rapports entre les différents types d'étoiles vus précédament puis d'une trace écrite consistant en la complétion d'un texte à trou.
-L'animation fonctionne bien avec une vingtaine d'élèves.
 
-## ** conditions matérielles requise** 
-Une salle de classe comprenant assez de tables et de chaise pour que chaque élève ait une place.
-Au minimum un ordinateur par paire d'élèves. Avoir un ordinateur par élève est préférable. Sur chacun de ces ordinateurs doit être installé le programme python effectuant la simulation.
-Un vidéoprojecteur connecté à ordinateur distinct de ceux utilisé par les élèves lors de la simulation.
-De quoi faire tenir la fresque sur le tableau (ou un mur s'il n'y a pas de tableau), par exemple des aimants.
 
-## ** Choix de conception fait pour la simulation** 
-Le programme python simule l'évolution d'une masse de gaz initiale dans un univers fini en deux dimension.
-La distribution de masse est donc représentée par un array numpy dont les cases correspondent à des densité de masse.
-L'évolution de la répartition de masse se fait suivant selon un modèle simplifié de mécanique des fluides prenant en compte la diffusion et la gravité.La diffusion est calculée selon la deuxième loi de Fick. Pour calculer l'effet de la gravité, nous utilisons de l'équation de continuité de la mécanique des fluides dans laquelle nous approximons la vitesse locale des particules par une valeur proportionnelle au champ gravitationnel.
-Lorsque que la densité dépasse un certain seuil dans une certain ensemble connexe de points, une étoile est formée. 
-La matière à l'intérieur d'une étoile n'évolue plus suivant les équations décrite précédament mais évolue d'une manière entièrement déteerminée par le type de l'étoile. Ainsi, les étoiles n'ont pas de vitesse, i.e elles sont fixes.
-
-## **extensions pour aller plus loin si le public accroche et qu'on a du temps**
-En fonction du déroulement de la séance il est possible de la compléter par une explication des phénomèes contre-intuitif se déroulant au voisinage des trou noirs, une présentation des études scientifiques ou  une introduction à la méthode scientifique, permettant ainsi de comprendre par quel processus les modèles présentés lors de la séance ont été établis. 
 ## **Description** 
 
 Cette intervention a pour objectif de faire découvrir aux élèves de CM2 les étoiles, leur nature et leur évolution, à travers une approche visuelle et interactive. La séance s’inscrit dans une démarche de médiation scientifique adaptée à un jeune public, et ne suppose aucune connaissance préalable en physique ou en astronomie. L’intervention privilégie l’émerveillement, la curiosité et la manipulation, tout en transmet- tant des notions scientifiques rigoureuses sous une forme accessible.
@@ -61,7 +43,7 @@ Une partie du matériel décrit ci-dessous nous a été fourni par CentraleSupé
 
 **Frise / Carte mentale:** 
 
-- Une grande feuille canson en tant que support ∼ 2-5€ 
+- Une grande feuille CANSON en tant que support ∼ 2-5€ 
 - 11 de cartes pour compléter la fresque 
 - Plastifieuse ∼ 20-30€ 
 - Pochette de plastification s ∼ 15€ 
@@ -73,9 +55,36 @@ Une partie du matériel décrit ci-dessous nous a été fourni par CentraleSupé
 
 ---
 ## **Déroulement de la séance**
+### **Situation** 
+
+Cette intervention a pour ambition de faire découvrir à une classe de CM2 les différents types étoiles et leur évolution. Pour ce faire elle aborde la formation des étoiles à partir de nuages de gaz, l'évolution de ces nuages en naine rouge, naine jaune ou géante bleu puis la trajectoire de ces différentes étoiles qui évoluent en des naines blanches, des géantes rouges, des étoiles à neutrons et des trous noirs. L'objectif recherché est d'émerveiller les élèves en leur faisant prendre conscience que l'univers contient de nombreux corps célestes fondamentalement différent des objets avec lesquels nous interagissons sur Terre. 
+Concrètement, la séance d'une totale de deux heures comprendra une présentation d'environ 45 minutes avec des slides projetées au tableau, une activité sur ordinateur d'environ 30 minutes durant laquelle les élèves interagiront avec une simulation de la vie des étoiles, une activité d'environ 30 minutes durant laquelle la classe devra compléter une fresque synthétisant les rapports entre les différents types d'étoiles vus précédemment puis d'une trace écrite consistant en la complétion d'un texte à trou.
+L'animation fonctionne bien avec une vingtaine d'élèves.
+
+### **Conditions matérielles requise** 
+
+Une salle de classe comprenant assez de tables et de chaise pour que chaque élève ait une place.
+Au minimum un ordinateur par paire d'élèves. Avoir un ordinateur par élève est préférable. Sur chacun de ces ordinateurs doit être installé le programme python effectuant la simulation.
+Un vidéo-projecteur connecté à ordinateur distinct de ceux utilisé par les élèves lors de la simulation.
+De quoi faire tenir la fresque sur le tableau (ou un mur s'il n'y a pas de tableau), par exemple des aimants.
+
+### **Plan de la Séance** 
 
 
 ### **Simulation Informatique**
+
+#### **Choix de Conception** 
+
+Le programme python simule l'évolution d'une masse de gaz initiale dans un univers fini en deux dimension.
+La distribution de masse est donc représentée par un `array numpy` dont les cases correspondent à des densité de masse.
+L'évolution de la répartition de masse se fait suivant selon un modèle simplifié de mécanique des fluides prenant en compte la diffusion et la gravité. La diffusion est calculée selon la deuxième loi de Fick. Pour calculer l'effet de la gravité, nous utilisons l'équation de continuité de la mécanique des fluides dans laquelle nous approximons la vitesse locale des particules par une valeur proportionnelle au champ gravitationnel.  
+Lorsque que la densité dépasse un certain seuil dans une certain ensemble connexe de points, une étoile est formée. 
+La matière à l'intérieur d'une étoile n'évolue plus suivant les équations décrite précédemment mais évolue d'une manière entièrement déterminée par le type de l'étoile. Ainsi, les étoiles n'ont pas de vitesse, elles sont fixes.
+
+### **Extensions et Améliorations**
+
+En fonction du déroulement de la séance il est possible de la compléter par une explication des phénomènes contre-intuitif se déroulant au voisinage des trou noirs, une présentation des études scientifiques ou  une introduction à la méthode scientifique, permettant ainsi de comprendre par quel processus les modèles présentés lors de la séance ont été établis. 
+
 
 
 
