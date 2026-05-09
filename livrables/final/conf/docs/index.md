@@ -43,7 +43,7 @@ La fresque doit pouvoir être accrochée sur le tableau (ou un mur s'il n'y a pa
 
 ### **Plan de la Séance** 
 
-Concrètement, la séance d'une totale de deux heures comprendra une présentation d'environ 45 minutes avec des slides projetées au tableau, une activité sur ordinateur d'environ 30 minutes durant laquelle les élèves interagiront avec une simulation de la vie des étoiles, une activité d'environ 30 minutes durant laquelle la classe devra compléter une fresque synthétisant les rapports entre les différents types d'étoiles vus précédemment puis d'une trace écrite consistant en la complétion d'un texte à trou.
+Concrètement, la séance, d'une durée totale de deux heures, comprendra une présentation d'environ 45 minutes avec des diapositives projetées au tableau, une activité sur ordinateur d'environ 35 minutes durant laquelle les élèves interagiront avec une simulation de la vie des étoiles, une activité d'environ 30 minutes durant laquelle la classe devra compléter une fresque synthétisant les rapports entre les différents types d'étoiles vus précédemment puis d'une trace écrite consistant en la complétion d'un texte à trou en une dizaine de minutes.
 
 Pour le plan détaillé de la séance, voir la rubrique «[Plan détaillé](plan.md)»
 
@@ -76,16 +76,19 @@ Faire attention à la version de `Powerpoint` disponible et au format de project
 
 ### **Nos Supports et Documents**
 
-- [Simulation python](assets/ressource/simulation_final_version.py)
 - [Présentation / diapositives](assets/ressource/presentation_entreeleve.pptx)
 - [Fresque / Carte Mentale initiale](assets/ressource/fresque.png)
 - [Cartes pour la frise](assets/ressource/cartes_frises.pdf)
 - [Texte à trous](assets/ressource/texte-a-trou.pdf)
+- [Simulation python](assets/ressource/simulation_final_version.py)
+- [Simulation partie1](simulation_p1.png) : Interface de la première partie de notre simulation
+- [Simulation partie2](simulation_p2.png) : Interface de la seconde partie de notre simulation 
 
 ### **Images utilisées** 
 
 Pour plus de visibilité, voir la rubrique «[Galerie](galerie_photo.md)».
 
+#### **Images**
 - [Image Soleil](assets/image/sun.jpg) : Image du Soleil (*NASA/Goddard/SDO*)
 - [Coupe du Soleil](assets/image/slice_sun.png) : Vue en coupe du Soleil générée par IA à partir de l'image du Soleil
 - [Pilier de la création](assets/image/pillar_of_creation.jpeg) : Prise par le télescope Hubble (*NASA*, *ESA*)
@@ -104,7 +107,11 @@ Pour plus de visibilité, voir la rubrique «[Galerie](galerie_photo.md)».
 - [Trou noir Interstellar](assets/image/black_hole_interstellar.jpg) : Image issue du film *Interstellar* réalisé par Christopher Nolan
 - [Proto-étoile](assets/image/Protostar.jpeg) : Image de *L1527 IRS*, prise par le télescope spatial James-Webb  en 2022 (*NASA, ESA, CSA, and STScI, J. DePasquale*)
 
-
+#### Images exportées de Google Earth Pro
+- [Maurice Barrès 2](ge_maurice-barres.jpg) : Image Google Earth de la zone urbaine autour de l'école où nous sommes intervenues (*Image © Google / Fournisseurs de données*)
+- [Metz](ge_metz.jpg) : Image Google Earth de la ville de Metz (*Image © Google / Fournisseurs de données*)
+- [Europe](ge_europe.jpg) : Image Google Earth de l'Europe (*Image © Google / Fournisseurs de données*)
+- [Terrre](ge_terre.jpg) : Image Google Earth de la Terre (*Image © Google / Fournisseurs de données*)
 
 
 ---
