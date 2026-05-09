@@ -123,5 +123,27 @@ Pour plus de visibilité, voir la rubrique «[Galerie](galerie_photo.md)».
 
 
 ---
-## **Bibliographie**
+## **Sélection commentée de notre ibliographie**
+Aucunes des ressources mentionnées ci dessous ne pourra directement être utiles pour les élèves car ils ne les comprendraient pas.
+
+-https://www.astronomy.ohio-state.edu/thompson.1847/1101/lecture_main_sequence.html justifie le choix effectué dans la simulation de prendre une durée de vie proportionelle à 1/M**3 pour les étoiles de la séquence principale :
+
+
+L'article Kalirai, J. S. et al., Initial–Final Mass Relation from White Dwarfs in Open Clusters, The Astrophysical Journal, 676, 594 (2008) donne une relation empirique entre la masse d'une géante rouge et celle de la naine blanche qu'elle deviendra : 
+M_final = 0.109  M_initial + 0.394 M_Soleil
+Nous avons utilisés cette relation dans la simulation.
+
+Proportion de masse ejectée lors d'une supernovae : self.massive_core_fraction = 0.15 
+source : The initial mass-remnant mass relation for core collapse supernovae Cristiano Ugolini : https://www.aanda.org/articles/aa/full_html/2025/03/aa51483-24/aa51483-24.html
+
+
+Les sources suivantes expliquent la 2ème loi de Fick, qui a été utilisé pour calculer l'évolution de la répartition de masse dans la simulation. 
+https://nte.mines-albi.fr/SciMat/fr/co/SM5uc1-2.html et https://chem.libretexts.org/Bookshelves/ et Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Kinetics/09%3A_Diffusion#Fick.E2.80.99s_First_Law_of_Diffusion
+
+-L'article suivant permet d'avoir une estimation des masses des différents types d'étoiles: THE ASTROPHYSICAL JOURNAL, 482:420–432, 1997 June 10 The End of the Main Sequence
+
+
+
+
+
 
