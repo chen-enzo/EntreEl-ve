@@ -1,18 +1,13 @@
 
 # **Projet EntreÉlève**
 
-## **Description** 
+### **Description ** 
 
-Le projet EntreElève a pour but d'éveiller la curiosité scientifique des plus jeunes tout en contribuant à réduire les stéréotypes de genre dans les domaines scientifiques. En encourageant les élèves aux questionnement et la participation, ce projet vise à rendre les sciences plus accessibles et plus attrayantes pour tous, indépendamment du genre, et à promouvoir une image positive et inclusive des sciences dès le plus jeune âge.
-
-Dans cette optique, nous avons conçu une séance interactive de deux heures destinée à une classe de CM1/CM2, autour de notions d’astronomie. Cette séance a pour objectif d'aider les élèves à prendre conscience de l’immensité de l’univers, à connaître les grandes étapes de la vie d’une étoile et à identifier quelques objets célestes importants. 
-
-Plusieurs contraintes ont guidé la conception de cette intervention. Le contenu doit être adapté au niveau CM1/CM2 ainsi qu'au contexte socio-économique de l’école. La séance doit proposer des activités ludiques et ne pas être uniquement un cours magistral. L’ensemble des supports et expériences doit être reproductible à partir des ressources du projet, dans le respect d’un budget limité. Enfin, une trace écrite synthétique doit être fournie aux élèves à l’issue de la séance.
-
+Cette intervention est une séance de médiation scientifique ayant pour ambition de faire découvrir à une classe de CM2 les différents types étoiles et leur évolution. Pour ce faire elle aborde la formation des étoiles à partir de nuages de gaz, l'évolution de ces nuages en naine rouge, naine jaune ou géante bleu puis la trajectoire de ces différentes étoiles qui évoluent en des naines blanches, des géantes rouges, des étoiles à neutrons et des trous noirs. L'objectif recherché est d'émerveiller les élèves en leur faisant prendre conscience que l'univers contient de nombreux corps célestes fondamentalement différent des objets avec lesquels nous interagissons sur Terre. 
 
 
 ---
-## **Matériel**
+## **Matériel requis**
 
 **Fresque / Carte mentale:** 
 
@@ -29,10 +24,7 @@ Plusieurs contraintes ont guidé la conception de cette intervention. Le contenu
 
 
 ---
-## **Déroulement de la séance**
-### **Situation** 
 
-Cette intervention est une séance de médiation scientifique ayant pour ambition de faire découvrir à une classe de CM2 les différents types étoiles et leur évolution. Pour ce faire elle aborde la formation des étoiles à partir de nuages de gaz, l'évolution de ces nuages en naine rouge, naine jaune ou géante bleu puis la trajectoire de ces différentes étoiles qui évoluent en des naines blanches, des géantes rouges, des étoiles à neutrons et des trous noirs. L'objectif recherché est d'émerveiller les élèves en leur faisant prendre conscience que l'univers contient de nombreux corps célestes fondamentalement différent des objets avec lesquels nous interagissons sur Terre. 
 
 
 ### **Conditions matérielles requises** 
@@ -46,6 +38,10 @@ La fresque doit pouvoir être accrochée sur le tableau (ou un mur s'il n'y a pa
 Concrètement, la séance, d'une durée totale de deux heures, comprendra une présentation d'environ 45 minutes avec des diapositives projetées au tableau, une activité sur ordinateur d'environ 35 minutes durant laquelle les élèves interagiront avec une simulation de la vie des étoiles, une activité d'environ 30 minutes durant laquelle la classe devra compléter une fresque synthétisant les rapports entre les différents types d'étoiles vus précédemment puis d'une trace écrite consistant en la complétion d'un texte à trou en une dizaine de minutes.
 
 Pour le plan détaillé de la séance, voir la rubrique «[Plan détaillé](plan.md)»
+
+## **Contraintes ayant guidé la conception de cette interventione** 
+
+Plusieurs contraintes ont dûes être respectées lors de la conception de cette intervention. Le contenu de la séance doit être adapté au niveau CM1/CM2 ainsi qu'au contexte socio-économique de l’école. La séance doit proposer des activités ludiques et ne pas être uniquement un cours magistral. L’ensemble des supports et expériences doit être reproductible à partir des ressources du projet, dans le respect d’un budget limité. Enfin, une trace écrite synthétique doit être fournie aux élèves à l’issue de la séance.
 
 
 ### **Simulation Informatique**
