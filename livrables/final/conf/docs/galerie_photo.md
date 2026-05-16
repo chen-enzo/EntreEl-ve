@@ -1,7 +1,7 @@
 # **Galerie Photo**
 
 
-## **Images Corps celestes**
+## **Images externes**
 
 |                                                                                                                                                                                                            |                                                                                                                                                                                |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -14,12 +14,14 @@
 | ![Supernova](assets/image/supernova.jpeg){ width="400" }<br>Vue d'artiste de la supernova SN2016aps <br>(*© M. Weiss, Center for Astrophysics Harvard & Smithsonian*)                                      | <br>![Étoile à neutrons](assets/image/neutronstar.jpg){ width="400" }<br>Image de l'*ESA*                                                                                      |
 | ![Trou noir M87*](assets/image/black_hole_NASA.jpg){ width="300" }<br>Image composite du disque d'accrétion du trou noir M87\* <br>(*Event Horizon Telescope*)                                             | ![Trou noir Interstellar](assets/image/black_hole_interstellar.jpg){ width="400" }<br>Image issue du film *Interstellar* réalisé par Christopher Nolan                         |
 | ![Proto-étoile](assets/image/Protostar.jpeg){ width="390" }<br>Image de *L1527 IRS*, prise par le télescope spatial James-Webb<br>en 2022 <br>(*NASA, ESA, CSA, and STScI, J. DePasquale*)                 |                                                                                                                                                                                |
+| ![Maurice_Barres](assets/image/ge_maurice-barres.jpg){ width="400" }<br>Image © Google / Fournisseurs de données                                                                                           | ![Metz](assets/image/ge_metz.jpg){ width="400" }<br>Image © Google / Fournisseurs de données                                                                                   |
+| ![Europe](assets/image/ge_europe.jpg){ width="400" }<br>Image © Google / Fournisseurs de données                                                                                                           | ![La Terre](assets/image/ge_terre.jpg){ width="400" }<br>Image © Google / Fournisseurs de données                                                                              |
 
-## Autres Images
+## **Autres Images**
 
 
-|                                                                                                                  |                                                                                                          |
-| ---------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| ![s1](assets/image_perso/simulation_p1.png){ width="400" }<br>Interface de la 1er partie de la simulation        | ![s2](assets/image_perso/simulation_p2.png){ width="400" }<br>Interface de la 2e partie de la simulation |
-| ![Maurice_Barres](assets/image/ge_maurice-barres.jpg){ width="400" }<br>Image © Google / Fournisseurs de données | ![Metz](assets/image/ge_metz.jpg){ width="400" }<br>Image © Google / Fournisseurs de données             |
-| ![Europe](assets/image/ge_europe.jpg){ width="400" }<br>Image © Google / Fournisseurs de données                 | ![La Terre](assets/image/ge_terre.jpg){ width="400" }<br>Image © Google / Fournisseurs de données        |
+|                                                                                                                           |                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| ![s1](assets/image_perso/simulation_p1.png){ width="500" }<br>Interface de la 1er partie de la simulation                 | ![s2](assets/image_perso/simulation_p2.png){ width="500" }<br>Interface de la 2e partie de la simulation |
+| ![s1](assets/image_perso/simulation_p1-ex.png){ width="500" }<br>Image d'exemple pour la première partie de la simulation |                                                                                                          |
+| ![fresque vierge](assets/ressource/fresque.png){ width="500" }<br>Fresque initiale                                        | ![fresque complété](assets/ressource/fresque_complete.png){ width="500" }<br>Fresque complétée           |

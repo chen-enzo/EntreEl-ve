@@ -1,12 +1,21 @@
+# **Informations générales**
 
-# **Projet EntreÉlève**
+## **Plan du site web**
 
-### **Description ** 
+Notre site web est réparti en 4 onglets : 
+
+- Celui-ci où vous trouverez les informations générales concernant notre projet, 
+- l'onglet «[Déroulé de la séance](plan.md)» présentant la séance que nous avons réalisée,
+- l'onglet «[Simulation informatique](simulation.md)» expliquant le code de la simulation plus en détail,
+- l'onglet «[Galerie](galerie_photo.md)» montrant l'ensemble des images utilisées pour ce projet.
+
+<br>
+### **Description** 
 
 Cette intervention est une séance de médiation scientifique ayant pour ambition de faire découvrir à une classe de CM2 les différents types étoiles et leur évolution. Pour ce faire elle aborde la formation des étoiles à partir de nuages de gaz, l'évolution de ces nuages en naine rouge, naine jaune ou géante bleu puis la trajectoire de ces différentes étoiles qui évoluent en des naines blanches, des géantes rouges, des étoiles à neutrons et des trous noirs. L'objectif recherché est d'émerveiller les élèves en leur faisant prendre conscience que l'univers contient de nombreux corps célestes fondamentalement différent des objets avec lesquels nous interagissons sur Terre. 
 
+<br>
 
----
 ## **Matériel requis**
 
 **Fresque / Carte mentale:** 
@@ -15,35 +24,34 @@ Cette intervention est une séance de médiation scientifique ayant pour ambitio
 - 11 de cartes pour compléter la fresque 
 - Plastifieuse ∼ 20-30€ 
 - Pochette de plastifications ∼ 15€ 
-- Carte (papier) 
+- Cartes (papier) 
 - Scotch double face 
 
 	**Total : 50€** 
 
 > *<font color="#7f7f7f">Une partie du matériel décrit nous a été fourni par CentraleSupélec.</font>*
 
-
----
-
-
+<br>
 
 ### **Conditions matérielles requises** 
 
 Au minimum un ordinateur par paire d'élèves. Avoir un ordinateur par élève est préférable. Sur chacun de ces ordinateurs doit être installé le programme python effectuant la simulation.
 Un vidéo-projecteur est nécessaire pour la projection des diapositives. 
-La fresque doit pouvoir être accrochée sur le tableau (ou un mur s'il n'y a pas de tableau) pour faire , par exemple avec des aimants.
+La fresque doit pouvoir être accrochée sur le tableau (ou un mur s'il n'y a pas de tableau), par exemple avec des aimants, pour pouvoir la compléter tous ensemble.
 
+<br>
 ### **Plan de la Séance** 
 
 Concrètement, la séance, d'une durée totale de deux heures, comprendra une présentation d'environ 45 minutes avec des diapositives projetées au tableau, une activité sur ordinateur d'environ 35 minutes durant laquelle les élèves interagiront avec une simulation de la vie des étoiles, une activité d'environ 30 minutes durant laquelle la classe devra compléter une fresque synthétisant les rapports entre les différents types d'étoiles vus précédemment puis d'une trace écrite consistant en la complétion d'un texte à trou en une dizaine de minutes.
 
-Pour le plan détaillé de la séance, voir la rubrique «[Plan détaillé](plan.md)»
+Pour le plan détaillé de la séance, voir la rubrique «[Déroulé de la Séance](plan.md)»
 
+<br>
 ## **Contraintes ayant guidé la conception de cette interventione** 
 
 Plusieurs contraintes ont dûes être respectées lors de la conception de cette intervention. Le contenu de la séance doit être adapté au niveau CM1/CM2 ainsi qu'au contexte socio-économique de l’école. La séance doit proposer des activités ludiques et ne pas être uniquement un cours magistral. L’ensemble des supports et expériences doit être reproductible à partir des ressources du projet, dans le respect d’un budget limité. Enfin, une trace écrite synthétique doit être fournie aux élèves à l’issue de la séance.
 
-
+<br>
 ### **Simulation Informatique**
 #### **Choix de Conception** 
 
@@ -55,30 +63,35 @@ La matière à l'intérieur d'une étoile n'évolue plus suivant les équations 
 
 Pour plus d'informations sur la simulation, voir la rubrique «[Simulation Informatique](simulation.md)».
 
+<br>
 ### **Extensions et Piste d'améliorations**
 
 En fonction du déroulement de la séance il est possible de la compléter par une explication des phénomènes contre-intuitif se déroulant au voisinage des trou noirs, une présentation des études scientifiques ou  une introduction à la méthode scientifique, permettant ainsi de comprendre par quel processus les modèles présentés lors de la séance ont été établis. 
 
 Pour aller plus loin, notre simulation peut être améliorée ... 
 
-## Difficultés à prévoir
+<br>
+## **Difficultés à prévoir**
 
 Faire attention à la version de `Powerpoint` disponible et au format de projection du vidéo-projecteur, le rendu des diapositives et de certaines animations peuvent être différent. 
 
+<br>
 
-
----
 ## **Ressources** 
 
 ### **Nos Supports et Documents**
 
 - [Présentation / diapositives](assets/ressource/presentation_entreeleve.pptx)
-- [Fresque / Carte Mentale initiale](assets/ressource/fresque.png)
+- [Fresque initiale](assets/ressource/fresque.png)
+- [Fresque complétée](assets/ressource/fresque_complete.png)
 - [Cartes pour la frise](assets/ressource/cartes_frises.pdf)
 - [Texte à trous](assets/ressource/texte-a-trou.pdf)
 - [Simulation python](assets/ressource/simulation_final_version.py)
 - [Simulation partie1](simulation_p1.png) : Interface de la première partie de notre simulation
+- [Exemple pour la première partie](assets/image_perso/simulation_p1-ex.png)
 - [Simulation partie2](simulation_p2.png) : Interface de la seconde partie de notre simulation 
+
+<br>
 
 ### **Images utilisées** 
 
@@ -109,37 +122,31 @@ Pour plus de visibilité, voir la rubrique «[Galerie](galerie_photo.md)».
 - [Europe](ge_europe.jpg) : Image Google Earth de l'Europe (*Image © Google / Fournisseurs de données*)
 - [Terrre](ge_terre.jpg) : Image Google Earth de la Terre (*Image © Google / Fournisseurs de données*)
 
+<br>
 
----
 ## **Crédits**
 ### **Contributions** 
 - **Auteurs** : Raphaël CADIER--GIARD, Enzo CHEN 
 - **Professeur Encadrant** : Paul FRAUX 
 - **Professeur des Ecoles** : Victor RENAUX 
 
+<br>
 
----
-## **Sélection commentée de notre ibliographie**
-Aucunes des ressources mentionnées ci dessous ne pourra directement être utiles pour les élèves car ils ne les comprendraient pas.
+## **Bibliographie commentée**
+Les ressources mentionnées ci-dessous ont été principalement utilisées pour la simulation informatique et ne seront pas directement utiles pour les élèves, ils correspondent à un niveau post-BAC.  
 
--https://www.astronomy.ohio-state.edu/thompson.1847/1101/lecture_main_sequence.html justifie le choix effectué dans la simulation de prendre une durée de vie proportionelle à 1/M**3 pour les étoiles de la séquence principale :
+- Relation entre durée de vie d'une étoile de la séquence principale avec un facteur $1/M^3$.  
+	**<u>Source :</u>** *[https://www.astronomy.ohio-state.edu/thompson.1847/1101/lecture_main_sequence.html](https://www.astronomy.ohio-state.edu/thompson.1847/1101/lecture_main_sequence.html)*
+- Relation empirique entre la masse d'une géante rouge et celle de la naine blanche qu'elle deviendra : $M_{final} = 0.109  M_{initial} + 0.394 M_{Soleil}$.  
+	**<u>Source :</u>** *L'article Kalirai, J. S. et al., Initial–Final Mass Relation from White Dwarfs in Open Clusters, The Astrophysical Journal, 676, 594 (2008)*
+- Proportion de masse éjectée lors d'une supernova : `self.massive_core_fraction = 0.15 `   
+	**<u>Source :</u>** *[The initial mass-remnant mass relation for core collapse supernovae Cristiano Ugolini](https://www.aanda.org/articles/aa/full_html/2025/03/aa51483-24/aa51483-24.html)*
+- 2ème loi de Fick utilisé pour calculer l'évolution de la répartition de masse dans la simulation.   
+	**<u>Source :</u>**
+	
+	- *[https://nte.mines-albi.fr/SciMat/fr/co/SM5uc1-2.html](https://nte.mines-albi.fr/SciMat/fr/co/SM5uc1-2.html)* 
+	- *[https://chem.libretexts.org/Bookshelves/ ](https://chem.libretexts.org/Bookshelves/)*
+	- *Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Kinetics/09%3A_Diffusion#Fick.E2.80.99s_First_Law_of_Diffusion*
 
-
-L'article Kalirai, J. S. et al., Initial–Final Mass Relation from White Dwarfs in Open Clusters, The Astrophysical Journal, 676, 594 (2008) donne une relation empirique entre la masse d'une géante rouge et celle de la naine blanche qu'elle deviendra : 
-M_final = 0.109  M_initial + 0.394 M_Soleil
-Nous avons utilisés cette relation dans la simulation.
-
-Proportion de masse ejectée lors d'une supernovae : self.massive_core_fraction = 0.15 
-source : The initial mass-remnant mass relation for core collapse supernovae Cristiano Ugolini : https://www.aanda.org/articles/aa/full_html/2025/03/aa51483-24/aa51483-24.html
-
-
-Les sources suivantes expliquent la 2ème loi de Fick, qui a été utilisé pour calculer l'évolution de la répartition de masse dans la simulation. 
-https://nte.mines-albi.fr/SciMat/fr/co/SM5uc1-2.html et https://chem.libretexts.org/Bookshelves/ et Physical_and_Theoretical_Chemistry_Textbook_Maps/Supplemental_Modules_(Physical_and_Theoretical_Chemistry)/Kinetics/09%3A_Diffusion#Fick.E2.80.99s_First_Law_of_Diffusion
-
--L'article suivant permet d'avoir une estimation des masses des différents types d'étoiles: THE ASTROPHYSICAL JOURNAL, 482:420–432, 1997 June 10 The End of the Main Sequence
-
-
-
-
-
-
+- Estimation des masses des différents types d'étoiles.  
+	**<u>Source :</u>** *THE ASTROPHYSICAL JOURNAL, 482:420–432, 1997 June 10 The End of the Main Sequence*

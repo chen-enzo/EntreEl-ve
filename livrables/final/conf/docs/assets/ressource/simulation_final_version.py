@@ -80,7 +80,7 @@ def redistribute_envelope(sigma, center, radius, mass):
         sigma += mass / (nx * ny)
 
 
-def evolve_star_and_get_shed_mass(star, blue_threshold):
+def evolve_star_and_get_shed_mass(star):
     """ Fait vieillir l'étoile et renvoie strictement la masse qu'elle perd pour la conserver """
     shed_mass = 0.0
     is_supernova = False
@@ -355,8 +355,7 @@ def evolve_mass_distribution(sigma_gas, stars, steps=1, dt=0.05, D=DISPERTION_CO
 
         # 4. Évolution stellaire (Supernovas, naines blanches...)
         for star in stars:
-            shed_mass, is_sn = evolve_star_and_get_shed_mass(
-                star, blue_threshold)
+            shed_mass, is_sn = evolve_star_and_get_shed_mass(star)
             if shed_mass > 0:
                 redistribute_envelope(
                     sigma_gas, star.position, star.radius, shed_mass)
@@ -724,7 +723,7 @@ class Simulation:
             lifetime = self.current_star.giant_lifetime if self.current_star.type in [
                 "red_giant", "red_supergiant"] else self.current_star.lifetime
             lftext = "« infini »" if self.current_star.type in [
-                "black_hole", "white_dwarf", "neutron_star"] else f"{lifetime:1f} M d'années"
+                "black_hole", "white_dwarf", "neutron_star"] else f"{lifetime:.1f} M d'années"
             rem = self.current_star.timer * TIME_PER_STEP / 1e6
             timetext = "« infini »" if self.current_star.type in [
                 "black_hole", "white_dwarf", "neutron_star"] else f"{rem:.1f} M d'années"

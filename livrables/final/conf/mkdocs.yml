@@ -1,18 +1,16 @@
-site_name: Projet EntreElève 
-site_description: Projet de dissémination scientifique 
+site_name: Projet EntreElève – Introduction aux Etoiles – Enzo CHEN, Raphaël CADIER--GIARD
+site_description: Projet de dissémination scientifique
 site_authors:
 - Enzo CHEN
 - Raphaël Cadier--Giard
-#site_url: https://Projet_EntreEleve_chen_cadier--giard.com
 
 docs_dir: docs
 
 nav:
-  - Projet EntreElève: index.md
-  - Plan détaillé: plan.md
+  - Informations générales: index.md
+  - Déroulé de la Séance: plan.md
   - Simulation Informatique: simulation.md
   - Galerie: galerie_photo.md
-
 
 theme:
   name: material
@@ -25,7 +23,6 @@ theme:
     - toc.follow
     - toc.integrate
     - navigation.top
-
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
@@ -34,8 +31,14 @@ theme:
 
 markdown_extensions:
   - attr_list
+  - pymdownx.arithmatex:
+      generic: true
   
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
+extra_css:
+  - stylesheets/extra.css
 
 copyright: >
   Copyright &copy; 2026 - CS Students –

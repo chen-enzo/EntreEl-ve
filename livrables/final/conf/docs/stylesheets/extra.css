@@ -1,12 +1,25 @@
-.galerie {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+.md-typeset code {
+    background-color: #c5e1f3;
+    color: #000000;
 }
 
-.galerie img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    display: block;
+/* lien */
+.md-nav__link {
+    color: #738791;
+}
+
+/* lien hover */
+.md-nav__link:hover {
+    color: #78bddf !important;
+}
+
+/* titre sommaire */
+.md-nav__item--active>.md-nav__link {
+    color: #546a75;
+    font-weight: bold;
+}
+
+/* partie actuelle */
+.md-nav--secondary .md-nav__link--active {
+    color: #000000 !important;
 }
