@@ -47,7 +47,7 @@ Les branches sont présentées par ordre croissant de masse initiale nécessaire
 
 <br>
 
-Dans cette partie, nous explicitons aussi les notions : 
+Dans cette partie, nous explicitons aussi les notions :   
 
 - De fusion nucléaire, libérant de la lumière et des particules. (Slide 19)
 - De densité, avec la présentation de la naine blanche. (Slide 21)
@@ -59,7 +59,7 @@ Dans cette partie, nous explicitons aussi les notions :
 
 Et nous avons abordé les sujets suivants :  
 
-- D'où vient la nébuleuse planétaire et la naine blanche à la mort d'une géante rouge ? (Slides 29, 30)
+- D'où viennent la nébuleuse planétaire et la naine blanche à la mort d'une géante rouge ? (Slides 29, 30)
 - Comparaison de la taille d'une naine jaune (type Soleil), d'une géante bleu, d'une géante rouge et celle d'une super géante rouge. (Slides 33, 34)
 - Illustration de la forte densité des étoiles à neutrons en comparant une partie d'étoile à neutrons de la taille d'une goutte d'eau à 500 tour Eiffel. (Slide 37)
 
@@ -74,11 +74,32 @@ Les élèves disposent d'un ordinateur pour deux sur lequel la simulation est ou
 
 ### **Déroulement de l’activité :**
 
-Nous commençons par présenter la simulation et expliquer les consignes de la première partie : `Consignes`. (Slides 39, 40).
+Nous commençons par présenter la simulation et expliquer les consignes de la première partie (Slides 39, 40) :
+
+- Ne pas cliquer sur le bouton «Partie 1». 
+- Appuyer sur le bouton «Start».
+- Observer ce qui se passe.
+- Répondre aux questions suivantes : 
+	- Que peut on voir au bout de 150 millions d'années ? 
+	- Quels types d'étoiles se forment ? 
+	- Combien de temps vivent-elle ? 
+- Utiliser le bouton «Reset» et regarder ce qu'il se passe.   
+
 Une correction interactive de la première partie sera ensuite proposée (total 10min). 
 
-Nous passons ensuite à la seconde partie en explicitant les consignes : `consignes` (Slides 41 à 42) (total 20min). 
-Des indices peuvent être proposés au cours de cette partie pour aider les élèves. (Slide 43)
+<br>
+Nous invitons enfin les élèves à cliquer sur le bouton «Partie 1» situé en haut de l'interface.
+
+Nous passons ensuite à la seconde partie en explicitant les consignes (Slides 41 à 42) :
+
+- Cliquer dans le grand carré pour faire apparaître des nuages de gaz. 
+- Utiliser les curseurs pour faire apparaître une naine jaune et une géante bleue. 
+- Répondre à : Que se passe-t-il à la mort d'une géante bleue ? 
+- Remplir le tableau à droite en faisant apparaître tous les types d'étoiles.
+- Bonus : Créer le plus gros trou noir possible.   
+Des indices peuvent être proposés au cours de cette partie pour aider les élèves. (Slide 43) (total 20min)
+
+<br>
 
 Pour plus d'informations sur la simulation, voir la rubrique «[Simulation Informatique](simulation.md)»
 
@@ -100,6 +121,20 @@ Voici la fresque complétée :
 
 <br>
 ## **Trace écrite, texte à trous (10 minutes)**
-Enfin, les intervenants distribuent à chaque élève un [texte à trous](assets/ressource/text-a-trou.pdf) à compléter tous ensemble. 
+Enfin, les intervenants distribuent à chaque élève un [texte à trous](assets/ressource/texte-a-trou.pdf) à compléter tous ensemble. 
+
+Les réponses du texte à trous sont les suivants :
+1. Nébuleuse
+2. Naine jaune
+3. Géantes rouges 
+4. Naines blanches
+5. Petites
+6. Naines blanches
+7. Plus
+8. Géantes bleues
+9. Supergéantes rouges
+10. Supernova
+11. Etoile à neutrons 
+12. Trou noirs
 
 

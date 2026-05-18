@@ -33,7 +33,7 @@ L'étoile peut ensuite suivre un des cycles de vie suivant :
 - Une géante bleue devient une super géante rouge, puis explose en supernova, laissant derrière elle une étoile à neutrons ou un trou noir selon sa masse.
 - Une naine rouge finit directement en naine blanche.
 
-Ainsi seul les astres suivants sont proposés par la simulation : naine rouge, naine jaune, géante bleu, naine blanche, géante rouge, super géante rouge, étoile à neutrons et trou noir (comprenant aussi les supernovas). 
+Ainsi seuls les astres suivants sont proposés par la simulation : naine rouge, naine jaune, géante bleu, naine blanche, géante rouge, super géante rouge, étoile à neutrons et trou noir (comprenant aussi les supernovas). 
 
 <br> 
 
@@ -42,7 +42,7 @@ Ainsi seul les astres suivants sont proposés par la simulation : naine rouge, n
 Pour notre simulation, nous avons codé les fonctions suivantes :   
 
 - `redistribute_envelope` (*ligne 65*): Redistribue la masse éjectée lors d'une supernova ou de la phase de géante rouge (simule l'expulsion de matières).
-- `evolve_star_and_get_shed_mass` (*ligne 83*): Gère l'évolution de l'étoile, notamment les différentes étapes de son évolution selon sont temps de vie `timer` et sa masse initiale.
+- `evolve_star_and_get_shed_mass` (*ligne 83*): Gère l'évolution de l'étoile, notamment les différentes étapes de son évolution selon son temps de vie `timer` et sa masse initiale.
 - `merge_stars` (*ligne 158*): Fusionne deux étoiles trop proches en une seule, en conservant la masse totale. 
 - `laplacian` (*ligne 218*): Calcule le laplacien de la distribution de masse (diffusion).
 - `compute_gravitational_potential` (*ligne 222*): Calcule le potentiel gravitationnel à partir de la distribution de masse via une transformée de Fourier.
@@ -104,3 +104,9 @@ L'affichage principale est réalisé avec une carte en nuances de gris et les é
 ### **Initialisation** (*ligne 787*)
 
 Nous initialisons la simulation avec un tableau de taille 500x500 de valeurs aléatoires. 
+
+
+<br>
+## **Pistes d'Améliorations** 
+
+La simulation pourrait gagner en réalisme en s’appuyant sur des modèles physiques plus fidèles à la réalité. Actuellement, la couleur des étoiles est prédéfinie ; il serait envisageable de la faire dépendre de leur température, ce qui déterminerait automatiquement leur couleur (par exemple avec [loi du déplacement de Wien](https://fr.wikipedia.org/wiki/Loi_du_déplacement_de_Wien)). Par ailleurs, il serait possible d’introduire un modèle de rotation des étoiles. Enfin, l’ajout d’un mode tutoriel expliquant pas à pas l’utilisation de la simulation constituerait une amélioration précieuse.

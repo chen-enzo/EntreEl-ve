@@ -47,9 +47,9 @@ Concrètement, la séance, d'une durée totale de deux heures, comprendra une pr
 Pour le plan détaillé de la séance, voir la rubrique «[Déroulé de la Séance](plan.md)»
 
 <br>
-## **Contraintes ayant guidé la conception de cette interventione** 
+## **Contraintes ayant guidé la conception de cette intervention** 
 
-Plusieurs contraintes ont dûes être respectées lors de la conception de cette intervention. Le contenu de la séance doit être adapté au niveau CM1/CM2 ainsi qu'au contexte socio-économique de l’école. La séance doit proposer des activités ludiques et ne pas être uniquement un cours magistral. L’ensemble des supports et expériences doit être reproductible à partir des ressources du projet, dans le respect d’un budget limité. Enfin, une trace écrite synthétique doit être fournie aux élèves à l’issue de la séance.
+Plusieurs contraintes ont dû être respectées lors de la conception de cette intervention. Le contenu de la séance doit être adapté au niveau CM1/CM2 ainsi qu'au contexte socio-économique de l’école. La séance doit proposer des activités ludiques et ne pas être uniquement un cours magistral. L’ensemble des supports et expériences doit être reproductible à partir des ressources du projet, dans le respect d’un budget limité. Enfin, une trace écrite synthétique doit être fournie aux élèves à l’issue de la séance.
 
 <br>
 ### **Simulation Informatique**
@@ -64,11 +64,9 @@ La matière à l'intérieur d'une étoile n'évolue plus suivant les équations 
 Pour plus d'informations sur la simulation, voir la rubrique «[Simulation Informatique](simulation.md)».
 
 <br>
-### **Extensions et Piste d'améliorations**
+### **Extensions**
 
 En fonction du déroulement de la séance il est possible de la compléter par une explication des phénomènes contre-intuitif se déroulant au voisinage des trou noirs, une présentation des études scientifiques ou  une introduction à la méthode scientifique, permettant ainsi de comprendre par quel processus les modèles présentés lors de la séance ont été établis. 
-
-Pour aller plus loin, notre simulation peut être améliorée ... 
 
 <br>
 ## **Difficultés à prévoir**
@@ -87,9 +85,9 @@ Faire attention à la version de `Powerpoint` disponible et au format de project
 - [Cartes pour la frise](assets/ressource/cartes_frises.pdf)
 - [Texte à trous](assets/ressource/texte-a-trou.pdf)
 - [Simulation python](assets/ressource/simulation_final_version.py)
-- [Simulation partie1](simulation_p1.png) : Interface de la première partie de notre simulation
+- [Simulation partie1](assets/image_perso/simulation_p1.png) : Interface de la première partie de notre simulation
 - [Exemple pour la première partie](assets/image_perso/simulation_p1-ex.png)
-- [Simulation partie2](simulation_p2.png) : Interface de la seconde partie de notre simulation 
+- [Simulation partie2](assets/image_perso/simulation_p2.png) : Interface de la seconde partie de notre simulation 
 
 <br>
 
@@ -99,16 +97,16 @@ Pour plus de visibilité, voir la rubrique «[Galerie](galerie_photo.md)».
 
 #### **Images**
 - [Image Soleil](assets/image/sun.jpg) : Image du Soleil (*NASA/Goddard/SDO*)
-- [Coupe du Soleil](assets/image/slice_sun.png) : Vue en coupe du Soleil générée par IA à partir de l'image du Soleil
+- [Coupe du Soleil](assets/image/slice_sun.png) : Vue en coupe du Soleil générée par intelligence artificielle à partir de l'image du Soleil
 - [Pilier de la création](assets/image/pillar_of_creation.jpeg) : Prise par le télescope Hubble (*NASA*, *ESA*)
 - [Nébuleuse d'Orion](assets/image/Orion_Nebula.jpg) : Vue par le télescope spatial Hubble (*NASA*, *STScI*, *ESA*)
 - [Naine Brune](assets/image/browndwarf.jpg) : Vue d'artiste inspirée d'image prise par Hubble (*Centre spatial Goddard*, *NASA*)
-- [Naine rouge](assets/image/reddwarf.png) : image générée par IA
+- [Naine rouge](assets/image/reddwarf.png) : image générée par intelligence artificielle
 - [Naine blanche](assets/image/whitedwarf.jpg) : CC BY-NC-SA Eric Simon
-- [Naine blanche dézoomée](assets/image/whitedwarf_unzoomed.png) : Image dézoomée par IA 
+- [Naine blanche dézoomée](assets/image/whitedwarf_unzoomed.png) : Image dézoomée par intelligence artificielle
 - [Géante rouge](assets/image/redgiant.jpg) : image retouchée à partir d'une [image du Soleil](assets/image/redgiant_original.jpg) de la *NASA/Goddard/SDO*
 - [Nébuleuse planétaire](assets/image/planetary_nebula.jpg) : La nébuleuse de l'Hélice (*NGC 7293) (NASA, NOAO, ESA, the Hubble Helix Nebula Team, M. Meixner (STScI), and T.A. Rector (NRAO)*)
-- [Géante bleu](assets/image/bluegiant.png) : image générée par IA
+- [Géante bleue](assets/image/bluegiant.png) : image générée par intelligence artificielle
 - [Comparaison des Géantes bleus](assets/image/blue_star_comparaison.jpg) : ESO/M. Kornmesser ([Lien](http://www.eso.org/public/images/eso1030c/))
 - [Supernova](assets/image/supernova.jpeg) : Vue d'artiste de la supernova SN2016aps (*© M. Weiss, Center for Astrophysics Harvard & Smithsonian*)
 - [Etoile à neutrons](assets/image/neutronstar.jpg) : Image de l'*ESA*
@@ -117,10 +115,10 @@ Pour plus de visibilité, voir la rubrique «[Galerie](galerie_photo.md)».
 - [Proto-étoile](assets/image/Protostar.jpeg) : Image de *L1527 IRS*, prise par le télescope spatial James-Webb  en 2022 (*NASA, ESA, CSA, and STScI, J. DePasquale*)
 
 #### Images exportées de Google Earth Pro
-- [Maurice Barrès 2](ge_maurice-barres.jpg) : Image Google Earth de la zone urbaine autour de l'école où nous sommes intervenues (*Image © Google / Fournisseurs de données*)
-- [Metz](ge_metz.jpg) : Image Google Earth de la ville de Metz (*Image © Google / Fournisseurs de données*)
-- [Europe](ge_europe.jpg) : Image Google Earth de l'Europe (*Image © Google / Fournisseurs de données*)
-- [Terrre](ge_terre.jpg) : Image Google Earth de la Terre (*Image © Google / Fournisseurs de données*)
+- [Maurice Barrès 2](assets/image/ge_maurice-barres.jpg) : Image Google Earth de la zone urbaine autour de l'école où nous sommes intervenues (*Image © Google / Fournisseurs de données*)
+- [Metz](assets/image/ge_metz.jpg) : Image Google Earth de la ville de Metz (*Image © Google / Fournisseurs de données*)
+- [Europe](assets/image/ge_europe.jpg) : Image Google Earth de l'Europe (*Image © Google / Fournisseurs de données*)
+- [Terre](assets/image/ge_terre.jpg) : Image Google Earth de la Terre (*Image © Google / Fournisseurs de données*)
 
 <br>
 
