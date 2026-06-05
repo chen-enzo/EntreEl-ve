@@ -97,16 +97,16 @@ Pour plus de visibilité, voir la rubrique «[Galerie](galerie_photo.md)».
 
 #### **Images**
 - [Image Soleil](assets/image/sun.jpg) : Image du Soleil (*NASA/Goddard/SDO*)
-- [Coupe du Soleil](assets/image/slice_sun.png) : Vue en coupe du Soleil générée par intelligence artificielle à partir de l'image du Soleil
+- [Coupe du Soleil](assets/image/slice_sun.jpg) : Vue en coupe du Soleil générée par intelligence artificielle à partir de l'image du Soleil
 - [Pilier de la création](assets/image/pillar_of_creation.jpeg) : Prise par le télescope Hubble (*NASA*, *ESA*)
 - [Nébuleuse d'Orion](assets/image/Orion_Nebula.jpg) : Vue par le télescope spatial Hubble (*NASA*, *STScI*, *ESA*)
 - [Naine Brune](assets/image/browndwarf.jpg) : Vue d'artiste inspirée d'image prise par Hubble (*Centre spatial Goddard*, *NASA*)
-- [Naine rouge](assets/image/reddwarf.png) : image générée par intelligence artificielle
+- [Naine rouge](assets/image/reddwarf.jpg) : image générée par intelligence artificielle
 - [Naine blanche](assets/image/whitedwarf.jpg) : CC BY-NC-SA Eric Simon
-- [Naine blanche dézoomée](assets/image/whitedwarf_unzoomed.png) : Image dézoomée par intelligence artificielle
+- [Naine blanche dézoomée](assets/image/whitedwarf_unzoomed.jpg) : Image dézoomée par intelligence artificielle
 - [Géante rouge](assets/image/redgiant.jpg) : image retouchée à partir d'une [image du Soleil](assets/image/redgiant_original.jpg) de la *NASA/Goddard/SDO*
 - [Nébuleuse planétaire](assets/image/planetary_nebula.jpg) : La nébuleuse de l'Hélice (*NGC 7293) (NASA, NOAO, ESA, the Hubble Helix Nebula Team, M. Meixner (STScI), and T.A. Rector (NRAO)*)
-- [Géante bleue](assets/image/bluegiant.png) : image générée par intelligence artificielle
+- [Géante bleue](assets/image/bluegiant.jpg) : image générée par intelligence artificielle
 - [Comparaison des Géantes bleus](assets/image/blue_star_comparaison.jpg) : ESO/M. Kornmesser ([Lien](http://www.eso.org/public/images/eso1030c/))
 - [Supernova](assets/image/supernova.jpeg) : Vue d'artiste de la supernova SN2016aps (*© M. Weiss, Center for Astrophysics Harvard & Smithsonian*)
 - [Etoile à neutrons](assets/image/neutronstar.jpg) : Image de l'*ESA*
