@@ -9,7 +9,7 @@ help:
 	@echo
 
 
-VIRTUAL_ENV_PATH = ../../project-virtual-env
+VIRTUAL_ENV_PATH = project-virtual-env
 website:
 	. $(VIRTUAL_ENV_PATH)/bin/activate; cd conf; mkdocs serve
 
