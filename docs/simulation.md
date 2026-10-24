@@ -1,6 +1,6 @@
 # **Simulation informatique**
 
-Vous trouverez ci-dessous le descriptif de notre simulation. Il est recommandé de suivre avec le ***[code Python](assets/ressource/simulation_final_version.py)***.
+Vous trouverez ci-dessous le descriptif de notre simulation. Il est recommandé de suivre avec le ***[code Python](assets/ressource/simulation.py)***.
 
 <br>
 

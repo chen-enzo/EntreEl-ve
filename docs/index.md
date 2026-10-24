@@ -84,7 +84,7 @@ Faire attention à la version de `Powerpoint` disponible et au format de project
 - [Fresque complétée](assets/ressource/fresque_complete.png)
 - [Cartes pour la frise](assets/ressource/cartes_frises.pdf)
 - [Texte à trous](assets/ressource/texte-a-trou.pdf)
-- [Simulation python](assets/ressource/simulation_final_version.py)
+- [Simulation python](assets/ressource/simulation.py)
 - [Simulation partie1](assets/image_perso/simulation_p1.png) : Interface de la première partie de notre simulation
 - [Exemple pour la première partie](assets/image_perso/simulation_p1-ex.png)
 - [Simulation partie2](assets/image_perso/simulation_p2.png) : Interface de la seconde partie de notre simulation 

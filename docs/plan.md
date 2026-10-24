@@ -12,7 +12,7 @@ Vous trouverez ci-dessous le déroulé complet de la séance que nous avons réa
 - [Fresque complétée](assets/ressource/fresque_complete.png)
 - [Cartes pour la frise](assets/ressource/cartes_frises.pdf)
 - [Texte à trous](assets/ressource/texte-a-trou.pdf)
-- [Simulation python](assets/ressource/simulation_final_version.py)
+- [Simulation python](assets/ressource/simulation.py)
 <br> 
 
 ## **Cours magistral (45 minutes)**
