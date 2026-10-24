@@ -8,7 +8,7 @@ Ce dépôt contient :
 - le site web de documentation du projet, généré avec MkDocs ;
 - les supports pédagogiques utilisés pendant la séance.
 
-Site publié : _lien à ajouter_
+Site publié : [https://projets-entreeleves.pages.centralesupelec.fr](https://projets-entreeleves.pages.centralesupelec.fr/w-aaab/cadier-chen/index.html)
 
 ## Sommaire
 
@@ -54,8 +54,8 @@ Le projet nécessite Python 3.
 
 ```bash
 # Récupérer le dépôt
-git clone <url-du-depot>
-cd <nom-du-depot>
+git clone git@github.com:chen-enzo/EntreEleve.git
+cd EntreEleve
 
 # Créer et activer un environnement virtuel
 python -m venv .venv
@@ -76,24 +76,19 @@ python simulation.py
 
 ### Lancer le site en local
 
+Le Makefile active l'environnement virtuel et démarre le serveur de développement MkDocs :
 ```bash
-python -m mkdocs serve
+make serve
 ```
+Le site est accessible à l'adresse indiquée par MkDocs (généralement http://127.0.0.1:8000/) et se met à jour automatiquement à chaque modification des fichiers Markdown.
 
-Le site est accessible à l'adresse indiquée par MkDocs (généralement `http://127.0.0.1:8000/`) et se met à jour automatiquement à chaque modification des fichiers Markdown.
-
-### Construire le site statique
-
-```bash
-python -m mkdocs build
-```
-
-Les fichiers générés sont placés dans le dossier `site/`.
+L'environnement virtuel doit avoir été créé au préalable (voir la section Installation).
 
 ## Organisation du dépôt
 
 ```text
 .
+├── Makefile              # Lancement du site en local
 ├── mkdocs.yml            # Configuration du site
 ├── requirements.txt      # Dépendances Python
 ├── simulation.py         # Simulation de l'évolution stellaire

@@ -11,6 +11,6 @@ help:
 
 VIRTUAL_ENV_PATH = project-virtual-env
 website:
-	. $(VIRTUAL_ENV_PATH)/bin/activate; cd conf; mkdocs serve
+	. $(VIRTUAL_ENV_PATH)/bin/activate; mkdocs serve
 
 
